@@ -1,0 +1,7 @@
+<?php 
+$TEST_VAR = 'TEST';
+$FUNG_ROOT = $_SERVER['DOCUMENT_ROOT'] . '/wtfung';
+$SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550';
+$SITE_IP = '159.89.126.149';
+
+
