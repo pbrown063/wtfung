@@ -12,4 +12,20 @@ $sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
 while ($row = $sql->fetch_assoc()){
 echo "<option value='phase'>" . $row["phaseName"] . "</option>";
 }
-echo "<select>";
+echo "</select>";
+
+
+echo "STRAINS<br>";
+echo" <select name='strain'>";
+$mysqli = sql_connect();
+
+$strain = "SELECT strainName FROM strainLibrary";
+
+$sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
+
+while ($row = $sql->fetch_assoc()){
+echo "<option value='strain'>" . $row["strainName"] . "</option>";
+}
+echo "</select>";
+
+
