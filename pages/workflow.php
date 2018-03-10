@@ -13,18 +13,18 @@ while ($row = $sql->fetch_assoc()){
 echo "<option value='phase'>" . $row["phaseName"] . "</option>";
 }
 echo "</select>";
-
+echo "<br><br>";
 
 echo "STRAINS<br>";
 echo" <select name='strain'>";
 $mysqli = sql_connect();
 
-$strain = "SELECT strainName FROM strainLibrary";
+$strain = "SELECT CommonName FROM strainsLibrary";
 
 $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
 
 while ($row = $sql->fetch_assoc()){
-echo "<option value='strain'>" . $row["strainName"] . "</option>";
+echo "<option value='strain'>" . $row["CommonName"] . "</option>";
 }
 echo "</select>";
 
