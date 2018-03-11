@@ -135,3 +135,13 @@ function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NU
     }
 return $mysqli;
 }
+
+/**
+  * Finds where the wtfung directory is and returns the path to it
+**/
+function find_fung_root($site_name) {
+  $cwd = getcwd();
+  $root_path = substr($cwd, 0, strpos($cwd, $site_name) + strlen($site_name));
+  return $root_path;
+}
+

@@ -1,12 +1,10 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
-
 $mysqli = sql_connect();
 
 $login_html = file_get_contents($FUNG_ROOT . '/pages/login.html');
 echo $login_html;
-
 
 if (isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
 
