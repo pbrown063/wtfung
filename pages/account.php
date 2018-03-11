@@ -1,6 +1,7 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
+$FUNG_ROOT = $_COOKIE['site_root'];
+require_once $FUNG_ROOT . '/includes/bootstrap.inc';
 
 $mysqli = sql_connect();
 $new_acct_form = file_get_contents($FUNG_ROOT . '/pages/account_form.html');

@@ -1,6 +1,6 @@
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
+$FUNG_ROOT = $_COOKIE['site_root'];
+require_once $FUNG_ROOT . '/includes/bootstrap.inc';
 $mysqli = sql_connect();
 
 $login_html = file_get_contents($FUNG_ROOT . '/pages/login.html');
