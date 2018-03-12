@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 
 echo "WORKFLOW...and some drop down populated with database info :D<br><br>";
-
+echo "TEST PAGES";
 echo "PHASES<br>";  // script for phases drop down
 echo" <select name='phase'>";
 $mysqli = sql_connect();
