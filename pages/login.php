@@ -3,19 +3,20 @@ $FUNG_ROOT = $_COOKIE['site_root'];
 require_once $FUNG_ROOT . '/includes/bootstrap.inc';
 $mysqli = sql_connect();
 
-$login_html = file_get_contents($FUNG_ROOT . '/pages/login.html');
-echo $login_html;
-
 if (isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
 
 $useremail = filter_input(INPUT_POST, 'email');
 $userpasswd = filter_input(INPUT_POST, 'pswrd');
 
-
 $sql = "SELECT firstname FROM emp  WHERE email = '".$useremail.
         "' AND password = PASSWORD('".$userpasswd."')";
 
 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+}
+
+else {
+$login_html = file_get_contents($FUNG_ROOT . '/pages/login.html');
+echo $login_html;
 }
 
 if (mysqli_num_rows($result) == 1) {
