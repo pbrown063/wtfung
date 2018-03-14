@@ -1,8 +1,4 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
-
-header('Location: /wtfung');
-
-
+require_once $_COOKIE['site_root'] . '/includes/bootstrap.inc';
 
