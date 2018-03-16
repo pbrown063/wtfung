@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WTF Login</title>
+    <title>Create Account</title>
     <link rel="stylesheet" type="text/css" href="../CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="../CSS/main_style.css">
+</head>
 <body>
-<nav>
-    <div class="nav_cont">
-        <ul>
-            <li>
-                <a id="logo" href="#"><img src="../WTF_white.png" alt="WTF"></a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<?php include 'header.php'; ?>
 <div class="container">
-    <form method="POST" action="#">
+    <form method="POST" action="">
         <ul class="flex-outer">
+            <li>
+                <input type="text" id="first-name" placeholder="First Name" required>
+            </li>
+            <li>
+                <input type="text" id="last-name" placeholder="Last Name" required>
+            </li>
             <li>
                 <input type="email" id="email" placeholder="Email Address" required>
             </li>
@@ -25,13 +24,10 @@
                 <input type="password" id="password" placeholder="Password" required>
             </li>
             <li>
-                <button type="submit"> Log in</button>
+                <button type="submit">Create Account</button>
             </li>
         </ul>
     </form>
 </div>
 </body>
-<footer>
-
-</footer>
 </html>

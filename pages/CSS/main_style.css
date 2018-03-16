@@ -1,0 +1,56 @@
+body {
+    font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+    background: #3AAFAB;
+    color: #ffffff;
+    padding: 50px 0;
+}
+
+nav .nav_cont{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background: #333333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+nav li{
+    display: inline-block;
+
+}
+
+nav li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    margin: 0;
+    padding:  24px;
+    color: #f2f2f2;
+
+}
+a .logo{
+  position: fixed;
+    top: 0;
+    left: 0;
+
+}
+nav a:hover {
+    color: palevioletred;
+}
+
+nav a:active {
+    border-bottom: 1px solid white;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
