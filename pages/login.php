@@ -1,34 +1,39 @@
-<?php
-$FUNG_ROOT = $_COOKIE['site_root'];
-require_once $FUNG_ROOT . '/includes/bootstrap.inc';
-$mysqli = sql_connect();
+<?php require_once __DIR__ . '/bootstrap.php'; ?>
 
-if (isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WTF Login</title>
+    <link rel="stylesheet" type="text/css" href="pages/CSS/form_style.css">
+    <link rel="stylesheet" type="text/css" href="pages/CSS/main_style.css">
+<body>
+<nav>
+    <div class="nav_cont">
+        <ul>
+            <li>
+                <a id="logo" href="#"><img src="resources/WTF_white.png" alt="WTF"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <form method="POST" action="#">
+        <ul class="flex-outer">
+            <li>
+                <input type="email" id="email" placeholder="Email Address" required>
+            </li>
+            <li>
+                <input type="password" id="password" placeholder="Password" required>
+            </li>
+            <li>
+                <button type="submit"> Log in</button>
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+<footer>
 
-$useremail = filter_input(INPUT_POST, 'email');
-$userpasswd = filter_input(INPUT_POST, 'pswrd');
-
-$sql = "SELECT firstname FROM emp  WHERE email = '".$useremail.
-        "' AND password = PASSWORD('".$userpasswd."')";
-
-$result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
-
-  if (mysqli_num_rows($result) == 1) {
-
-        //if authorized, get the values of f_name
-        while ($info = mysqli_fetch_array($result)) {
-                $f_name = stripslashes($info['firstname']);
-        echo $f_name;
-    }
-  }
-}
-
-else {
-$login_html = file_get_contents($FUNG_ROOT . '/pages/login.html');
-echo $login_html;
-}
-
-	//header('Location:'. $FUNG_ROOT. '/pages/workflow.php');
-mysqli_close($mysqli);
-
-
+</footer>
+</html>

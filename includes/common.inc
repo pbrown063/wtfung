@@ -13,7 +13,6 @@ function test_fun() {
 **/
 function run_login_page($FUNG_ROOT) {
   require_once $FUNG_ROOT . '/pages/login.php';
-  return;
 }
 
 /**
@@ -143,5 +142,31 @@ function find_site_root($site_name) {
   $cwd = getcwd();
   $root_path = substr($cwd, 0, strpos($cwd, $site_name) + strlen($site_name));
   return $root_path;
+}
+
+/**
+ * Adds a new employee (user) to the database
+ */
+function add_new_employee() {
+    $mysqli = sql_connect();
+    if (isset($_POST['Fname']) && isset($_POST['Lname'])
+        && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
+
+        $firstname = filter_input(INPUT_POST,'Fname');
+        $lastname = filter_input(INPUT_POST,'Lname');
+        $newemail = filter_input(INPUT_POST,'email');
+        $pswrd = filter_input(INPUT_POST,'pswrd');
+        if (!empty($firstname) && !empty($lastname) && !empty($newemail) && !empty($pswrd)) {
+            $sql = "INSERT INTO emp (firstname, lastname, email, reg_date, password)"
+                . "VALUES('$firstname', '$lastname', '$newemail', NOW(), '$pswrd')";
+            $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        return TRUE;
+    }
+
+    else {
+        echo "SOMETHING WENT TERRIBLEY WRONG!";
+        return FALSE;
+    }
 }
 

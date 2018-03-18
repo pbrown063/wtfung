@@ -1,6 +1,3 @@
 <?php
 
-$FUNG_ROOT = getcwd(); 
-require_once $FUNG_ROOT . '/includes/bootstrap.inc';
-run_login_page($FUNG_ROOT);
-
+require_once __DIR__ . '/pages/login.php';
