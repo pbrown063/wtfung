@@ -5,14 +5,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WTF Login</title>
-    <link rel="stylesheet" type="text/css" href="pages/CSS/form_style.css">
-    <link rel="stylesheet" type="text/css" href="pages/CSS/main_style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
 <body>
 <nav>
     <div class="nav_cont">
         <ul>
             <li>
-                <a id="logo" href="#"><img src="resources/WTF_white.png" alt="WTF"></a>
+                <img class="logo" src="../resources/WTF_white.png" alt="WTF">
             </li>
         </ul>
     </div>
