@@ -13,7 +13,6 @@ function test_fun() {
 **/
 function run_login_page($FUNG_ROOT) {
   require_once $FUNG_ROOT . '/pages/login.php';
-  return;
 }
 
 /**
