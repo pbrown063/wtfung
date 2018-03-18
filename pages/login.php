@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WTF Login</title>
     <base href="159.89.126.149/wtfung">
-    <link rel="stylesheet" type="text/css" href="/pages/CSS/form_style.css">
-    <link rel="stylesheet" type="text/css" href="/pages/CSS/main_style.css">
+    <link rel="stylesheet" type="text/css" href="pages/CSS/form_style.css">
+    <link rel="stylesheet" type="text/css" href="pages/CSS/main_style.css">
 <body>
 <nav>
     <div class="nav_cont">
