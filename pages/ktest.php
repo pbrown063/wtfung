@@ -3,7 +3,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 
 $mysqli = sql_connect();
-$new_acct_form = file_get_contents($FUNG_ROOT . '/pages/account_form.html');
+
+// Depricated accountform.html... create_account.html is the new version.
+$new_acct_form = file_get_contents($FUNG_ROOT . '/pages/create_account.html');
 
 
 if (isset($_POST['Fname']) && isset($_POST['Lname'])

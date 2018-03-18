@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
 </head>
 <body>
-    <nav>
-        <div class="container">
+<?php include 'header.php'; ?>
 
-        </div>
-    </nav>
 </body>
 </html>

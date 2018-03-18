@@ -1,16 +1,21 @@
-<html>
-    <head>
-        <title>Create Account Form</title>
-    </head>
-    <body style="background-color: bisque">
-            <fieldset> <legend><h3> User Information</h3></legend>
-                <p>
-			      You're account has successfully been created!
-			    </p>
-			    <form action="workflow.php" method="get">
-				<input type="submit" value="Farm Some Fungus" 
-				  name="Submit" id="enter_farmflow" />
-				</form>
-            </fieldset>    
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Account</title>
+    <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
+</head>
+<body>
+<?php include 'header.php'; ?>
+<div class="container">
+    <p>
+        You're account has successfully been created!
+    </p>
+    <form action="workflow.php" method="get">
+        <input type="submit" value="Farm Some Fungus"
+               name="Submit" id="enter_farmflow" />
+    </form>
+</div>
+</body>
 </html>

@@ -1,11 +1,7 @@
 <?php
-
-$FUNG_ROOT = $_COOKIE['site_root'];
-require_once $FUNG_ROOT . '/includes/bootstrap.inc';
+require_once __DIR__ . '/bootstrap.php';
 
 $mysqli = sql_connect();
-$new_acct_form = file_get_contents($FUNG_ROOT . '/pages/account_form.html');
-
 
 if (isset($_POST['Fname']) && isset($_POST['Lname']) 
         && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
@@ -26,7 +22,7 @@ if (isset($_POST['Fname']) && isset($_POST['Lname'])
 }
 
 else {
-	echo $new_acct_form;
+	echo "SOMETHING WENT TERRIBLEY WRONG!";
 }
 ?>
 

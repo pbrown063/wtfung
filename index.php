@@ -1,8 +1,3 @@
 <?php
-// Comment
-$FUNG_ROOT = getcwd(); 
-require_once $FUNG_ROOT . '/includes/bootstrap.inc';
-run_login_page($FUNG_ROOT);
 
-//comment
-//comment 2
+require_once __DIR__ . '/pages/login.php';
