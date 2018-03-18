@@ -8,9 +8,9 @@
 </head>
 <body>
 <?php include 'header.php'; ?>
-<div class="container">
+<div class="container`">
     <p>
-        You're account has successfully been created!
+        Employee successfully added.
     </p>
     <form action="workflow.php" method="get">
         <input type="submit" value="Farm Some Fungus"
