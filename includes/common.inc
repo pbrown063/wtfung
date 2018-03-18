@@ -37,14 +37,14 @@ function employeePrint() {
 	
 	if($mysqli){
  
-        $emp = "SELECT firstname, lastname FROM emp";
+        $account = "SELECT firstname, lastname FROM account";
  
-        $result = mysqli_query($mysqli, $emp) or die(mysqli_error($mysqli));
+        $result = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
  
         $empArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all employees in a big array
         if (mysqli_num_rows($result) > 0) {
             foreach ($empArray as $row) {
-                $display_block = $display_block . "<option value='" . $row["emp"] . "'>" . $row["emp"] . "</option>";
+                $display_block = $display_block . "<option value='" . $row["firstname"] . "'>" . $row["firstname"] . "</option>";
             }
         } else {
             $display_block = "<option value='error'>No Employees</option>";
@@ -157,8 +157,8 @@ function add_new_employee() {
         $newemail = filter_input(INPUT_POST,'email');
         $pswrd = filter_input(INPUT_POST,'pswrd');
         if (!empty($firstname) && !empty($lastname) && !empty($newemail) && !empty($pswrd)) {
-            $sql = "INSERT INTO emp (firstname, lastname, email, reg_date, password)"
-                . "VALUES('$firstname', '$lastname', '$newemail', NOW(), '$pswrd')";
+            $sql = "INSERT INTO account (firstname, lastname, email, password)"
+                . "VALUES('$firstname', '$lastname', '$newemail', '$pswrd')";
             $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
         }
         return TRUE;

@@ -49,7 +49,7 @@ echo "EMPLOYEE FULL NAME<br>";// script for users full name
 echo" <select name='user'>";
 $mysqli = sql_connect();
 
-$user = "SELECT firstname, lastname FROM emp";
+$user = "SELECT firstname, lastname FROM account";
 
 $sql = mysqli_query($mysqli, $user) or die(mysqli_error($mysqli));
 
