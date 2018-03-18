@@ -5,7 +5,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WTF Login</title>
-    <base href="159.89.126.149/wtfung">
     <link rel="stylesheet" type="text/css" href="pages/CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="pages/CSS/main_style.css">
 <body>
@@ -13,7 +12,7 @@
     <div class="nav_cont">
         <ul>
             <li>
-                <a id="logo" href="#"><img src="../resources/WTF_white.png" alt="WTF"></a>
+                <a id="logo" href="#"><img src="resources/WTF_white.png" alt="WTF"></a>
             </li>
         </ul>
     </div>
@@ -38,4 +37,3 @@
 
 </footer>
 </html>
-<?php echo __DIR__ . '/CSS/form_style.css'; ?>
