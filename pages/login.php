@@ -18,7 +18,7 @@
     </div>
 </nav>
 <div class="container">
-    <form method="POST" action="authenticate.php">
+    <form method="POST" action="pages/authenticate.php">
         <ul class="flex-outer">
             <li>
                 <input type="email" id="email" placeholder="Email Address" name="email" required>

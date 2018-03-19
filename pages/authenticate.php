@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
-initialize_error_checking();
-run_login_page();
+initialize_error_reporting();
+
 $mysqli = sql_connect();
 
 if (isset($_POST['email']) && isset($_POST['pswrd'])){
