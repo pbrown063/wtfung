@@ -1,50 +1,50 @@
 <?php
 
 /**
-  * Test function, fill in with tests
-**/
+ * Test function, fill in with tests
+ **/
 function test_fun() {
-  echo $TEST_VAR;
-  echo 'more fun';
+    echo $TEST_VAR;
+    echo 'more fun';
 }
 
 /**
-  * Function call to run the login script.
-**/
+ * Function call to run the login script.
+ **/
 function run_login_page($FUNG_ROOT) {
-  require_once $FUNG_ROOT . '/pages/login.php';
+    require_once $FUNG_ROOT . '/pages/login.php';
 }
 
 /**
-  * Header block for error reports.
-**/
+ * Header block for error reports.
+ **/
 function initialize_error_reporting() {
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-  session_start();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    session_start();
 }
 
 /**
-  * 
-  *
-  *
-  *
-**/
+ *
+ *
+ *
+ *
+ **/
 function employeePrint() {
 
-    $mysqli = sql_connect(); 
-	
-	if($mysqli){
- 
-        $account = "SELECT firstname, lastname FROM account";
- 
-        $result = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
- 
+    $mysqli = sql_connect();
+
+    if($mysqli){
+
+        $emp = "SELECT firstname, lastname FROM emp";
+
+        $result = mysqli_query($mysqli, $emp) or die(mysqli_error($mysqli));
+
         $empArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all employees in a big array
         if (mysqli_num_rows($result) > 0) {
             foreach ($empArray as $row) {
-                $display_block = $display_block . "<option value='" . $row["firstname"] . "'>" . $row["firstname"] . "</option>";
+                $display_block = $display_block . "<option value='" . $row["emp"] . "'>" . $row["emp"] . "</option>";
             }
         } else {
             $display_block = "<option value='error'>No Employees</option>";
@@ -56,13 +56,14 @@ function employeePrint() {
 }
 
 /**
-  *
-  *
-  *
-  *
-**/
+ *
+ *
+ *
+ *
+ **/
 function phasePrint() {
 
+<<<<<<< HEAD
     $mysqli = sql_connect(); //connects to databse
 	
 	if($mysqli){ // if it connected
@@ -71,6 +72,16 @@ function phasePrint() {
  
         $result = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli)); //store result or exit error message
  
+=======
+    $mysqli = sql_connect();
+
+    if($mysqli){
+
+        $phase = "SELECT phaseName FROM phaseLibrary";
+
+        $result = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
+
+>>>>>>> 73781ae665932ff03d984e79ed5ac1eae2e1cbb8
         $phaseArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all phases in a big array
         if (mysqli_num_rows($result) > 0) {
             foreach ($phaseArray as $row) {
@@ -86,22 +97,22 @@ function phasePrint() {
 }
 
 /**
-  *
-  *
-  *
-  *
-**/
+ *
+ *
+ *
+ *
+ **/
 
 function substratePrint() {
 
-    $mysqli = sql_connect(); 
-	
-	if($mysqli){
- 
+    $mysqli = sql_connect();
+
+    if($mysqli){
+
         $substrate = "SELECT SubstrateType FROM substrateLibrary";
- 
+
         $result = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
- 
+
         $substrateArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all phases in a big array
         if (mysqli_num_rows($result) > 0) {
             foreach ($substrateArray as $row) {
@@ -117,31 +128,31 @@ function substratePrint() {
 }
 
 /**
-  * Fairly rigid, currently connects with only one set of creds.
-  * Main point with this function is to include connection error block.
-**/
+ * Fairly rigid, currently connects with only one set of creds.
+ * Main point with this function is to include connection error block.
+ **/
 function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NULL, $main_db = 'emp') {
-	$SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550';
-	if ($sql_pass == NULL) {
-		$sql_pass = $SQL_DEFAULT_PASS;
-	}
-	
-	$mysqli = mysqli_connect($sql_host, $sql_user, $sql_pass, $main_db);
+    $SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550';
+    if ($sql_pass == NULL) {
+        $sql_pass = $SQL_DEFAULT_PASS;
+    }
+
+    $mysqli = mysqli_connect($sql_host, $sql_user, $sql_pass, $main_db);
 
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
         exit();
     }
-return $mysqli;
+    return $mysqli;
 }
 
 /**
-  * Finds where the wtfung directory is and returns the path to it
-**/
+ * Finds where the wtfung directory is and returns the path to it
+ **/
 function find_site_root($site_name) {
-  $cwd = getcwd();
-  $root_path = substr($cwd, 0, strpos($cwd, $site_name) + strlen($site_name));
-  return $root_path;
+    $cwd = getcwd();
+    $root_path = substr($cwd, 0, strpos($cwd, $site_name) + strlen($site_name));
+    return $root_path;
 }
 
 /**
@@ -164,14 +175,44 @@ function add_new_employee() {
         $newemail = filter_input(INPUT_POST,'email');
         $pswrd = filter_input(INPUT_POST,'pswrd');
         if (!empty($firstname) && !empty($lastname) && !empty($newemail) && !empty($pswrd)) {
-            $sql = "INSERT INTO account (firstname, lastname, email, password)"
-                . "VALUES('$firstname', '$lastname', '$newemail', '$pswrd')";
+            $sql = "INSERT INTO emp (firstname, lastname, email, reg_date, password)"
+                . "VALUES('$firstname', '$lastname', '$newemail', NOW(), '$pswrd')";
             $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
         }
         return TRUE;
     }
 
 }
+/**
+ *
+ * See the users firstname when thier loging in
+ **/
+
+/*
+function see_login_employee() {
+    $mysqli = sql_connect();
+    initialize_error_reporting();
+
+    $email = filter_input(INPUT_POST,'email');
+    $password = filter_input(INPUT_POST, 'password');
+
+    if (isset($_POST['email']) && isset($_POST['password'])){
+
+        $sql = "SELECT firstname FROM account WHERE email = ".filter_input(INPUT_POST,'email$"' AND password = "."PASSWORD('".filter_input(INPUT_POST,'password$"')
+
+$result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+}
+return TRUE;
+echo 'firstname';
+echo "HAIL HYDRA!!!!!";
+ header("Location: page2.php");
+}
+else{
+echo "Lob den roten Arm";
+return FALSE;
+}
+}
+*/
 
 /**
  * Populates phases drop down from the database
