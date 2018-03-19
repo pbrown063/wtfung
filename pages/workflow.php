@@ -67,5 +67,3 @@ $fname = $row["firstname"];
 $lname = $row["lastname"];
 echo "</select>";
 echo "<br><br>";
-
-writeMsg(); // call the function in common.inc
