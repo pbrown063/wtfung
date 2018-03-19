@@ -18,13 +18,13 @@
     </div>
 </nav>
 <div class="container">
-    <form method="POST" action="#">
+    <form method="POST" action="pages/authenticate.php">
         <ul class="flex-outer">
             <li>
-                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="email" id="email" placeholder="Email Address" name="email" required>
             </li>
             <li>
-                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="password" placeholder="Password" name="password" required>
             </li>
             <li>
                 <button type="submit"> Log in</button>
