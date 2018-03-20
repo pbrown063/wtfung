@@ -60,4 +60,3 @@ $fname = $row["firstname"];
 $lname = $row["lastname"];
 echo "</select>";
 echo "<br><br>";
-
