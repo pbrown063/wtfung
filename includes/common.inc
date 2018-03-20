@@ -169,8 +169,4 @@ function add_new_employee() {
         return FALSE;
     }
 }
-/**
- *
- * See the users firstname when thier loging in
- **/
 
