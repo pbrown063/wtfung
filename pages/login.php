@@ -5,26 +5,26 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WTF Login</title>
-    <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
-    <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
+    <link rel="stylesheet" type="text/css" href="pages/CSS/form_style.css">
+    <link rel="stylesheet" type="text/css" href="pages/CSS/main_style.css">
 <body>
 <nav>
     <div class="nav_cont">
         <ul>
             <li>
-                <a id="logo" href="#"><img src="../resources/WTF_white.png" alt="WTF"></a>
+                <a id="logo" href="#"><img src="resources/WTF_white.png" alt="WTF"></a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container">
-    <form method="POST" action="authenticate.php">
+    <form method="POST" action="pages/authenticate.php">
         <ul class="flex-outer">
             <li>
-                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="email" id="email" placeholder="Email Address" name="email" required>
             </li>
             <li>
-                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="password" placeholder="Password" name="password" required>
             </li>
             <li>
                 <button type="submit"> Log in</button>
