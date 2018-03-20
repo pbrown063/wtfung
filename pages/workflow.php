@@ -1,16 +1,12 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/common.inc';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 
 echo "WORKFLOW...and some drop down populated with database info :D<br><br>";
 echo "TEST PAGES";
 echo "PHASES<br>";  // script for phases drop down
-
-function phase_dropdown(){
 echo" <select name='phase'>";
-
 $mysqli = sql_connect();
-
+	
 $phase = "SELECT phaseName FROM phaseLibrary";
 
 $sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
@@ -19,9 +15,6 @@ while ($row = $sql->fetch_assoc()){
 echo "<option value='phase'>" . $row["phaseName"] . "</option>";
 }
 echo "</select>";
-}
-phase_dropdown();
-
 echo "<br><br>";
 
 echo "STRAINS<br>"; // script for strains drop down
@@ -68,4 +61,3 @@ $lname = $row["lastname"];
 echo "</select>";
 echo "<br><br>";
 
-writeMsg(); // call the function in common.inc

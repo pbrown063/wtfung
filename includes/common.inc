@@ -63,16 +63,6 @@ function employeePrint() {
  **/
 function phasePrint() {
 
-<<<<<<< HEAD
-    $mysqli = sql_connect(); //connects to databse
-	
-	if($mysqli){ // if it connected
- 
-        $phase = "SELECT phaseName FROM phaseLibrary"; //query for phase
- 
-        $result = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli)); //store result or exit error message
- 
-=======
     $mysqli = sql_connect();
 
     if($mysqli){
@@ -81,7 +71,6 @@ function phasePrint() {
 
         $result = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
 
->>>>>>> 73781ae665932ff03d984e79ed5ac1eae2e1cbb8
         $phaseArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all phases in a big array
         if (mysqli_num_rows($result) > 0) {
             foreach ($phaseArray as $row) {
@@ -159,17 +148,10 @@ function find_site_root($site_name) {
  * Adds a new employee (user) to the database
  */
 function add_new_employee() {
-
-    $targetemail = filter_input(INPUT_POST, 'email');
     $mysqli = sql_connect();
-    $email= "SELECT email FROM account WHERE email = ('".$targetemail."')";
-    $result = mysqli_query($mysqli, $email) or die(mysqli_error($mysqli));
-    if (mysqli_num_rows($result) >= 1) {
-       echo "THIS EMAIL IS ALREADY IN USE";
-        return FALSE;
-    }else if (isset($_POST['Fname']) && isset($_POST['Lname'])
+    if (isset($_POST['Fname']) && isset($_POST['Lname'])
         && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
-        
+
         $firstname = filter_input(INPUT_POST,'Fname');
         $lastname = filter_input(INPUT_POST,'Lname');
         $newemail = filter_input(INPUT_POST,'email');
@@ -182,6 +164,10 @@ function add_new_employee() {
         return TRUE;
     }
 
+    else {
+        echo "SOMETHING WENT TERRIBLEY WRONG!";
+        return FALSE;
+    }
 }
 /**
  *
@@ -213,25 +199,4 @@ return FALSE;
 }
 }
 */
-
-/**
- * Populates phases drop down from the database
- */
-
-function phase_dropdown(){
-echo" <select name='phase'>";
-
-$mysqli = sql_connect();
-
-$phase = "SELECT phaseName FROM phaseLibrary";
-
-$sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
-
-while ($row = $sql->fetch_assoc()){
-echo "<option value='phase'>" . $row["phaseName"] . "</option>";
-}
-echo "</select>";
-}
-
-
 
