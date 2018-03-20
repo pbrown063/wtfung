@@ -174,29 +174,3 @@ function add_new_employee() {
  * See the users firstname when thier loging in
  **/
 
-/*
-function see_login_employee() {
-    $mysqli = sql_connect();
-    initialize_error_reporting();
-
-    $email = filter_input(INPUT_POST,'email');
-    $password = filter_input(INPUT_POST, 'password');
-
-    if (isset($_POST['email']) && isset($_POST['password'])){
-
-        $sql = "SELECT firstname FROM account WHERE email = ".filter_input(INPUT_POST,'email$"' AND password = "."PASSWORD('".filter_input(INPUT_POST,'password$"')
-
-$result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
-}
-return TRUE;
-echo 'firstname';
-echo "HAIL HYDRA!!!!!";
- header("Location: page2.php");
-}
-else{
-echo "Lob den roten Arm";
-return FALSE;
-}
-}
-*/
-
