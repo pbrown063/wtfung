@@ -8,12 +8,14 @@
 echo '<nav>
     <div class="nav_cont">
         <ul>
+            <li><a href="#"><img src="../resources/WTF_white.png" alt="WTF"></a></li>
             <li><a href="#">Inoculate</a></li>
             <li><a href="#">Green House</a></li>
-            <li><a href="#">Harvest</a></li>
+            <li><a href="#">Harvest</a> </li>
             <li><a href="#">Schedule</a></li>
-            
+            <li>
+
+            </li>
         </ul>
-        <img class="logo" src="../resources/WTF_white.png" alt="WTF">
     </div>
 </nav>';

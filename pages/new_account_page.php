@@ -3,13 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create Account</title>
-
-    <link rel="stylesheet" type="text/css" href="form_style.css">
-    <link rel="stylesheet" type="text/css" href="main_style.css">
-
     <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
-
 </head>
 <body>
 <?php include 'header.php'; ?>

@@ -13,13 +13,13 @@ nav .nav_cont{
     z-index: 10;
     background: #333333;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    height: 75px;
 }
 
 nav ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
 }
 
 nav li{
@@ -36,7 +36,12 @@ nav li a{
     color: #f2f2f2;
 
 }
+a .logo{
+  position: fixed;
+    top: 0;
+    left: 0;
 
+}
 nav a:hover {
     color: palevioletred;
 }
@@ -45,10 +50,7 @@ nav a:active {
     border-bottom: 1px solid white;
 }
 
-.logo {
-    position: fixed;
-    right: 1%;
-    top: 1%;
+img {
     max-width: 100%;
     max-height: 100%;
 }
