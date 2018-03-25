@@ -1,0 +1,107 @@
+$_SESSION['email'] = filter_input(INPUT_POST, 'email'); // MUST SET EMAIL FOR SESSION SO USER CAN BE LOGGED WHEN ENTERING DATA
+
+
+
+-----------------------------------INSERT INTO INNOCULATION TABLE-------------------------------
+$mysqli = sql_connect();
+
+if (isset($_POST['batch'])){
+
+    $batchID = filter_input(INPUT_POST,'batch');
+    $strain = filter_input(INPUT_POST,'strain');
+    $user = $_SESSION['email'];
+    $worker = filter_input(INPUT_POST,'worker');
+    $datein = filter_input(INPUT_POST,'datein');
+    $dateout = filter_input(INPUT_POST,'dateout');
+    $substrate = filter_input(INPUT_POST,'substrate');
+    $bags = filter_input(INPUT_POST,'bags');
+    $comments = filter_input(INPUT_POST,'comments');
+        
+    $sql = "INSERT INTO innoculation (BatchID, InocStrainCode, DateIn, Substrate, NumBags, dateOut, user, worker, comments)"
+            . "VALUES('$batchID', '$strain', '$datein', '$substrate', '$bags', '$dateout', '$user', '$worker', '$comments')";
+                $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        
+        echo "Data has been inserted into innoculation table.";
+        exit();
+
+}
+
+else {
+        echo "There was an error inserting the data into the table, please make sure you have filled the form out correctly.";
+}
+
+-----------------------------------INSERT INTO BAGGING TABLE-------------------------------
+$mysqli = sql_connect();
+
+if (isset($_POST['batch'])){
+
+    $batchID = filter_input(INPUT_POST,'batch');
+    $user = $_SESSION['email'];
+    $worker = filter_input(INPUT_POST,'worker');
+    $datein = filter_input(INPUT_POST,'datein');
+    $dateout = filter_input(INPUT_POST,'dateout');
+    $bags = filter_input(INPUT_POST,'bags');
+    $comments = filter_input(INPUT_POST,'comments');
+        
+    $sql = "INSERT INTO bagging (batchID, user, worker, comments, dateout, datein)"
+            . "VALUES('$batchID', '$user', '$worker', '$datein', '$dateout', '$bags', '$comments')";
+                $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        
+        echo "Data has been inserted into bagging table.";
+        exit();
+
+}
+
+else {
+        echo "There was an error inserting the data into the table, please make sure you have filled the form out correctly.";
+}
+
+-----------------------------------INSERT INTO BATCH TABLE-------------------------------
+$mysqli = sql_connect();
+
+if (isset($_POST['batch'])){
+
+    $batchID = filter_input(INPUT_POST,'batch');
+    $user = $_SESSION['email'];
+    $worker = filter_input(INPUT_POST,'worker');
+    $date = filter_input(INPUT_POST,'date');
+    $day = filter_input(INPUT_POST,'day');
+    $comments = filter_input(INPUT_POST,'comments');
+        
+    $sql = "INSERT INTO batch (day, id, user, worker, comments, date)"
+            . "VALUES(''$day', $batchID', '$user', '$worker', '$comments', '$date')";
+                $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        
+        echo "Data has been inserted into batch table.";
+        exit();
+
+}
+
+else {
+        echo "There was an error inserting the data into the table, please make sure you have filled the form out correctly.";
+}
+
+-----------------------------------INSERT INTO GREENHOUSE TABLE-------------------------------
+$mysqli = sql_connect();
+
+if (isset($_POST['batch'])){
+
+    $batchID = filter_input(INPUT_POST,'batch');
+    $id = filter_input(INPUT_POST,'id');
+        
+    $sql = "INSERT INTO greenhouse (id, batchID)"
+            . "VALUES('$id','$batchID')";
+                $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        
+        echo "Data has been inserted into greenhouse table.";
+        exit();
+
+}
+
+else {
+        echo "There was an error inserting the data into the table, please make sure you have filled the form out correctly.";
+}
