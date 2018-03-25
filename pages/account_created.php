@@ -6,17 +6,16 @@
     <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
 </head>
-<?php include 'header.php'; ?>
 <body>
-<div class='container'>
+<?php include 'header.php'; ?>
+<div class="container`">
     <p>
         Employee successfully added.
     </p>
-    <form action='workflow.php' method='get'>
-        <input type='submit' value='Farm Some Fungus'
-               name='Submit' id='enter_farmflow' />
+    <form action="workflow.php" method="get">
+        <input type="submit" value="Farm Some Fungus"
+               name="Submit" id="enter_farmflow" />
     </form>
 </div>
 </body>
-</html>";
-?>
+</html>
