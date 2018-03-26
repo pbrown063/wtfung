@@ -8,7 +8,7 @@ if (isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
 $useremail = filter_input(INPUT_POST, 'email');
 $userpasswd = filter_input(INPUT_POST, 'pswrd');
 
-$sql = "SELECT firstname FROM emp  WHERE email = '".$useremail.
+$sql = "SELECT firstname FROM account  WHERE email = '".$useremail.
         "' AND password = PASSWORD('".$userpasswd."')";
 
 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));

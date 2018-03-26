@@ -1,5 +1,5 @@
 <?php
-//require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
+
 require_once __DIR__ . '/bootstrap.php';
 
 echo "WORKFLOW...and some drop down populated with database info :D<br><br>";
@@ -35,7 +35,7 @@ echo "<option value='substrate'>" . $row["substrate_type"] . "</option>";
 echo "</select>";
 echo "<br><br>";
 
-echo "EMPLOYEE FULL NAME<br>";// script for users full name
+echo "FULL NAME<br>";// script for users full name
 echo" <select name='user'>";
 $mysqli = sql_connect();
 
