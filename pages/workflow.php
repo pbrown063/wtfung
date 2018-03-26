@@ -35,7 +35,7 @@ echo "<option value='substrate'>" . $row["substrate_type"] . "</option>";
 echo "</select>";
 echo "<br><br>";
 
-echo "EMPLOYEE FULL NAME<br>";// script for users full name
+echo "FULL NAME<br>";// script for users full name
 echo" <select name='user'>";
 $mysqli = sql_connect();
 
