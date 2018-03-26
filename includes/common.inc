@@ -147,9 +147,13 @@ function find_site_root($site_name) {
 /**
  * Adds a new employee (user) to the database
  */
+<<<<<<< HEAD
 
 /*function add_new_employee() {
 
+=======
+function add_new_employee() {
+>>>>>>> 29a3ae4da0e21b2ba1bc8b296fce806c01d274d4
     $mysqli = sql_connect();
     if (isset($_POST['Fname']) && isset($_POST['Lname'])
         && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
@@ -158,6 +162,7 @@ function find_site_root($site_name) {
         $lastname = filter_input(INPUT_POST,'Lname');
         $newemail = filter_input(INPUT_POST,'email');
         $pswrd = filter_input(INPUT_POST,'pswrd');
+<<<<<<< HEAD
 	$sql = "SELECT email FROM account WHERE email = '".$newemail."'; 
         $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
        
@@ -195,3 +200,19 @@ echo "</select>";
 echo "<br><br>";
 mysqli_close($mysqli);
 }
+=======
+        if (!empty($firstname) && !empty($lastname) && !empty($newemail) && !empty($pswrd)) {
+            $sql = "INSERT INTO emp (firstname, lastname, email, reg_date, password)"
+                . "VALUES('$firstname', '$lastname', '$newemail', NOW(), '$pswrd')";
+            $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        return TRUE;
+    }
+
+    else {
+        echo "SOMETHING WENT TERRIBLEY WRONG!";
+        return FALSE;
+    }
+}
+
+>>>>>>> 29a3ae4da0e21b2ba1bc8b296fce806c01d274d4
