@@ -1,12 +1,6 @@
 <?php
-<<<<<<< HEAD
 //require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 require_once __DIR__ . '/bootstrap.php';
-
-
-=======
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
->>>>>>> 29a3ae4da0e21b2ba1bc8b296fce806c01d274d4
 
 echo "WORKFLOW...and some drop down populated with database info :D<br><br>";
 echo "TEST PAGES<br>";
@@ -14,11 +8,7 @@ echo "PHASES<br>";  // script for phases drop down
 echo" <select name='phase'>";
 $mysqli = sql_connect();
 	
-<<<<<<< HEAD
 $phase = "SELECT phase_name FROM phase_library";
-=======
-$phase = "SELECT phaseName FROM phaseLibrary";
->>>>>>> 29a3ae4da0e21b2ba1bc8b296fce806c01d274d4
 
 $sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
 
@@ -49,7 +39,7 @@ echo "EMPLOYEE FULL NAME<br>";// script for users full name
 echo" <select name='user'>";
 $mysqli = sql_connect();
 
-$user = "SELECT firstname, lastname FROM emp";
+$user = "SELECT firstname, lastname FROM account";
 
 $sql = mysqli_query($mysqli, $user) or die(mysqli_error($mysqli));
 
@@ -75,4 +65,3 @@ echo "<option value='strain'>" . $row["id"] . "</option>";
 }
 echo "</select>";
 echo "<br><br>";
-
