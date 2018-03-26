@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Test function, fill in with tests
+ * //Test function, fill in with tests
  **/
 function test_fun() {
     echo $TEST_VAR;
@@ -9,7 +9,7 @@ function test_fun() {
 }
 
 /**
- * Function call to run the login script.
+ * //Function call to run the login script.
  **/
 function run_login_page($FUNG_ROOT) {
     require_once $FUNG_ROOT . '/pages/login.php';
@@ -117,8 +117,8 @@ function substratePrint() {
 }
 
 /**
- * Fairly rigid, currently connects with only one set of creds.
- * Main point with this function is to include connection error block.
+ * //Fairly rigid, currently connects with only one set of creds.
+ * //Main point with this function is to include connection error block.
  **/
 function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NULL, $main_db = 'emp') {
     $SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550';
@@ -136,7 +136,7 @@ function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NU
 }
 
 /**
- * Finds where the wtfung directory is and returns the path to it
+ * //Finds where the wtfung directory is and returns the path to it
  **/
 function find_site_root($site_name) {
     $cwd = getcwd();
@@ -147,13 +147,8 @@ function find_site_root($site_name) {
 /**
  * Adds a new employee (user) to the database
  */
-<<<<<<< HEAD
 
 /*function add_new_employee() {
-
-=======
-function add_new_employee() {
->>>>>>> 29a3ae4da0e21b2ba1bc8b296fce806c01d274d4
     $mysqli = sql_connect();
     if (isset($_POST['Fname']) && isset($_POST['Lname'])
         && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])){
@@ -162,7 +157,7 @@ function add_new_employee() {
         $lastname = filter_input(INPUT_POST,'Lname');
         $newemail = filter_input(INPUT_POST,'email');
         $pswrd = filter_input(INPUT_POST,'pswrd');
-<<<<<<< HEAD
+        
 	$sql = "SELECT email FROM account WHERE email = '".$newemail."'; 
         $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
        
@@ -182,10 +177,11 @@ function add_new_employee() {
 }
 */
 /**
- * Displays strains
+ * //Displays strains
  */
 function display_strains(){
-echo "STRAINS<br>"; // script for strains drop down
+// script for strains drop down
+echo "STRAINS<br>"; 
 echo" <select name='strain'>";
 $mysqli = sql_connect();
 
@@ -200,19 +196,4 @@ echo "</select>";
 echo "<br><br>";
 mysqli_close($mysqli);
 }
-=======
-        if (!empty($firstname) && !empty($lastname) && !empty($newemail) && !empty($pswrd)) {
-            $sql = "INSERT INTO emp (firstname, lastname, email, reg_date, password)"
-                . "VALUES('$firstname', '$lastname', '$newemail', NOW(), '$pswrd')";
-            $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
-        }
-        return TRUE;
-    }
 
-    else {
-        echo "SOMETHING WENT TERRIBLEY WRONG!";
-        return FALSE;
-    }
-}
-
->>>>>>> 29a3ae4da0e21b2ba1bc8b296fce806c01d274d4
