@@ -5,17 +5,25 @@
  * Date: 2018-03-15
  * Time: 2:38 PM
  */
-echo '<nav>
-    <div class="nav_cont">
-        <ul>
-            <li><a href="#"><img src="../resources/WTF_white.png" alt="WTF"></a></li>
-            <li><a href="#">Inoculate</a></li>
-            <li><a href="#">Green House</a></li>
-            <li><a href="#">Harvest</a> </li>
-            <li><a href="#">Schedule</a></li>
-            <li>
-
-            </li>
-        </ul>
+echo '
+<nav>
+    <img class="logo" src="../resources/WTF_white.png" alt="WTF">
+    <div id="myMenubutton" class="menuButton">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
     </div>
-</nav>';
+    <div class="nameplate">
+        test nameplate
+    </div>
+  </nav>
+  
+    <div id="mySidenav" class="sidenav">
+      <a href="#">Lab</a>
+      <a href="#">Harvest</a>
+      <a href="#">Green House</a>
+      <a href="#">Schedule</a>
+    </div>
+    <script src="nav_script.js" type="text/javascript"></script>
+    ';
+
