@@ -1,5 +1,5 @@
 <?php
-//require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
+
 require_once __DIR__ . '/bootstrap.php';
 
 echo "WORKFLOW...and some drop down populated with database info :D<br><br>";
