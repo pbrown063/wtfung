@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Test function, fill in with tests
+ * //Test function, fill in with tests
  **/
 function test_fun() {
   echo $TEST_VAR;
@@ -9,7 +9,7 @@ function test_fun() {
 }
 
 /**
- * Function call to run the login script.
+ * //Function call to run the login script.
  **/
 function run_login_page($FUNG_ROOT) {
   require_once $FUNG_ROOT . '/pages/login.php';
@@ -117,8 +117,8 @@ function substratePrint() {
 }
 
 /**
- * Fairly rigid, currently connects with only one set of creds.
- * Main point with this function is to include connection error block.
+ * //Fairly rigid, currently connects with only one set of creds.
+ * //Main point with this function is to include connection error block.
  **/
 function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NULL, $main_db = 'emp') {
   $SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550';
@@ -136,7 +136,7 @@ function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NU
 }
 
 /**
- * Finds where the wtfung directory is and returns the path to it
+ * //Finds where the wtfung directory is and returns the path to it
  **/
 function find_site_root($site_name) {
   $cwd = getcwd();

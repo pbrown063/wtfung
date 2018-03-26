@@ -19,7 +19,7 @@ echo "</select>";
 echo "<br><br>";
 
 
-display_strains();
+//display_strains();
 
 echo "SUBSTRATES<br>";// script for substrates drop down
 echo" <select name='substrate'>";
