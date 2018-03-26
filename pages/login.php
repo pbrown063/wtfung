@@ -9,13 +9,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
 <body>
 <nav>
-    <div class="nav_cont">
-        <ul>
-            <li>
-                <img class="logo" src="../resources/WTF_white.png" alt="WTF">
-            </li>
-        </ul>
-    </div>
+    <img class="logo" src="../resources/WTF_white.png" alt="WTF">
 </nav>
 <div class="container">
     <form method="POST" action="authenticate.php">
