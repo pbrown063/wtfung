@@ -11,5 +11,5 @@
 <?php include 'header.php'; ?>
 
 </body>
-    <script src="nav_script.js" type="text/javascript"></script>
+<script src="nav_script.js" type="text/javascript"></script>
 </html>
