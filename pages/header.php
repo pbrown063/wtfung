@@ -13,6 +13,9 @@ echo '
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
+    <div class="nameplate">
+        test nameplate
+    </div>
   </nav>
   
     <div id="mySidenav" class="sidenav">
