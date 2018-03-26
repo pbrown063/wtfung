@@ -154,48 +154,23 @@ function add_new_employee()
   if (isset($_POST['Fname']) && isset($_POST['Lname'])
       && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])) {
 
-    $firstname = filter_input(INPUT_POST, 'Fname');
-    $lastname = filter_input(INPUT_POST, 'Lname');
-    $newemail = filter_input(INPUT_POST, 'email');
-    $pswrd = filter_input(INPUT_POST, 'pswrd');
-    $sql = "SELECT email FROM account WHERE email = '" . $newemail . "'";
-    $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
-
-    if (mysqli_num_rows($result) >= 1) {
-
-      echo "This email is already in use!";
-      return FALSE;
-
-    } else {
-      $sqli = "INSERT INTO account (firstname, lastname, email, password)"
-          . "VALUES('$firstname', '$lastname', '$newemail', '$pswrd')";
-
-      $result = mysqli_query($mysqli, $sqli) or die(mysqli_error($mysqli));
-
-      return TRUE;
+        $firstname = filter_input(INPUT_POST,'Fname');
+        $lastname = filter_input(INPUT_POST,'Lname');
+        $newemail = filter_input(INPUT_POST,'email');
+        $pswrd = filter_input(INPUT_POST,'pswrd');
+        if (!empty($firstname) && !empty($lastname) && !empty($newemail) && !empty($pswrd)) {
+            $sql = "INSERT INTO emp (firstname, lastname, email, reg_date, password)"
+                . "VALUES('$firstname', '$lastname', '$newemail', NOW(), '$pswrd')";
+            $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        }
+        return TRUE;
     }
   }
 }
 
-  /**
-   * Displays strains
-   */
-  function display_strains(){
-    echo "STRAINS<br>"; // script for strains drop down
-    echo" <select name='strain'>";
-    $mysqli = sql_connect();
-
-    $strain = "SELECT common_name FROM strains_library";
-
-    $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
-
-    while ($row = $sql->fetch_assoc()){
-      echo "<option value='strain'>" . $row["common_name"] . "</option>";
+    else {
+        echo "SOMETHING WENT TERRIBLEY WRONG!";
+        return FALSE;
     }
-    echo "</select>";
-    echo "<br><br>";
-    mysqli_close($mysqli);
-  }
-  echo "SOMETHING WENT TERRIBLEY WRONG!";
-
+}
 
