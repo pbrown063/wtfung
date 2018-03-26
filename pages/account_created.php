@@ -10,7 +10,7 @@
 <?php include 'header.php'; ?>
 <div class="container`">
     <p>
-        Employee successfully added.
+        Account successfully added.
     </p>
     <form action="workflow.php" method="get">
         <input type="submit" value="Farm Some Fungus"
