@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-$employee_added = add_new_employee();
+$account_added = add_new_account();
 
-if ($employee_added) {
+if ($account_added) {
     $login_successful = file_get_contents(__DIR__ . '/account_created.php');
     echo $login_successful;
 }

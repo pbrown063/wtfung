@@ -1,56 +1,111 @@
-body {
+body{
     font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
     background: #3AAFAB;
     color: #ffffff;
     padding: 50px 0;
 }
 
-nav .nav_cont{
+nav{
+    background: #222;
     position: fixed;
+    height: 75px;
     left: 0;
     top: 0;
     right: 0;
-    z-index: 10;
-    background: #333333;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+/* logo image */
+.logo{
+    position: fixed;
+    left: 30px;
+    top: 10px;
 }
 
-nav ul {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
+/* Name plate */
+.nameplate{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    text-transform: uppercase;
+    font: bold 20px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
 }
 
-nav li{
+
+/* Menu button */
+.menuButton {
+    position: fixed;
+    left: 175px;
+    top: 20px;
     display: inline-block;
-
+    cursor: pointer;
 }
 
-nav li a{
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #f2f2f2;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 70px; /* Stay at the top */
+    left: 0;
+    background-color: #222; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 1em;
-    margin: 0;
-    padding:  24px;
+    font-size: 25px;
     color: #f2f2f2;
-
+    display: block;
+    transition: 0.3s;
 }
-a .logo{
-  position: fixed;
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #db7093;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
     top: 0;
-    left: 0;
-
-}
-nav a:hover {
-    color: palevioletred;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-nav a:active {
-    border-bottom: 1px solid white;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
 }
