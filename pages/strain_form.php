@@ -5,8 +5,6 @@
  * Date: 2018-03-27
  * Time: 1:05 PM
  */
-//file containing functions
-require_once $_SERVER['DOCUMENT_ROOT'] . './includes/bootstrap.inc';
 ?>
 
 <!DOCTYPE html>
@@ -25,22 +23,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . './includes/bootstrap.inc';
     <form method="POST" action="">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='code' placeholder='Input strain code'>
+                <input type='text' name='code' placeholder='Strain Code'>
             </li>
             <li>
-                <input type='text' name='scientific' placeholder='Input scientific name'>
+                <input type='text' name='abbreviation' placeholder='Strain Abbreviation'>
             </li>
             <li>
-                <input type='text' name='common' placeholder='Input common name'>
+                <input type='text' name='scientific' placeholder='Scientific Name'>
             </li>
             <li>
-                <input type='text' name='abbreviation' placeholder='Input abbreviation'>
+                <input type='text' name='common' placeholder='Common Name'>
             </li>
             <li>
-                <textarea rows='4' cols='50' name='notes' form='strain_form' placeholder='Enter notes here'>
+                <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
             </li>
             <li>
-                <button type="submit">Create Strain</button>
+                <button type='submit'>Create Strain</button>
             </li>
         </ul>
     </form>
