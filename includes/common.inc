@@ -19,10 +19,9 @@ function run_login_page($FUNG_ROOT) {
  * Header block for error reports.
  **/
 function initialize_error_reporting() {
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-  session_start();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 }
 
 /**
