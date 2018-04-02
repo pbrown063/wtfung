@@ -151,7 +151,6 @@ function add_new_account() {
 
     if (mysqli_num_rows($result) >= 1) {
       echo "This email is already in use!";
-      msqli_close($mysqli);
       return FALSE;
     }
     else {
