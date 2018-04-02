@@ -1,35 +1,22 @@
 <?php
 
 /**
- * Test function, fill in with tests
- **/
-function test_fun() {
-  echo $TEST_VAR;
-  echo 'more fun';
-}
-
-/**
- * Function call to run the login script.
- **/
-function run_login_page($FUNG_ROOT) {
-  require_once $FUNG_ROOT . '/pages/login.php';
-}
-
-/**
  * Header block for error reports.
+ * Used whenever bootstrap.inc is called.
  **/
 function initialize_error_reporting() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
 }
 
 /**
+ * @return string
  *
  *
- *
- *
- **/
+ * Retrieves all of the user accounts from the accounts library and
+ * returns them as a string in the form of an html option menu
+ */
 function accountPrint() {
 
   $mysqli = sql_connect();
@@ -55,11 +42,11 @@ function accountPrint() {
 }
 
 /**
+ * @return string
  *
- *
- *
- *
- **/
+ * Retrieves all of the phases from the phases library and
+ * returns them as a string in the form of an html option menu.
+ */
 function phasePrint() {
 
   $mysqli = sql_connect();
@@ -85,12 +72,11 @@ function phasePrint() {
 }
 
 /**
+ * @return string
  *
- *
- *
- *
- **/
-
+ * Retrieves all of the substrates from the substrate library and
+ * returns them as a string in the form of an html option menu.
+ */
 function substratePrint() {
 
   $mysqli = sql_connect();
@@ -116,11 +102,11 @@ function substratePrint() {
 }
 
 /**
- * //Fairly rigid, currently connects with only one set of creds.
- * //Main point with this function is to include connection error block.
+ * Fairly rigid, currently connects with only one set of creds.
+ * Main point with this function is to include connection error block.
  **/
 function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NULL, $main_db = 'emp') {
-  $SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550';
+  $SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550'; // Poor security!
   if ($sql_pass == NULL) {
     $sql_pass = $SQL_DEFAULT_PASS;
   }
@@ -135,35 +121,43 @@ function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NU
 }
 
 /**
- * //Finds where the wtfung directory is and returns the path to it
- **/
-function find_site_root($site_name) {
+ * Finds where the directory with the same name as the site name is and returns the path to it.
+ */
+function find_site_root($site_name = 'wtfung') {
   $cwd = getcwd();
   $root_path = substr($cwd, 0, strpos($cwd, $site_name) + strlen($site_name));
-  return $root_path;
+  if ($root_path == $site_name)
+    return $root_path;
 }
 
 /**
- * Adds a new account (user) to the database
+ * @return bool
+ *
+ * Adds a new account to the database.
+ * This contains the entire script so there are no arguments.
  */
-
 function add_new_account() {
-  $mysqli = sql_connect();
   if (isset($_POST['Fname']) && isset($_POST['Lname'])
       && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])) {
+
+    $mysqli = sql_connect();
+
     $firstname = filter_input(INPUT_POST, 'Fname');
     $lastname = filter_input(INPUT_POST, 'Lname');
     $newemail = filter_input(INPUT_POST, 'email');
     $pswrd = filter_input(INPUT_POST, 'pswrd');
     $sql = "SELECT email FROM account WHERE email = '" . $newemail . "'";
     $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+
     if (mysqli_num_rows($result) >= 1) {
       echo "This email is already in use!";
       return FALSE;
-    } else {
+    }
+    else {
       $sqli = "INSERT INTO account (firstname, lastname, email, password)"
           . "VALUES('$firstname', '$lastname', '$newemail', '$pswrd')";
       $result = mysqli_query($mysqli, $sqli) or die(mysqli_error($mysqli));
+      mysqli_close($mysqli);
       return TRUE;
     }
   }
@@ -171,14 +165,17 @@ function add_new_account() {
 
 
 /**
- * Displays strains
+ * Creates and prints a form dropdown called @strain
+ * that is generated from the strains library.
  */
 function display_strains(){
   echo "STRAINS<br>"; // script for strains drop down
   echo" <select name='strain'>";
+
   $mysqli = sql_connect();
   $strain = "SELECT common_name FROM strains_library";
   $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
+
   while ($row = $sql->fetch_assoc()){
     echo "<option value='strain'>" . $row["common_name"] . "</option>";
   }
