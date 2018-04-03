@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Strain</title>
+    <title>Inoculation</title>
 
     <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -22,23 +22,30 @@
 <div class="container">
     <form method="POST" action="">
         <ul class="flex-outer">
+                <!--User shown in header-->
             <li>
-                <input type='text' name='code' placeholder='Strain Code'>
+                <input type="hidden" name="user" value="user"> <!--fill in value with correct user function-->
             </li>
             <li>
-                <input type='text' name='abbreviation' placeholder='Strain Abbreviation'>
+                <!--Batch ID drop down-->
             </li>
             <li>
-                <input type='text' name='scientific' placeholder='Scientific Name'>
+                <!--Substrate drop down-->
             </li>
             <li>
-                <input type='text' name='common' placeholder='Common Name'>
+                <input type="number" name="num_bags" placeholder="Number of Bags">
             </li>
             <li>
-                <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
+                <input type="date" name="date" placeholder="">
             </li>
             <li>
-                <button type='submit'>Add Strain</button>
+                <!--Worker drop down-->
+            </li>
+            <li>
+                <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea>
+            </li>
+            <li>
+                <button type='submit'>Submit?</button>
             </li>
         </ul>
     </form>
