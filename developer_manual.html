@@ -1,0 +1,73 @@
+<html>
+<body>
+
+
+<h1>DEVELOPER DOCUMENTATION</h1>
+
+Brian will create an account for each user that wants to do farming using
+`account_form.php`
+
+Table-fy this:<br/>
++-----------+-------------+<br/>
+| Field     | Type        |<br/>
++-----------+-------------+<br/>
+| firstname | varchar(30) |<br/>
+| lastname  | varchar(30) |<br/>
+| email     | varchar(50) |<br/>
+| password  | varchar(50) |<br/>
++-----------+-------------+<br/>
+
+
+<h3>1. Plating cultures using samples stored in test tubes</h3>
+
+
+<h3>2. Splitting test plates into jars</h3>
+
+
+<h3>3. Sporing multiple bags using each jar</h3>
+
+table this:</br>
++---------------+-------------+<br/>
+| Field         | Type        |<br/>
++---------------+-------------+<br/>
+| user          | varchar(50) |<br/>
+| worker        | varchar(50) |<br/>
+| num_bags      | int(11)     |<br/>
+| substrate     | varchar(45) |<br/>
+| batch_id      | int(11)     |<br/>
+| creation_date | date        |<br/>
+| notes         | longtext    |<br/>
++---------------+-------------+<br/>
+
+
+Batches are generated at this point as well:
+Table this: <br>
+mysql> desc batch;
++-------------+-------------+<br/>
+| Field       | Type        |<br/>
++-------------+-------------+<br/>
+| id          | int(11)     |<br/>
+| date        | date        |<br/>
+| letter_id   | varchar(3)  |<br/>
+| strain_code | varchar(45) |<br/>
+| plate_date  | date        |<br/>
+| notes       | longtext    |<br/>
++-------------+-------------+<br/>
+
+
+
+<h3>4. Inoculating blocks with the culture from the bags</h3>
+
+<h3>5. Loading the blocks into greenhouses</h3>
+
+<h3>6. Harvesting the fruiting mycellium from greenhouses</h3>
+
+<h3>BIRDS EYE VIEW</h3>
+
+<h5>An overview of the system as a whole is as follows:</h5>
+- `pages/bootstrap.php` includes the `includes` folder contents
+- `includes/` stores all of the functions used and is non-functional by itself
+- Each new php page should have the line ``require_once __DIR__ . '/bootstrap.php';``
+-
+</body>
+</html>
