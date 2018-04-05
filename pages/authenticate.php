@@ -15,12 +15,14 @@ $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
 $f_name = stripslashes($info['firstname']);
 
 
-  if (mysqli_num_rows($result) >= 1) {
-	session_start();
-	$_SESSION['name'] = $f_name;
-        header('Location: home.php');
-
-	} else {
+  if (mysqli_num_rows($result) >= 1) { 
+	while ($info = mysqli_fetch_array($result)) {
+                $f_name = stripslashes($info['firstname']); 
+		session_start();
+		$_SESSION['name'] = $f_name;
+       	         header('Location: home.php');
+		}
+  } else {
 	header('Location: login.php');
 }
 
