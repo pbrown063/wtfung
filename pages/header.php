@@ -1,11 +1,15 @@
-<?php
-
+<?php 
+require_once __DIR__ . '/bootstrap.php'; 
+session_start();  
+echo $_SESSION['name'];
+//echo $name;
 /**
  * Created by PhpStorm.
  * User: Kelsy
  * Date: 2018-03-15
  * Time: 2:38 PM
  */
+/*
 echo '
 <nav>
     <img class="logo" src="../resources/WTF_white.png" alt="WTF">
@@ -14,10 +18,10 @@ echo '
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
-    <div class="nameplate">
-        test nameplate
+ <div class="nameplate"
+       hello
     </div>
-  </nav>
+</nav>
   
     <div id="mySidenav" class="sidenav">
       <a href="#">Lab</a>
@@ -28,3 +32,4 @@ echo '
     <script src="nav_script.js" type="text/javascript"></script>
     ';
 
+*/

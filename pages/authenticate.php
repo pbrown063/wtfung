@@ -10,18 +10,19 @@ $userpasswd = filter_input(INPUT_POST, 'password');
 
 $sql = "SELECT firstname FROM account  WHERE email = '".$useremail.
 	"' AND password = '".$userpasswd."'";
+	
 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
-//echo $useremail;
-//echo $userpasswd;
+$f_name = stripslashes($info['firstname']);
 
 
   if (mysqli_num_rows($result) >= 1) {
 	session_start();
-	$_SESSION['email'] = $useremail;
+	$_SESSION['name'] = $f_name;
         header('Location: home.php');
 
 	} else {
 	header('Location: login.php');
 }
+
 mysqli_close($mysqli);
 }
