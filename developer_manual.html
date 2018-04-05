@@ -1,73 +1,171 @@
 <html>
+<head>
+  <link rel="stylesheet" href="pages/CSS/manual-styles.css">
+</head>
 <body>
 
 
 <h1>DEVELOPER DOCUMENTATION</h1>
 
 Brian will create an account for each user that wants to do farming using
-`account_form.php`
+<em>account_form.php</em>
 
-Table-fy this:<br/>
-+-----------+-------------+<br/>
-| Field     | Type        |<br/>
-+-----------+-------------+<br/>
-| firstname | varchar(30) |<br/>
-| lastname  | varchar(30) |<br/>
-| email     | varchar(50) |<br/>
-| password  | varchar(50) |<br/>
-+-----------+-------------+<br/>
-
+<table style="width:100%">
+  <tr>
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>email</th>
+    <th>password</th>
+  </tr>
+  <tr>
+    <td>varchar(30)</td>
+    <td>varchar(30)</td>
+    <td>varchar(30)</td>
+    <td>varchar(30)</td>
+  </tr>
+</table>
 
 <h3>1. Plating cultures using samples stored in test tubes</h3>
+
+<table>
+<tr>
+  <th>strain_code</th>
+  <th>generation</th>
+  <th>plat_count</th>
+  <th>creation_date</th>
+  <th>plate_id</th>
+</tr>
+<tr>
+  <td>varchar(45)</td>
+  <td>varchar(10)</td>
+  <td>int(11)</td>
+  <td>date</td>
+  <td>int(11)</td>
+</tr>
+</table>
 
 
 <h3>2. Splitting test plates into jars</h3>
 
+<table>
+  <tr>
+    <th>strain_code</th>
+    <th>generation</th>
+    <th>jar_count</th>
+    <th>substrate</th>
+    <th>creation_date</th>
+    <th>plate_id</th>
+  </tr>
+  <tr>
+    <td>varchar(45)</td>
+    <td>varchar(10)</td>
+    <td>int(11)</td>
+    <td>varchar(45)</td>
+    <td>date</td>
+    <td>int(11)</td>
+  </tr>
+</table>
 
-<h3>3. Sporing multiple bags using each jar</h3>
 
-table this:</br>
-+---------------+-------------+<br/>
-| Field         | Type        |<br/>
-+---------------+-------------+<br/>
-| user          | varchar(50) |<br/>
-| worker        | varchar(50) |<br/>
-| num_bags      | int(11)     |<br/>
-| substrate     | varchar(45) |<br/>
-| batch_id      | int(11)     |<br/>
-| creation_date | date        |<br/>
-| notes         | longtext    |<br/>
-+---------------+-------------+<br/>
+<h3>3. Innoculating multiple bags using each jar</h3>
 
+<table>
+  <tr>
+    <th>user</th>
+    <th>worker</th>
+    <th>num_bags</th>
+    <th>substrate</th>
+    <th>batch_id</th>
+    <th>notes</th>
+  </tr>
+  <tr>
+    <td>varchar(50)</td>
+    <td>varchar(50)</td>
+    <td>int(11)</td>
+    <td>varchar(45)</td>
+    <td>int(11)</td>
+    <td>date</td>
+    <td>longtext</td>
+  </tr>
+</table>
 
 Batches are generated at this point as well:
-Table this: <br>
-mysql> desc batch;
-+-------------+-------------+<br/>
-| Field       | Type        |<br/>
-+-------------+-------------+<br/>
-| id          | int(11)     |<br/>
-| date        | date        |<br/>
-| letter_id   | varchar(3)  |<br/>
-| strain_code | varchar(45) |<br/>
-| plate_date  | date        |<br/>
-| notes       | longtext    |<br/>
-+-------------+-------------+<br/>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>date</th>
+    <th>letter_id</th>
+    <th>strain_code</th>
+    <th>plate_date</th>
+    <th>notes</th>
+
+  </tr>
+  <tr>
+    <td>int(11)</td>
+    <td>date</td>
+    <td>varchar(3)</td>
+    <td>varchar(45)</td>
+    <td>date</td>
+    <td>longtext</td>
+  </tr>
+</table>
+
+
 
 
 
 <h3>4. Inoculating blocks with the culture from the bags</h3>
+<table>
+  <tr>
+    <th>greenhouse_id</th>
+    <th>innoc_date</th>
+    <th>is_empty</th>
+    <th>is_full</th>
+    <th>block_date</th>
+    <th>batch_id</th>
+  </tr>
+  <tr>
+    <td>varchar(25)</td>
+    <td>date</td>
+    <td>varchar(1)</td>
+    <td>varchar(1)</td>
+    <td>date</td>
+    <td>int(11)</td>
+  </tr>
+</table>
 
 <h3>5. Loading the blocks into greenhouses</h3>
 
 <h3>6. Harvesting the fruiting mycellium from greenhouses</h3>
 
+<table>
+  <tr>
+    <th>species</th>
+    <th>date</th>
+    <th>weight</th>
+    <th>time</th>
+    <th>notes</th>
+    <th>batch_id</th>
+  </tr>
+</table>
+ <tr>
+   <td>varcahr(30)</td>
+   <td>date</td>
+   <td>float</td>
+   <td>varchar(5)</td>
+   <td>longtext</td>
+   <td>int(11)</td>
+ </tr>
+
+
+
 <h3>BIRDS EYE VIEW</h3>
 
 <h5>An overview of the system as a whole is as follows:</h5>
-- `pages/bootstrap.php` includes the `includes` folder contents
-- `includes/` stores all of the functions used and is non-functional by itself
-- Each new php page should have the line ``require_once __DIR__ . '/bootstrap.php';``
+- <em>pages/bootstrap.php</em> includes the <em>includes</em> folder contents
+- <em>includes/</em> stores all of the functions used and is non-functional by itself
+- Each new php page should have the line <em>require_once __DIR__ . '/bootstrap.php';</em>
 -
 </body>
 </html>
