@@ -10,7 +10,8 @@
 Brian will create an account for each user that wants to do farming using
 <em>account_form.php</em>
 
-<table style="width:100%">
+<table>
+  <caption>Accounts Table</caption>
   <tr>
     <th>firstname</th>
     <th>lastname</th>
@@ -28,26 +29,28 @@ Brian will create an account for each user that wants to do farming using
 <h3>1. Plating cultures using samples stored in test tubes</h3>
 
 <table>
-<tr>
-  <th>strain_code</th>
-  <th>generation</th>
-  <th>plat_count</th>
-  <th>creation_date</th>
-  <th>plate_id</th>
-</tr>
-<tr>
-  <td>varchar(45)</td>
-  <td>varchar(10)</td>
-  <td>int(11)</td>
-  <td>date</td>
-  <td>int(11)</td>
-</tr>
+  <caption>Plates Table</caption>
+  <tr>
+    <th>strain_code</th>
+    <th>generation</th>
+    <th>plate_count</th>
+    <th>creation_date</th>
+    <th>plate_id</th>
+  </tr>
+  <tr>
+    <td>varchar(45)</td>
+    <td>varchar(10)</td>
+    <td>int(11)</td>
+    <td>date</td>
+    <td>int(11)</td>
+  </tr>
 </table>
 
 
 <h3>2. Splitting test plates into jars</h3>
 
 <table>
+  <caption>Jars Table</caption>
   <tr>
     <th>strain_code</th>
     <th>generation</th>
@@ -70,6 +73,7 @@ Brian will create an account for each user that wants to do farming using
 <h3>3. Innoculating multiple bags using each jar</h3>
 
 <table>
+  <caption>Jars Table</caption>
   <tr>
     <th>user</th>
     <th>worker</th>
@@ -92,6 +96,7 @@ Brian will create an account for each user that wants to do farming using
 Batches are generated at this point as well:
 
 <table>
+  <caption>Batches Table</caption>
   <tr>
     <th>id</th>
     <th>date</th>
@@ -117,6 +122,7 @@ Batches are generated at this point as well:
 
 <h3>4. Inoculating blocks with the culture from the bags</h3>
 <table>
+  <caption>Blocks Table</caption>
   <tr>
     <th>greenhouse_id</th>
     <th>innoc_date</th>
@@ -140,6 +146,7 @@ Batches are generated at this point as well:
 <h3>6. Harvesting the fruiting mycellium from greenhouses</h3>
 
 <table>
+  <caption>Harvest Table</caption>
   <tr>
     <th>species</th>
     <th>date</th>
@@ -148,24 +155,23 @@ Batches are generated at this point as well:
     <th>notes</th>
     <th>batch_id</th>
   </tr>
-</table>
- <tr>
-   <td>varcahr(30)</td>
-   <td>date</td>
-   <td>float</td>
-   <td>varchar(5)</td>
-   <td>longtext</td>
-   <td>int(11)</td>
- </tr>
+  <tr>
+    <td>varcahr(30)</td>
+    <td>date</td>
+    <td>float</td>
+    <td>varchar(5)</td>
+    <td>longtext</td>
+    <td>int(11)</td>
+  </tr>
 
 
 
-<h3>BIRDS EYE VIEW</h3>
+  <h3>BIRDS EYE VIEW</h3>
 
-<h5>An overview of the system as a whole is as follows:</h5>
-- <em>pages/bootstrap.php</em> includes the <em>includes</em> folder contents
-- <em>includes/</em> stores all of the functions used and is non-functional by itself
-- Each new php page should have the line <em>require_once __DIR__ . '/bootstrap.php';</em>
--
+  <h5>An overview of the system as a whole is as follows:</h5>
+  - <em>pages/bootstrap.php</em> includes the <em>includes</em> folder contents
+  - <em>includes/</em> stores all of the functions used and is non-functional by itself
+  - Each new php page should have the line <em>require_once __DIR__ . '/bootstrap.php';</em>
+  -
 </body>
 </html>

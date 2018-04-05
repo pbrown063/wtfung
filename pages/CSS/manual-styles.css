@@ -5,9 +5,17 @@ body{
   padding: 50px 0;
 }
 
+table {
+  width: 80%;
+  margin: 10px auto;
+  border: solid 2px #cf661a;
+  border-radius: 3px;
+  color: #cf661a;
+}
+
 h1, h3 {
   color: #fff;
 }
 td {
-  align: center;
+  text-align: center;
 }
