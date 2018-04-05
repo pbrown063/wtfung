@@ -1,5 +1,7 @@
 <?php
-
+require_once __DIR__ . '/bootstrap.php';
+session_start();
+$name = $_SESSION['name'];
 /**
  * Created by PhpStorm.
  * User: Kelsy
@@ -15,7 +17,7 @@ echo '
       <div class="bar3"></div>
     </div>
     <div class="nameplate">
-        test nameplate
+         '.$name.' 
     </div>
   </nav>
   
@@ -27,4 +29,5 @@ echo '
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
     ';
+
 
