@@ -2,12 +2,7 @@
 require_once __DIR__ . '/bootstrap.php';
 session_start();
 $name = $_SESSION['name'];
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-15
- * Time: 2:38 PM
- */
+
 echo '
 <nav>
     <img class="logo" src="../resources/WTF_white.png" alt="WTF">
@@ -26,6 +21,7 @@ echo '
       <a href="#">Harvest</a>
       <a href="#">Green House</a>
       <a href="#">Schedule</a>
+      <a href="#">Library</a>
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
     ';
