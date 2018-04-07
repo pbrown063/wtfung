@@ -65,3 +65,4 @@ echo "<option value='strain'>" . $row["id"] . "</option>";
 }
 echo "</select>";
 echo "<br><br>";
+
