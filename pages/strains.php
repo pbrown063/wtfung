@@ -14,7 +14,7 @@ Scientific Name:<input type='text' name='scientific' placeholder='Input scientif
 
 Abbreviation:<input type='text' name='abbreviation' placeholder='Input abbreviation'> </input><br><br>
 
-<textarea rows='4' cols='50' name='notes' form='strain_form' placeholder='Enter notes here'> </textarea><br><br>
+<textarea rows='4' cols='50' name='notes' form='strain_form' placeholder='Enter notes here'></textarea><br><br>
 <input type ='submit' name ='submit' value='Submit Strain'>
 
 </form><br>";
