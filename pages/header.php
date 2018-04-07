@@ -20,8 +20,8 @@ echo '
   </nav>
   
     <div id="mySidenav" class="sidenav">
-      <a href="#">Lab</a>
-      <a href="#">Harvest</a>
+      <a href="lab_form.php">Lab</a>
+      <a href="harvest.php">Harvest</a>
       <a href="#">Green House</a>
       <a href="#">Schedule</a>
     </div>
