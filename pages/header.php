@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-15
- * Time: 2:38 PM
- */
+session_start();
+$nameplate = 'Hello world';
 echo '
 <nav>
     <img class="logo" src="../resources/WTF_white.png" alt="WTF">
@@ -14,7 +10,7 @@ echo '
       <div class="bar3"></div>
     </div>
     <div class="nameplate">
-        test nameplate
+        '.$nameplate.'
     </div>
   </nav>
   
@@ -23,6 +19,7 @@ echo '
       <a href="#">Harvest</a>
       <a href="#">Green House</a>
       <a href="#">Schedule</a>
+      <a href="#">Library</a>
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
     ';

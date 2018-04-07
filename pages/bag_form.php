@@ -5,6 +5,7 @@
  * Date: 2018-03-27
  * Time: 1:05 PM
  */
+$date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +37,13 @@
                 <input type="number" name="num_bags" placeholder="Number of Bags">
             </li>
             <li>
-                <input type="date" name="date" placeholder="">
+                <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
             </li>
             <li>
                 <!--Worker drop down-->
             </li>
             <li>
-                <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea>
+                <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea> <!--To be added to bags table-->
             </li>
             <li>
                 <button type='submit'>Submit?</button>
