@@ -6,7 +6,7 @@ if (isset($_POST['email']) && isset($_POST['password'])){
   $useremail = filter_input(INPUT_POST, 'email');
   $userpasswd = filter_input(INPUT_POST, 'password');
 
-  $sql = "SELECT firstname FROM account  WHERE email = '".$useremail.
+  $sql = "SELECT firstname, lastname FROM account  WHERE email = '".$useremail.
       "' AND password = '".$userpasswd."'";
 
  	$result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
@@ -15,7 +15,8 @@ if (isset($_POST['email']) && isset($_POST['password'])){
         while ($info = mysqli_fetch_array($result)) {
 	    	session_start();
                 $f_name = stripslashes($info['firstname']);
-		$_SESSION['name'] = $f_name;
+                $l_name = stripslashes($info['lastname']);
+		$_SESSION['name'] = $f_name . ' ' . $l_name;
 		 header('Location: home.php');
    } 
 } else {
