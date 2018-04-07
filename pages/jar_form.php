@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-27
- * Time: 1:05 PM
- */
+  require_once __DIR__ . '/bootstrap.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Strain</title>
+    <title>Jarring</title>
 
     <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -23,22 +18,21 @@
     <form method="POST" action="">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='code' placeholder='Strain Code'>
+              <?php display_strains(); ?>
             </li>
             <li>
                 <input type='text' name='generation' placeholder='Strain Generation'>
             </li>
             <li>
-                <input type='text' name='scientific' placeholder='Scientific Name'>
+
+            <li>
+
             </li>
             <li>
-                <input type='text' name='common' placeholder='Common Name'>
+
             </li>
             <li>
-                <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
-            </li>
-            <li>
-                <button type='submit'>Add Strain</button>
+                <button type='submit'>Pickle Jar?</button>
             </li>
         </ul>
     </form>

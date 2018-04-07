@@ -19,11 +19,11 @@
                 <input type='text' name='code' placeholder='Strain Code'>
             </li>
             <li>
-                <input type='text' name='abbreviation' placeholder='Strain Abbreviation'>
-            </li>
-            <li>
                 <input type='text' name='scientific' placeholder='Scientific Name'>
             </li>
+          <li>
+            <input type='text' name='abbreviation' placeholder='Strain Abbreviation'>
+          </li>
             <li>
                 <input type='text' name='common' placeholder='Common Name'>
             </li>

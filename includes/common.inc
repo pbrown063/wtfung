@@ -169,17 +169,16 @@ function add_new_account() {
  * that is generated from the strains library.
  */
 function display_strains(){
-  echo "STRAINS<br>"; // script for strains drop down
-  echo" <select name='strain'>";
 
   $mysqli = sql_connect();
   $strain = "SELECT common_name FROM strains_library";
   $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
 
+  echo " <select name='strain' required>
+        <option value='' disabled selected hidden> Select Strain Code</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='strain'>" . $row["common_name"] . "</option>";
   }
   echo "</select>";
-  echo "<br><br>";
   mysqli_close($mysqli);
 }

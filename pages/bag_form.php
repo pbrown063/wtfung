@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-27
- * Time: 1:05 PM
- */
-$date = date("Y-m-j");
+  $date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
