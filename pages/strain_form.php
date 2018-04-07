@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Add a Strain</title>
+  <title>Add Strain</title>
 
   <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -35,6 +35,7 @@
             </li>
         </ul>
     </form>
+
 </div>
 </body>
 </html>
