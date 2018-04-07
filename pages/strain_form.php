@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Add a Strain</title>
+  <title>Add Strain</title>
 
   <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -38,7 +38,7 @@
         <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
       </li>
       <li>
-        <button type='submit'>Create Strain</button>
+        <button type='submit'>Add Strain</button>
       </li>
     </ul>
   </form>
