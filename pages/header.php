@@ -1,6 +1,8 @@
 <?php
+require_once __DIR__ . '/bootstrap.php';
 session_start();
-$nameplate = 'Hello world';
+$name = $_SESSION['name'];
+
 echo '
 <nav>
     <img class="logo" src="../resources/WTF_white.png" alt="WTF">
@@ -10,7 +12,7 @@ echo '
       <div class="bar3"></div>
     </div>
     <div class="nameplate">
-        '.$nameplate.'
+         '.$name.' 
     </div>
   </nav>
   
@@ -23,4 +25,5 @@ echo '
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
     ';
+
 
