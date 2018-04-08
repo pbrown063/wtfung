@@ -1,5 +1,6 @@
 <?php
   require_once __DIR__ . '/bootstrap.php';
+  $date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +22,13 @@
         <?php display_strains(); ?>
       </li>
       <li>
-        <input type='text' name='generation' placeholder='Strain Generation' required>
+        <input type='text' name='generation' placeholder='Plate Generation' required>
       </li>
       <li>
-
+         <input type="number" name="jar_count" min="1" placeholder="Number of Plates" required>
       </li>
       <li>
-
+        <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
       </li>
       <li>
 

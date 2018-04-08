@@ -1,5 +1,6 @@
 <?php
   require_once __DIR__ . '/bootstrap.php';
+  $date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
@@ -21,15 +22,15 @@
               <?php display_strains(); ?>
             </li>
             <li>
-                <input type='text' name='generation' placeholder='Strain Generation'>
+                <input type='text' name='generation' placeholder='Jar Generation' required>
             </li>
             <li>
-
+                <input type="number" name="jar_count" min="1" placeholder="Number of Jars" required>
             <li>
-
+                <?php display_substrate(); ?>
             </li>
             <li>
-
+              <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
             </li>
             <li>
                 <button type='submit'>Pickle Jar?</button>

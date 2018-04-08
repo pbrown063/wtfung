@@ -11,97 +11,6 @@ function initialize_error_reporting() {
 }
 
 /**
- * @return string
- *
- *
- * Retrieves all of the user accounts from the accounts library and
- * returns them as a string in the form of an html option menu
- */
-function accountPrint() {
-
-  $mysqli = sql_connect();
-
-  if($mysqli){
-
-    $account = "SELECT firstname, lastname FROM account";
-
-    $result = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
-
-    $accountArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all accounts in a big array
-    if (mysqli_num_rows($result) > 0) {
-      foreach ($accountArray as $row) {
-        $display_block = $display_block . "<option value='" . $row["account"] . "'>" . $row["account"] . "</option>";
-      }
-    } else {
-      $display_block = "<option value='error'>No Accounts</option>";
-    }
-    mysqli_free_result($result);
-    mysqli_close($mysqli);
-    return $display_block;
-  }
-}
-
-/**
- * @return string
- *
- * Retrieves all of the phases from the phases library and
- * returns them as a string in the form of an html option menu.
- */
-function phasePrint() {
-
-  $mysqli = sql_connect();
-
-  if($mysqli){
-
-    $phase = "SELECT phaseName FROM phaseLibrary";
-
-    $result = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
-
-    $phaseArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all phases in a big array
-    if (mysqli_num_rows($result) > 0) {
-      foreach ($phaseArray as $row) {
-        $display_block = $display_block . "<option value='" . $row["phase"] . "'>" . $row["phase"] . "</option>";
-      }
-    } else {
-      $display_block = "<option value='error'>No Phases</option>";
-    }
-    mysqli_free_result($result);
-    mysqli_close($mysqli);
-    return $display_block;
-  }
-}
-
-/**
- * @return string
- *
- * Retrieves all of the substrates from the substrate library and
- * returns them as a string in the form of an html option menu.
- */
-function substratePrint() {
-
-  $mysqli = sql_connect();
-
-  if($mysqli){
-
-    $substrate = "SELECT SubstrateType FROM substrateLibrary";
-
-    $result = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
-
-    $substrateArray = mysqli_fetch_all($result, MYSQLI_ASSOC); //gets all phases in a big array
-    if (mysqli_num_rows($result) > 0) {
-      foreach ($substrateArray as $row) {
-        $display_block = $display_block . "<option value='" . $row["substrate"] . "'>" . $row["substrate"] . "</option>";
-      }
-    } else {
-      $display_block = "<option value='error'>No Substrates</option>";
-    }
-    mysqli_free_result($result);
-    mysqli_close($mysqli);
-    return $display_block;
-  }
-}
-
-/**
  * Fairly rigid, currently connects with only one set of creds.
  * Main point with this function is to include connection error block.
  **/
@@ -177,8 +86,62 @@ function display_strains(){
   echo " <select name='strain' required>
         <option value='' disabled selected hidden> Select Strain Code</option>";
   while ($row = $sql->fetch_assoc()){
-    echo "<option value='strain'>" . $row["common_name"] . "</option>";
+    echo "<option value='" .$row["common_name"]. "'>" . $row["common_name"] . "</option>";
   }
   echo "</select>";
   mysqli_close($mysqli);
 }
+
+/**
+ * Creates and prints a form dropdown called @substrate
+ * that is generated from the substrate library.
+ */
+function display_substrate(){
+  $mysqli = sql_connect();
+  $substrate = "SELECT substrate_type FROM substrate_library";
+  $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
+
+  echo " <select name='substrate' required>
+        <option value='' disabled selected hidden> Select Substrate Type</option>";
+  while ($row = $sql->fetch_assoc()){
+    echo "<option value='" .$row["substrate_type"]. "'>" . $row["substrate_type"] . "</option>";
+  }
+  echo "</select>";
+  mysqli_close($mysqli);
+}
+
+  /**
+   * Creates and prints a form dropdown called @phase
+   * that is generated from the phase library.
+   */
+  function display_phase(){
+    $mysqli = sql_connect();
+    $phase = "SELECT phase_name FROM phase_library";
+    $sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
+
+    echo " <select name='phase' required>
+        <option value='' disabled selected hidden> Select Phase</option>";
+    while ($row = $sql->fetch_assoc()){
+      echo "<option value='" .$row["phase_name"]. "'>" . $row["phase_name"] . "</option>";
+    }
+    echo "</select>";
+    mysqli_close($mysqli);
+  }
+
+  /**
+   * Creates and prints a form dropdown called @account
+   * that is generated from the phase library.
+   */
+  function display_account(){
+    $mysqli = sql_connect();
+    $account = "SELECT firstname, lastname FROM account";
+    $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
+
+    echo " <select name='account' required>
+        <option value='' disabled selected hidden> Select Worker</option>";
+    while ($row = $sql->fetch_assoc()){
+      echo "<option value='" .$row["firstname"]. "'>" .$row["firstname"]. " " .$row["lastname"]."</option>";
+    }
+    echo "</select>";
+    mysqli_close($mysqli);
+  }

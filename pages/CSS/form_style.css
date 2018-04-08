@@ -61,7 +61,8 @@
   font-size: 1em;
   width: 50%;
 }
-.flex-outer li input:invalid {
+.flex-outer li input:invalid,
+li select:invalid {
   border-right: 2px solid red;
 }
 
@@ -85,7 +86,7 @@
   color: palevioletred;
 }
 
-.flex-outer li select{
+.flex-outer li select, li select option{
   font-style: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
