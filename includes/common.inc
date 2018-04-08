@@ -145,3 +145,13 @@ function display_substrate(){
     echo "</select>";
     mysqli_close($mysqli);
   }
+
+  /**
+   * Creates a current date function
+   */
+
+  function current_date(){
+    $date = date("Y-m-j");
+
+    echo $date;
+  }

@@ -1,6 +1,5 @@
 <?php
   require_once __DIR__ . '/bootstrap.php';
-  $date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +29,7 @@
                 <?php display_substrate(); ?>
             </li>
             <li>
-              <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
+              <input type="date" name="date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d">
             </li>
             <li>
                 <button type='submit'>Pickle Jar?</button>

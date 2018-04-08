@@ -97,5 +97,6 @@ li select:invalid {
   -webkit-border-radius: 0;
   border-radius: 0;
   color:#999;
-
+  background-color: white;
+  text-transform: capitalize;
 }
