@@ -14,6 +14,9 @@
 </head>
 <body>
 <?php include 'header.php'; ?>
+<div class="table">
+  <?php plate_table(); ?>
+</div>
 <div class="container">
     <form method="POST" action="">
         <ul class="flex-outer">
@@ -24,7 +27,7 @@
                 <input type='text' name='generation' placeholder='Jar Generation' required>
             </li>
             <li>
-                <input type="number" name="jar_count" min="1" placeholder="Number of Jars" required>
+                <input type="number" name="count" min="1" placeholder="Number of Jars" required>
             <li>
                 <?php display_substrate(); ?>
             </li>

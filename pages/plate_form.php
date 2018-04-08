@@ -1,6 +1,5 @@
 <?php
   require_once __DIR__ . '/bootstrap.php';
-  $date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +24,10 @@
         <input type='text' name='generation' placeholder='Plate Generation' required>
       </li>
       <li>
-         <input type="number" name="jar_count" min="1" placeholder="Number of Plates" required>
+         <input type="number" name="plate_count" min="1" placeholder="Number of Plates" required>
       </li>
       <li>
-        <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
-      </li>
-      <li>
-
+        <input type="date" name="date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d">
       </li>
       <li>
         <button type='submit'>Smash that Plate</button>
