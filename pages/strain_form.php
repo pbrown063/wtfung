@@ -1,4 +1,5 @@
-<?php ?>
+<?php
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,25 +14,25 @@
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-    <form method="POST" action="">
+    <form method="POST" action="strains.php" id="strains_form">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='code' placeholder='Strain Code'>
+                <input type='text' name='code' placeholder='Strain Code' required>
             </li>
             <li>
-                <input type='text' name='scientific' placeholder='Scientific Name'>
+                <input type='text' name='scientific' placeholder='Scientific Name' required>
             </li>
           <li>
-            <input type='text' name='abbreviation' placeholder='Strain Abbreviation'>
+            <input type='text' name='abbreviation' placeholder='Strain Abbreviation' required>
           </li>
             <li>
-                <input type='text' name='common' placeholder='Common Name'>
+                <input type='text' name='common' placeholder='Common Name' required>
             </li>
             <li>
                 <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
             </li>
             <li>
-                <button type='submit'>Add Strain</button>
+                <button type='submit' name="submit" form="strain_form" value="submit">Add Strain</button>
             </li>
         </ul>
     </form>
