@@ -8,7 +8,7 @@ $display = "<form action='' method='post' id='harvest_form'>
 
 Batch:<input type='text' name='batch' placeholder='Input Batch'> </input><br><br>
 
-Strain:<input type='text' name='strain' placeholder='Input strain'> </input><br><br>
+Strain: <br><br>
 
 Date:<input type='date' name='date'> </input><br><br>
 
