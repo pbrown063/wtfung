@@ -15,7 +15,7 @@
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-    <form method="POST" action="substrate.php" id='substrate_form'>
+    <form method="POST" action="substrate.php" id="substrate_form">
         <ul class="flex-outer">
             <li>
                 <input type='text' name='substrate' placeholder='Substrate Type'>

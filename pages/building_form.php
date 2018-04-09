@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-27
- * Time: 1:05 PM
- */
+
 ?>
 
 <!DOCTYPE html>
@@ -20,13 +15,13 @@
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-    <form method="POST" action="">
+    <form method="POST" action="building.php" id="building">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='build_id' placeholder='Building Name'>
+                <input type='text' name='id' placeholder='Building Name'>
             </li>
             <li>
-                <button type='submit'>Add Building</button>
+                <button type='submit' name="submit" form="building" value="submit">Add Building</button>
             </li>
         </ul>
     </form>

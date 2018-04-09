@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-27
- * Time: 1:05 PM
- */
-$date = date("Y-m-j");
+  require_once __DIR__ . '/bootstrap.php';
+  $date = date("Y-m-j");
 ?>
 
 <!DOCTYPE html>
@@ -29,18 +24,19 @@ $date = date("Y-m-j");
             </li>
             <li>
                 <!--Batch ID drop down-->
+
             </li>
             <li>
-                <!--Substrate drop down-->
+                <?php display_substrate(); ?>
             </li>
             <li>
-                <input type="number" name="num_bags" placeholder="Number of Bags">
+                <input type="number" name="num_bags" min ="1" placeholder="Number of Bags" required>
             </li>
             <li>
                 <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
             </li>
             <li>
-                <!--Worker drop down-->
+                <?php display_account(); ?>
             </li>
             <li>
                 <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea> <!--To be added to bags table-->

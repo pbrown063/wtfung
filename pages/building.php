@@ -1,10 +1,10 @@
 <?php
 //file containing functions -- needed for every page
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
+require_once __DIR__ . '/bootstrap.php';
 
 if (!filter_input(INPUT_POST, "submit")) {
 
-header("Location: http://159.89.126.149/wtfk/wtfung/pages/building_form.php");
+header("Location:building_form.php");
 die();
 
 } else {
@@ -17,6 +17,6 @@ die();
 //insert into database or error message
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
-header("Location: http://159.89.126.149/wtfk/wtfung/pages/building_form.php");
-die();
+  header("Location:building_form.php");
+  die();
 }
