@@ -25,5 +25,3 @@ echo '
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
     ';
-
-
