@@ -91,7 +91,30 @@ function display_strains(){
   echo "</select>";
   mysqli_close($mysqli);
 }
+/**
+ *displays strain codes as drop down
+ */
+function display_strain_code(){
+echo"Select Strain Code";
+echo" <select name='code'>";
+$mysqli = sql_connect();
 
+$substrate = "SELECT strain_code FROM strains_library";
+
+$sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
+
+while ($row = $sql->fetch_assoc()){
+  echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
+}
+echo "</select>";
+echo "<br><br>";
+mysqli_close($mysqli);
+}
+
+function current_date(){
+$date = date("Y-m-j");
+echo $date;
+}
 /**
  * Creates and prints a form dropdown called @substrate
  * that is generated from the substrate library.
@@ -191,3 +214,23 @@ function display_substrate(){
 ';
     mysqli_close($mysqli);
   }
+  
+  /**
+ * Creates and prints a form dropdown called @substrate
+ * that is generated from the substrate library.
+ */
+function display_substrate(){
+echo "Select substrate:";
+  $mysqli = sql_connect();
+  $substrate = "SELECT substrate_type FROM substrate_library";
+  $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
+
+  echo " <select name='substrate' required>
+        <option value='' disabled selected hidden> Select Substrate Type</option>";
+  while ($row = $sql->fetch_assoc()){
+    echo "<option value='" .$row["substrate_type"]. "'>" . $row["substrate_type"] . "</option>";
+  }
+  echo "</select>";
+  mysqli_close($mysqli);
+}
+

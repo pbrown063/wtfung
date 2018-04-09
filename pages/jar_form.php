@@ -18,24 +18,25 @@
   <?php plate_table(); ?>
 </div>
 <div class="container">
-    <form method="POST" action="">
+    <form method="POST" action="jars.php" id="jar_form">
         <ul class="flex-outer">
             <li>
-              <?php display_strains(); ?>
-            </li>
-            <li>
-                <input type='text' name='generation' placeholder='Jar Generation' required>
+                <input type="number" name="plate_id" min='1' placeholder="Plate ID" required>
             </li>
             <li>
                 <input type="number" name="count" min="1" placeholder="Number of Jars" required>
+            </li>
             <li>
                 <?php display_substrate(); ?>
             </li>
             <li>
-              <input type="date" name="date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d">
+                <input type="number" name="number_of_plates" min='1' placeholder="Number of plates used" required>
             </li>
             <li>
-                <button type='submit'>Pickle Jar?</button>
+              <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>
+            </li>
+            <li>
+                <button type='submit'value='submit' name='submit' form='jar_form' >Pickle Jar?</button>
             </li>
         </ul>
     </form>
