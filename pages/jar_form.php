@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelsy
- * Date: 2018-03-27
- * Time: 1:05 PM
- */
+  require_once __DIR__ . '/bootstrap.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Strain</title>
+    <title>Jarring</title>
 
     <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -19,26 +14,28 @@
 </head>
 <body>
 <?php include 'header.php'; ?>
+<div class="table">
+  <?php plate_table(); ?>
+</div>
 <div class="container">
     <form method="POST" action="">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='code' placeholder='Strain Code'>
+              <?php display_strains(); ?>
             </li>
             <li>
-                <input type='text' name='generation' placeholder='Strain Generation'>
+                <input type='text' name='generation' placeholder='Jar Generation' required>
             </li>
             <li>
-                <input type='text' name='scientific' placeholder='Scientific Name'>
+                <input type="number" name="count" min="1" placeholder="Number of Jars" required>
+            <li>
+                <?php display_substrate(); ?>
             </li>
             <li>
-                <input type='text' name='common' placeholder='Common Name'>
+              <input type="date" name="date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d">
             </li>
             <li>
-                <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
-            </li>
-            <li>
-                <button type='submit'>Add Strain</button>
+                <button type='submit'>Pickle Jar?</button>
             </li>
         </ul>
     </form>

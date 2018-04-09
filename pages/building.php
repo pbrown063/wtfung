@@ -1,20 +1,10 @@
 <?php
-//file containing functions -- needed for every page
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
-
-echo "Building<br><br>";
-//form for buildings
-$display =  "
-<form action='' method='post' id='building_form'> 
-
-Bulding Identification:<input type='text' name='id' placeholder='Input building' required> </input><br><br>
-<input type='submit' name='submit' value='Add Building'>
-</form><br>";
+  require_once __DIR__ . '/bootstrap.php';
 
 if (!filter_input(INPUT_POST, "submit")) {
 
   echo "Please fill out the form.<br><br>";
-  echo "$display";
+  header("Location:building_form.php");
 
 } else {
 //grabbing inputs from posted form and making variables
@@ -27,5 +17,6 @@ if (!filter_input(INPUT_POST, "submit")) {
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
   echo "Your data has been submitted<br>";
-  echo "$display";
+  header("Location:building_form.php");
+
 }
