@@ -7,6 +7,7 @@
   <title>WTF Login</title>
   <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
+</head>
 <body>
 <nav>
   <img class="logo" src="../resources/WTF_white.png" alt="WTF">
