@@ -15,13 +15,18 @@ echo '
          '.$name.' 
     </div>
   </nav>
-  
     <div id="mySidenav" class="sidenav">
-      <a href="#">Lab</a>
-      <a href="#">Harvest</a>
-      <a href="#">Green House</a>
-      <a href="#">Schedule</a>
-      <a href="#">Library</a>
+      <div class="dropdown">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Library</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="strain_form.php">Strain</a>
+            <a href="substrate_form.php">Substrate</a>
+            <a href="building_form.php">Building</a>
+          </div>
+        </div>
+      </div>
     </div>
+    
     <script src="nav_script.js" type="text/javascript"></script>
     ';
