@@ -15,7 +15,9 @@ echo '
          '.$name.' 
     </div>
   </nav>
+  
     <div id="mySidenav" class="sidenav">
+    <a href="account_form.php">Create Account</a>
       <div class="dropdown">
         <div class="dropdown">
           <button onclick="myFunction()" class="dropbtn">Library</button>

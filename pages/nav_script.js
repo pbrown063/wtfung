@@ -5,7 +5,7 @@ document.getElementById("myMenubutton").onclick = function () {
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "225px";
+  document.getElementById("mySidenav").style.width = "250px";
   barToggle = true;
 }
 
@@ -20,18 +20,6 @@ function menuToggle(x) {
   x.classList.toggle("change");
   (barToggle) ? closeNav() : openNav();
 }
-
-function snackbar() {
-    // Get the snackbar DIV
-    var x = document.getElementById("snackbar");
-
-    // Add the "show" class to DIV
-    x.className = "show";
-
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
-
 /*dropdown styling*/
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");

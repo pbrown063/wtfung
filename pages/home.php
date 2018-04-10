@@ -14,5 +14,4 @@ require_once __DIR__ . '/bootstrap.php';
 <?php include 'header.php'; ?>
 </body>
 <script src="nav_script.js" type="text/javascript"></script>
-<?php display_snack(1); ?>
 </html>
