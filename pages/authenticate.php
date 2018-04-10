@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
+$cookie_auth_value = 1;
+$cookie_not_value = 0;
 
 if (isset($_POST['email']) && isset($_POST['password'])){
   $mysqli = sql_connect();
@@ -17,10 +19,14 @@ if (isset($_POST['email']) && isset($_POST['password'])){
                 $f_name = stripslashes($info['firstname']);
                 $l_name = stripslashes($info['lastname']);
 		$_SESSION['name'] = $f_name . ' ' . $l_name;
-		 header('Location: home.php');
+		$cookie_email = $useremail;
+		setcookie($cookie_email, $cookie_auth_value);
+	header('Location: home.php');
+
    } 
 } else {
-    header('Location: login.php');
-  }
+     setcookie($cookie_email, $cookie_not_value);
+     header('Location: login.php');
+}
   mysqli_close($mysqli);
 }
