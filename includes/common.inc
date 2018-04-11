@@ -111,15 +111,22 @@ echo "<br><br>";
 mysqli_close($mysqli);
 }
 
+/**
+ * Creates a current date function
+ */
 function current_date(){
-$date = date("Y-m-j");
-echo $date;
+  $date = date("Y-m-j");
+
+  echo $date;
 }
+
+
 /**
  * Creates and prints a form dropdown called @substrate
  * that is generated from the substrate library.
  */
 function display_substrate(){
+  echo "Select substrate:";
   $mysqli = sql_connect();
   $substrate = "SELECT substrate_type FROM substrate_library";
   $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
@@ -132,6 +139,7 @@ function display_substrate(){
   echo "</select>";
   mysqli_close($mysqli);
 }
+
 
   /**
    * Creates and prints a form dropdown called @phase
@@ -170,16 +178,6 @@ function display_substrate(){
   }
 
   /**
-   * Creates a current date function
-   */
-
-  function current_date(){
-    $date = date("Y-m-j");
-
-    echo $date;
-  }
-
-  /**
    * Creates a table spit out of the plates
    */
   function plate_table(){
@@ -214,23 +212,5 @@ function display_substrate(){
 ';
     mysqli_close($mysqli);
   }
-  
-  /**
- * Creates and prints a form dropdown called @substrate
- * that is generated from the substrate library.
- */
-function display_substrate(){
-echo "Select substrate:";
-  $mysqli = sql_connect();
-  $substrate = "SELECT substrate_type FROM substrate_library";
-  $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
-  echo " <select name='substrate' required>
-        <option value='' disabled selected hidden> Select Substrate Type</option>";
-  while ($row = $sql->fetch_assoc()){
-    echo "<option value='" .$row["substrate_type"]. "'>" . $row["substrate_type"] . "</option>";
-  }
-  echo "</select>";
-  mysqli_close($mysqli);
-}
 

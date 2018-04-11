@@ -11,7 +11,7 @@
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-  <form method="POST" action="create_account.php">
+  <form method="POST" action="create_account.php" id='account_form'>
     <ul class="flex-outer">
       <li>
         <input type="text" id="first-name" placeholder="First Name" name="Fname" required>
@@ -26,7 +26,7 @@
         <input type="password" id="password" placeholder="Password" name="pswrd" required>
       </li>
       <li>
-        <button type="submit">Create Account</button>
+        <button type="submit" form='account_form'>Create Account</button>
       </li>
     </ul>
   </form>
