@@ -1,10 +1,11 @@
 <?php
-  require_once __DIR__ . '/bootstrap.php';
+//file containing functions -- needed for every page
+require_once __DIR__ . '/bootstrap.php';
 
 if (!filter_input(INPUT_POST, "submit")) {
 
-  echo "Please fill out the form.<br><br>";
-  header("Location:building_form.php");
+header("Location:building_form.php");
+die();
 
 } else {
 //grabbing inputs from posted form and making variables
@@ -16,7 +17,6 @@ if (!filter_input(INPUT_POST, "submit")) {
 //insert into database or error message
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
-  echo "Your data has been submitted<br>";
   header("Location:building_form.php");
-
+  die();
 }

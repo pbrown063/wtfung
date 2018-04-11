@@ -20,6 +20,7 @@ function menuToggle(x) {
   x.classList.toggle("change");
   (barToggle) ? closeNav() : openNav();
 }
+
 /*dropdown styling*/
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");

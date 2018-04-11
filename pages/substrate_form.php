@@ -24,7 +24,7 @@
                 <textarea name='notes' rows='5' cols='20' placeholder='Substrate Notes'></textarea>
             </li>
             <li>
-                <button type='submit' name='submit' form='substrate_form' value="submit">Add Substrate</button>
+                <button type='submit' name='submit' value='submit' form='substrate_form'>Add Substrate</button>
             </li>
         </ul>
     </form>
