@@ -10,5 +10,3 @@ else {
   header('Location: account_form.php');
 }
 ?>
-
-

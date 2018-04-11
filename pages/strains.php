@@ -1,15 +1,14 @@
 <?php
-  require_once __DIR__ . '/bootstrap.php';
+
+//file containing functions -- needed for every page
+ require_once __DIR__ . '/bootstrap.php';
+
 
 if (!filter_input(INPUT_POST, "submit")) {
 
-  echo "Please fill out the form<br>";
-  header('Location: strain_form.php');
-
+header('Location: strain_form.php');
+die();
 } else {
-
-  echo "Thank you, your data has been submitted<br>";
-
 //grabbing inputs from posted form and making variables
   $common = filter_input(INPUT_POST, "common");
   $code = filter_input(INPUT_POST, "code");
@@ -22,5 +21,7 @@ if (!filter_input(INPUT_POST, "submit")) {
   $mysqli = sql_connect();
 //insert into database or error message
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-  header('Location: strain_form.php');
+
+header('Location: strain_form.php');
+die();
 }

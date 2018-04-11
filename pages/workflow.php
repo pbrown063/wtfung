@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/bootstrap.php';
-
+//require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 echo "WORKFLOW...and some drop down populated with database info :D<br><br>";
 echo "TEST PAGES<br>";
 echo "PHASES<br>";  // script for phases drop down
@@ -18,8 +18,7 @@ while ($row = $sql->fetch_assoc()){
 echo "</select>";
 echo "<br><br>";
 
-
-//display_strains();
+////////////////////////////////////////////////////////////////
 
 echo "SUBSTRATES<br>";// script for substrates drop down
 echo" <select name='substrate'>";
@@ -34,6 +33,7 @@ while ($row = $sql->fetch_assoc()){
 }
 echo "</select>";
 echo "<br><br>";
+///////////////////////////////////////////////////////////////
 
 echo "FULL NAME<br>";// script for users full name
 echo" <select name='user'>";
@@ -51,6 +51,7 @@ $lname = $row["lastname"];
 echo "</select>";
 echo "<br><br>";
 
+///////////////////////////////////////////////////////
 
 echo "Buildings<br>"; // script for strains drop down
 echo" <select name='id'>";
@@ -65,4 +66,19 @@ while ($row = $sql->fetch_assoc()){
 }
 echo "</select>";
 echo "<br><br>";
+/////////////////////////////////////////////////////////
+echo "STRAIN CODES<br>";// script for substrates drop down
+echo" <select name='code'>";
+$mysqli = sql_connect();
 
+$substrate = "SELECT strain_code FROM strains_library";
+
+$sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
+
+while ($row = $sql->fetch_assoc()){
+  echo "<option value='strain_code'>" . $row["strain_code"] . "</option>";
+}
+echo "</select>";
+echo "<br><br>";
+/////////////////////////////////////////////////////////////////
+current_date();
