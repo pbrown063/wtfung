@@ -5,7 +5,7 @@ $name = $_SESSION['name'];
 
 echo '
 <nav>
-    <img class="logo" src="../resources/WTF_white.png" alt="WTF">
+    <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
     <div id="myMenubutton" class="menuButton">
       <div class="bar1"></div>
       <div class="bar2"></div>

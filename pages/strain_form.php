@@ -32,7 +32,7 @@
                 <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
             </li>
             <li>
-                <button type='submit' name="submit" form="strain_form" value="submit">Add Strain</button>
+                <button type='submit' name="submit" form="strains_form" value="submit">Add Strain</button>
             </li>
         </ul>
     </form>
