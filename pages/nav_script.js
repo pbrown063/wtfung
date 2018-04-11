@@ -21,22 +21,23 @@ function menuToggle(x) {
   (barToggle) ? closeNav() : openNav();
 }
 
-/*dropdown styling*/
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content -
+ This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        //this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
 
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+            console.log('close');
+
+        } else {
+                dropdownContent.style.display = "block";
+                console.log('open');
         }
-    }
+    });
 }

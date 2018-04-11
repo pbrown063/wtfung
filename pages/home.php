@@ -11,7 +11,6 @@ require_once __DIR__ . '/bootstrap.php';
   <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
 </head>
 <body>
-<?php include 'header.php'; ?>
+<?php require_once 'header.php'; ?>
 </body>
-<script src="nav_script.js" type="text/javascript"></script>
 </html>
