@@ -212,5 +212,3 @@ function display_substrate(){
 ';
     mysqli_close($mysqli);
   }
-
-

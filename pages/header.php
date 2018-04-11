@@ -17,13 +17,18 @@ echo '
   </nav>
   
     <div id="mySidenav" class="sidenav">
-      <a href="lab_form.php">Lab</a>
-      <a href="harvest.php">Harvest</a>
-      <a href="#">Green House</a>
-      <a href="#">Schedule</a>
-      <a href="#">Library</a>
+    <a href="account_form.php">Create Account</a>
+      <div class="dropdown">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Library</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="strain_form.php">Strain</a>
+            <a href="substrate_form.php">Substrate</a>
+            <a href="building_form.php">Building</a>
+          </div>
+        </div>
+      </div>
     </div>
+    
     <script src="nav_script.js" type="text/javascript"></script>
     ';
-
-
