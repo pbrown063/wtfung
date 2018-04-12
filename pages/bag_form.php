@@ -42,7 +42,7 @@
                 <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea> <!--To be added to bags table-->
             </li>
             <li>
-                <button type='submit'>Submit?</button>
+                <button type='submit'>Submit</button>
             </li>
         </ul>
     </form>
