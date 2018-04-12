@@ -116,7 +116,6 @@ mysqli_close($mysqli);
  */
 function current_date(){
   $date = date("Y-m-j");
-
   echo $date;
 }
 
@@ -212,5 +211,3 @@ function display_substrate(){
 ';
     mysqli_close($mysqli);
   }
-
-

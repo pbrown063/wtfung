@@ -14,9 +14,11 @@
 </head>
 <body>
 <?php include 'header.php'; ?>
+
 <div class="table">
   <?php plate_table(); ?>
 </div>
+
 <div class="container">
     <form method="POST" action="jars.php" id="jar_form">
         <ul class="flex-outer">
