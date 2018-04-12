@@ -210,15 +210,15 @@ function plate_table(){
   mysqli_close($mysqli);
 }
 
-/**
- * looks at the cookie set in authenticate.php to
- * check if its brian or another farmer
- **/
-function whos_logged_in(){
-  session_start();
-  $brians_value = 2;
-
-  if(isset($_COOKIE[$useremail]) = 'bcallow@gmail.com'){
-    setcookie($cookie_email, $brians_value);
-  }
-}
+///**
+// * looks at the cookie set in authenticate.php to
+// * check if its brian or another farmer
+// **/
+//function whos_logged_in(){
+//  session_start();
+//  $brians_value = 2;
+//
+//  if(isset($_COOKIE[$useremail]) = 'bcallow@gmail.com'){
+//    setcookie($cookie_email, $brians_value);
+//  }
+//}
