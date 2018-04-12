@@ -36,7 +36,7 @@
             PM<input type='radio' name='time' value='pm'>
             </li>
             <li>
-                <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>
+                <textarea name='notes' rows='5' cols='20' placeholder='Harvest Notes'></textarea>
             </li>
             <li>
                 <button type='submit' name='submit' value='submit' form='harvest_form'>Add Harvest Info</button>
