@@ -27,7 +27,7 @@
          <input type="number" name="count" min="1" placeholder="Number of Plates" required>
       </li>
       <li>
-        <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>
+        <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
       </li>
       <li>
         <button type='submit' name='submit' value='submit' form='plate_form'>Smash that Plate</button>
