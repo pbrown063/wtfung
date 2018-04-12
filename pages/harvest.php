@@ -18,7 +18,7 @@ $weight = filter_input(INPUT_POST, "weight");
 $time = filter_input(INPUT_POST, "time");
 $notes = filter_input(INPUT_POST, "notes");
 //query for insertion to database
-$insert = "INSERT INTO harvest (date, weight, time, notes, batch) VALUES ('$date', '$weight', '$time', '$notes','$batch', '$strain');";
+$insert = "INSERT INTO harvest (date, weight, time, notes, batch, strain) VALUES ('$date', '$weight', '$time', '$notes','$batch', '$strain');";
 //connect to database
 $mysqli = sql_connect();
 //insert into database or error message

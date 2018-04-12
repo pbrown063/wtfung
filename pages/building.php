@@ -2,14 +2,14 @@
 //file containing functions -- needed for every page
 require_once __DIR__ . '/bootstrap.php';
 
-if (!filter_input(INPUT_POST, "submit")) {
+if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, "id"))) {
 
 header("Location:building_form.php");
 die();
 
 } else {
 //grabbing inputs from posted form and making variables
-  $id = filter_input(INPUT_POST, "id");
+  $id = addslashes(filter_input(INPUT_POST, "id"));
 //query for insertion to database
   $insert = "INSERT INTO building (id) VALUES (lower('$id'));";
 //connect to database

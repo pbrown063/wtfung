@@ -2,7 +2,7 @@
 //file containing functions -- needed for every page
 require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 
-if (!filter_input(INPUT_POST, "submit")) {
+if (!filter_input(INPUT_POST, "submit")  || ctype_space(filter_input(INPUT_POST, "substrate"))) {
 
 header("substrate_form.php");
 die();

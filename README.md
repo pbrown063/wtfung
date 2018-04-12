@@ -3,7 +3,7 @@
 An approachable workflow interface to simplify mycellium farming data entry.
 
 This software is designed to handle a mushroom farming workflow based off 
-Brian Callow's model at [What The Fungus](http://www.wtfmushrooms.ca/).  They are several steps in his
+Brian Callow's model at [What The Fungus](http://www.wtfmushrooms.ca/).  There are several steps in his
 production cycle:
 
   1. Plating cultures using samples stored in test tubes
