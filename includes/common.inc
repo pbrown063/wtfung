@@ -77,7 +77,6 @@ function add_new_account() {
  * that is generated from the strains library.
  */
 function display_strains(){
-
   $mysqli = sql_connect();
   $strain = "SELECT common_name FROM strains_library";
   $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
@@ -92,23 +91,20 @@ function display_strains(){
 }
 
 /**
- *displays strain codes as drop down
+ * Creates and prints a form dropdown called @straincode
+ * that is generated from the strain library.
  */
 function display_strain_code(){
-  echo"Select Strain Code";
-  echo" <select name='code'>";
   $mysqli = sql_connect();
+$substrate = "SELECT strain_code FROM strains_library";
+$sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
-  $substrate = "SELECT strain_code FROM strains_library";
-
-  $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
-
-  while ($row = $sql->fetch_assoc()){
-    echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
-  }
-  echo "</select>";
-  echo "<br><br>";
-  mysqli_close($mysqli);
+echo" <select name='code'>";
+while ($row = $sql->fetch_assoc()){
+  echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
+}
+echo "</select>";
+mysqli_close($mysqli);
 }
 
 /**
@@ -124,7 +120,6 @@ function current_date(){
  * that is generated from the substrate library.
  */
 function display_substrate(){
-  echo "Select substrate:";
   $mysqli = sql_connect();
   $substrate = "SELECT substrate_type FROM substrate_library";
   $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
