@@ -30,7 +30,12 @@
 
 .flex-inner {
   padding: 0 8px;
-  justify-content: space-around;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid white;
+}
+input[type="radio"]{
+  vertical-align: middle;
 }
 
 .flex-outer > li:not(:last-child) {
@@ -43,6 +48,7 @@
   font-weight: 300;
   letter-spacing: .09em;
   text-transform: uppercase;
+  vertical-align: middle;
 }
 .flex-outer > li > label + *,
 .flex-inner {

@@ -17,16 +17,16 @@
     <form method="POST" action="strains.php" id="strains_form">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='code' placeholder='Strain Code' required>
+                <input type='text' name='code' placeholder='Enter Strain Code' required>
             </li>
             <li>
-                <input type='text' name='scientific' placeholder='Scientific Name' required>
+                <input type='text' name='scientific' placeholder='Enter Scientific Name' required>
             </li>
           <li>
-            <input type='text' name='abbreviation' placeholder='Strain Abbreviation' required>
+            <input type='text' name='abbreviation' placeholder='Enter Strain Abbreviation (AA)' required>
           </li>
             <li>
-                <input type='text' name='common' placeholder='Common Name' required>
+                <input type='text' name='common' placeholder='Enter Common Name' required>
             </li>
             <li>
                 <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>

@@ -21,19 +21,25 @@
                 <input type='text' name='batch' placeholder='Batch Harvested'>
             </li>
             <li>
-                Strain: <?php display_strains();?>
+                <?php display_strains();?>
             </li>
             <li>
-                Date:<input type='date' name='date' value="<?php current_date(); ?>" placeholder='yyyy-mm-d'> </input><br><br>
+              <input type='text' name='weight' placeholder='Input weight'>
             </li>
             <li>
-                <input type='text' name='weight' placeholder='Input weight'>
+                <input type='date' name='date' value="<?php current_date(); ?>" placeholder='yyyy-mm-d'> </input>
             </li>
             <li>
-            AM<input type='radio' name='time' value='am' checked>             
-            </li>
-            <li>
-            PM<input type='radio' name='time' value='pm'>
+              <ul class="flex-inner">
+                <li>
+                    <label for="am">AM</label>
+                    <input type='radio' name='time' value='am' id="am" checked>
+                </li>
+                <li>
+                    <label for="pm">PM</label>
+                    <input type='radio' name='time' value='pm' id="pm">
+                </li>
+              </ul>
             </li>
             <li>
                 <textarea name='notes' rows='5' cols='20' placeholder='Strain Notes'></textarea>

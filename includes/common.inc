@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Header block for error reports.
  * Used whenever bootstrap.inc is called.
@@ -77,7 +76,6 @@ function add_new_account() {
    */
   function current_date(){
     $date = date("Y-m-j");
-
     echo $date;
   }
 
@@ -91,7 +89,7 @@ function display_strains(){
   $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
 
   echo " <select name='strain' required>
-        <option value='' disabled selected hidden> Select Strain Code</option>";
+        <option value='' disabled selected hidden> Select Strain Name</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["common_name"]. "'>" . $row["common_name"] . "</option>";
   }
@@ -107,7 +105,8 @@ function display_strain_code(){
 $substrate = "SELECT strain_code FROM strains_library";
 $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
-echo" <select name='code'>";
+echo" <select name='code' required>
+      <option value='' disabled selected hidden> Select Strain Code</option>";
 while ($row = $sql->fetch_assoc()){
   echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
 }
@@ -180,16 +179,13 @@ function display_substrate(){
 
     echo '
     <table>
-      <thead>
         <tr>
             <th>id</th>
             <th>strain code</th>
             <th>plate number</th>
             <th>generation</th>
             <th>creation date</th>
-        </tr>
-      </thead>
-      <tbody> ';
+        </tr>';
     while ($row = $sql->fetch_assoc()) {
       echo '
        <tr>
@@ -200,8 +196,6 @@ function display_substrate(){
           <td>' . $row["creation_date"] . '</td>
        </tr>';
     }
-    echo '</tbody>
-    </table>
-';
+    echo '</table>';
     mysqli_close($mysqli);
   }

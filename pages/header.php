@@ -17,8 +17,7 @@ echo '
   </nav>
   
     <div id="mySidenav" class="sidenav">
-      <a href="account_form.php">Create Account</a>
-      <a href="#about">About</a>
+   
       <button class="dropdown-btn">Lab 
       <i class="fa fa-caret-down"></i>
       </button>
@@ -28,10 +27,7 @@ echo '
            <a href="bag_form.php">Bags</a>
       </div>
       
-      <a href="#services">Services</a>
-      <a href="#clients">Clients</a>
-      <a href="#contact">Contact</a>
-      
+      <a href="harvest_form.php">Harvest</a>
       <button class="dropdown-btn">Library 
       <i class="fa fa-caret-down"></i>
       </button>
@@ -40,7 +36,11 @@ echo '
            <a href="substrate_form.php">Substrate</a>
            <a href="building_form.php">Building</a>
       </div>
-      <a href="#contact">Search</a>
+      <a href="account_form.php">Create Account</a>
+      
+      <div class="logout">
+        <a href="#">Logout</a>
+      </div>
       
     </div>
     <script src="nav_script.js" type="text/javascript"></script>

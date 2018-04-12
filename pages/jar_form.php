@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Jarring</title>
-
+    <link rel="stylesheet" type="text/css" href="./CSS/table_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
 
@@ -15,7 +15,7 @@
 <body>
 <?php include 'header.php'; ?>
 
-<div class="table">
+<div class="contain">
   <?php plate_table(); ?>
 </div>
 
@@ -35,7 +35,7 @@
                 <input type="number" name="number_of_plates" min='1' placeholder="Number of plates used" required>
             </li>
             <li>
-              <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>
+                <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>
             </li>
             <li>
                 <button type='submit'value='submit' name='submit' form='jar_form' >Pickle Jar?</button>
