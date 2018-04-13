@@ -18,7 +18,7 @@ die();
   $abbreviation = addslashes(filter_input(INPUT_POST, "abbreviation"));
   $notes = addslashes(filter_input(INPUT_POST, "notes"));
 //query for insertion to database
-  $insert = "INSERT INTO strains_library (common_name, scientific_name, strain_code, abbreviation, notes) VALUES (lower('$code'), lower('$scientific'), lower('$common'), lower('$abbreviation'), lower('$notes'));";
+  $insert = "INSERT INTO strains_library (common_name, scientific_name, strain_code, abbreviation, notes) VALUES (lower('$common'), lower('$scientific'), lower('$code') , lower('$abbreviation'), lower('$notes'));";
 //connect to database
   $mysqli = sql_connect();
 //insert into database or error message
