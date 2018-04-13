@@ -72,13 +72,13 @@ function add_new_account() {
 }
 
 
-  /**
-   * Creates a current date function
-   */
-  function current_date(){
-    $date = date("Y-m-j");
-    echo $date;
-  }
+/**
+ * Creates a current date function
+ */
+function current_date(){
+  $date = date("Y-m-j");
+  echo $date;
+}
 
 /**
 
@@ -105,16 +105,16 @@ function display_strains(){
  */
 function display_strain_code(){
   $mysqli = sql_connect();
-$substrate = "SELECT strain_code FROM strains_library";
-$sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
+  $substrate = "SELECT strain_code FROM strains_library";
+  $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
-echo" <select name='code' required>
+  echo" <select name='code' required>
       <option value='' disabled selected hidden> Select Strain Code</option>";
-while ($row = $sql->fetch_assoc()){
-  echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
-}
-echo "</select>";
-mysqli_close($mysqli);
+  while ($row = $sql->fetch_assoc()){
+    echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
+  }
+  echo "</select>";
+  mysqli_close($mysqli);
 }
 
 /**
@@ -188,8 +188,8 @@ function plate_table(){
             <th>generation</th>
             <th>creation date</th>
         </tr>';
-    while ($row = $sql->fetch_assoc()) {
-      echo '
+  while ($row = $sql->fetch_assoc()) {
+    echo '
        <tr>
           <td>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_code"] . '</td>
@@ -197,10 +197,10 @@ function plate_table(){
           <td>' . $row["generation"] . '</td>
           <td>' . $row["creation_date"] . '</td>
        </tr>';
-    }
-    echo '</table>';
-    mysqli_close($mysqli);
   }
+  echo '</table>';
+  mysqli_close($mysqli);
+}
 
 ///**
 // * looks at the cookie set in authenticate.php to
