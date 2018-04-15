@@ -184,7 +184,7 @@ function plate_table(){
         <tr>
             <th>id</th>
             <th>strain code</th>
-            <th>plate number</th>
+            <th>number of plates</th>
             <th>generation</th>
             <th>creation date</th>
         </tr>';
