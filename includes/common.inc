@@ -206,14 +206,12 @@ function plate_table(){
 * looks at the cookie set in authenticate.php to 
 * check if its brian or another farmer
 **/
-function is_brian(){
+function get_authorization_level($useremail){
 session_start();
 
-	if($_COOKIE[$cookie_email] == 'bcallow@gmail.com'){
-		setcookie("Authorized", 2);
-		header('Location: home.php');
+	if($useremail == 'bcallow@gmail.com'){
+		return 2;
 	} else {
-		setcookie("Authorized", 1);
-		header('Location: home.php');
+		return 1;
 }
 }

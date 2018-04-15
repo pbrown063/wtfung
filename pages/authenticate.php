@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . '/bootstrap.php';
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
+  require_once __DIR__ . '/bootstrap.php';
 
 if (isset($_POST['email']) && isset($_POST['password'])){
   $mysqli = sql_connect();
@@ -11,7 +14,7 @@ if (isset($_POST['email']) && isset($_POST['password'])){
 
   $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
   
-  setcookie("Authorized", 0)
+  setcookie("authorized", 0);
 
   if (mysqli_num_rows($result) >= 1) {
     while ($info = mysqli_fetch_array($result)) {
@@ -19,9 +22,9 @@ if (isset($_POST['email']) && isset($_POST['password'])){
       $f_name = stripslashes($info['firstname']);
       $l_name = stripslashes($info['lastname']);
       $_SESSION['name'] = $f_name . ' ' . $l_name;
-      $cookie_email = $useremail;
-     setcookie("email", $cookie_email);
-     is_brian();    
+     setcookie("email", $useremail);
+     setcookie("authorized", get_authorization_level($useremail));
+     header('Location: home.php');    
 }
   }
   else {
