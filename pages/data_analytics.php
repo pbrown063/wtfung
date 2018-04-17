@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
-require_once 'make-graph.php';
-require_once __DIR__ . '/../jpgraph/src/jpgraph.php';
 
 switch ($_POST_['click']) {
 
@@ -52,7 +50,7 @@ switch ($_POST_['click']) {
 
 </form>
 <div>
-  <input type="button" name="balloon-graph" onclick="<?php setcookie('graph', 'balloon.php')?>">
+  <input type="button" name="balloon-graph" onclick="<?php setcookie('graph', 'balloon.php')?>" value="fast balloon">
 </div>
 <div class="graph-output">
   <?php print '<img src="'.$_COOKIE['graph'].'"/>';?>
