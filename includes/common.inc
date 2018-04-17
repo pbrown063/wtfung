@@ -248,7 +248,7 @@ function get_graph_choice($graph) {
 
 function display_graph($graph) {
   if (isset($graph)) {
-    print '<img src="'.$graph.'" alt="Data Graph"/>';
+    print '<img class="graph" src="'.$graph.'" alt="Data Graph"/>';
   }
   else {
     print '<h1>Please Choose a Graph</h1>';
