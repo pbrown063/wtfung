@@ -203,15 +203,54 @@ function plate_table(){
 }
 
 /**
-* looks at the cookie set in authenticate.php to 
-* check if its brian or another farmer
-**/
+ * looks at the cookie set in authenticate.php to
+ * check if its brian or another farmer
+ **/
 function get_authorization_level($useremail){
-session_start();
+  session_start();
 
-	if($useremail == 'bcallow@gmail.com'){
-		return 2;
-	} else {
-		return 1;
+  if($useremail == 'bcallow@gmail.com'){
+    return 2;
+  } else {
+    return 1;
+  }
 }
+
+/**
+ * Graph selector handler returns string with the script that
+ * displays the graph selected.
+ */
+
+function get_graph_choice($graph) {
+  switch ($graph) {
+
+    case '3dpie-graph':
+      return '3dpie.php';
+      break;
+
+    case 'lineandshade-graph':
+      return 'lineandshade.php';
+      break;
+
+    case 'balloon-graph':
+      return 'balloon.php';
+      break;
+
+    default:
+
+      break;
+  }
+}
+
+/**
+ * Displays the graph selected
+ */
+
+function display_graph($graph) {
+  if (isset($graph)) {
+    print '<img class="graph" src="'.$graph.'" alt="Data Graph"/>';
+  }
+  else {
+    print '<h1>Please Choose a Graph</h1>';
+  }
 }

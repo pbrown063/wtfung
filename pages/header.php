@@ -21,7 +21,7 @@ if($_COOKIE["authorized"] == 2){
           <a href="#">Enter New Schedule</a>
           <a href="#">Look At Existing Schedule</a>
       </div>
-      <a href="#">Data Analytics</a>
+      <a href="data_analytics.php">Data Analytics</a>
 ';
 
 echo '
