@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-switch ($_POST_['click']) {
+switch ($_POST['click']) {
 
   case '3dpie-graph':
     if ($_POST['click']) {
