@@ -203,15 +203,17 @@ function plate_table(){
 }
 
 /**
-* looks at the cookie set in authenticate.php to 
-* check if its brian or another farmer
+* looks at the email fromauthenticate.php and
+* sets the authorized cookie to either 5409(ADMIN)
+* or 5301(FARMER)
 **/
 function get_authorization_level($useremail){
 session_start();
 
 	if($useremail == 'bcallow@gmail.com'){
-		return 2;
+		return 5409;
 	} else {
-		return 1;
+		return 5301;
 }
 }
+
