@@ -241,3 +241,16 @@ function get_graph_choice($graph) {
       break;
   }
 }
+
+/**
+ * Displays the graph selected
+ */
+
+function display_graph($graph) {
+  if (isset($graph)) {
+    print '<img src="'.$graph.'" alt="Data Graph"/>';
+  }
+  else {
+    print '<h1>Please Choose a Graph</h1>';
+  }
+}

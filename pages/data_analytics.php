@@ -17,28 +17,25 @@ if (isset($_POST['graph'])) {
 </head>
 <body>
 <?php require_once 'header.php'; ?>
-<form method="post" action="data_analytics.php">
-  <div class="data_button">
-    <button type="submit" name="graph" value="3dpie-graph"/>
-  </div>
-  <div class="data_button">
-    <button type="submit" name="graph" value="lineandshade-graph"/>
-  </div>
-  <div class="data_button">
-    <button type="submit" name="graph" value="balloon-graph"/>
-  </div>
 
-</form>
+<div class="container">
+  <form method="POST" action="data_analytics.php" id="graph-selector">
+    <ul class="flex-outer">
+      <li>
+        <button type="submit" name="graph" value="3dpie-graph">3D PIE GRAPH</button>
+      </li>
+      <li>
+        <button type="submit" name="graph" value="lineandshade-graph">LINE AND SHADE GRAPH</button>
+      </li>
+      <li>
+        <button type="submit" name="graph" value="balloon-graph">BALLOON GRAPH</button>
+      </li>
+    </ul>
+  </form>
+</div>
 
 <div class="graph-output">
-  <?php
-  if (isset($graph)) {
-    print '<img src="'.$graph.'" alt="Data Graph"/>';
-  }
-  else {
-    print '<h1>Please Choose a Graph</h1>';
-  }
-  ?>
+  <?php  display_graph($graph);  ?>
 </div>
 </body>
 </html>
