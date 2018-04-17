@@ -22,7 +22,7 @@ switch ($_POST['click']) {
     break;
 
   default:
-    setcookie('graph', '3dpie.php');
+    setcookie('graph', '');
     break;
 }
 ?>
@@ -51,7 +51,7 @@ switch ($_POST['click']) {
 </form>
 
 <div class="graph-output">
-  <?php print '<img src="'.$_COOKIE['graph'].'"/>';?>
+  <?php print '<img src="'.$_COOKIE['graph'].'" alt="Choose your graph"/>';?>
 </div>
 </body>
 </html>
