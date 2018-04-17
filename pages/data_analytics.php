@@ -35,7 +35,11 @@ if (isset($_POST['graph'])) {
 </div>
 
 <div class="graph-output">
-  <?php  display_graph($graph);  ?>
+  <?php
+  if (isset($graph) {
+    display_graph($graph);
+  }
+  ?>
 </div>
 </body>
 </html>
