@@ -23,7 +23,7 @@ $insert = "INSERT INTO plates (strain_code, generation, plate_count, creation_da
 //insert into database or error message
 $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
-header("Location: plate_form.php");
+header("Location: home.php");
 die();
 
 }

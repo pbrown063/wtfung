@@ -126,3 +126,7 @@ nav{
     float: right;
     padding-right: 8px;
 }
+
+.graph {
+    margin: 0 auto;
+}
