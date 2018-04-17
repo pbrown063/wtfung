@@ -24,7 +24,7 @@ require_once __DIR__ . '/bootstrap.php';
 </div>
 </form>
 <div class="graph-output">
-  print '<img src="'.$graph-script.'"/>';
+  <?php print '<img src="'.$graph-script.'"/>';?>
 </div>
 </body>
 </html>
