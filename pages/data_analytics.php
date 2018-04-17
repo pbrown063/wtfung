@@ -6,15 +6,21 @@ require_once __DIR__ . '/../jpgraph/src/jpgraph.php';
 switch ($_POST_['click']) {
 
   case '3dpie-graph':
-    setcookie('graph', '3dpie.php');
+    if ($_POST['click']) {
+      setcookie('graph', '3dpie.php');
+    }
     break;
 
   case 'lineandshade-graph':
-    setcookie('graph', 'lineandshade.php');
+    if ($_POST['click']) {
+      setcookie('graph', 'lineandshade.php');
+    }
     break;
 
   case 'balloon-graph':
-    setcookie('graph', 'balloon.php');
+    if ($_POST['click']) {
+      setcookie('graph', 'balloon.php');
+    }
     break;
 
   default:
@@ -43,7 +49,11 @@ switch ($_POST_['click']) {
   <div class="data_button">
     <input type="submit" name="click" value="balloon-graph"/>
   </div>
+
 </form>
+<div>
+  <input type="button" name="balloon-graph" onclick="<?php setcookie('graph', 'balloon.php')?>">
+</div>
 <div class="graph-output">
   <?php print '<img src="'.$_COOKIE['graph'].'"/>';?>
 </div>
