@@ -35,13 +35,13 @@ switch ($_POST_['click']) {
 <?php require_once 'header.php'; ?>
 <form method="POST" action="make-graph.php">
   <div class="data_button">
-    <input type="submit" name="choose-graph" value="3dpie-graph"/>
+    <input type="submit" name="click" value="3dpie-graph"/>
   </div>
   <div class="data_button">
-    <input type="submit" name="choose-graph" value="lineandshade-graph"/>
+    <input type="submit" name="click" value="lineandshade-graph"/>
   </div>
   <div class="data_button">
-    <input type="submit" name="choose-graph" value="balloon-graph"/>
+    <input type="submit" name="click" value="balloon-graph"/>
   </div>
 </form>
 <div class="graph-output">
