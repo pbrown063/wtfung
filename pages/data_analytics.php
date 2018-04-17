@@ -1,35 +1,11 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-switch ($_POST['click']) {
-
-  case '3dpie-graph':
-    if ($_POST['click']) {
-      $graph = '3dpie.php';
-//      setcookie('graph', '3dpie.php');
-    }
-    break;
-
-  case 'lineandshade-graph':
-    if ($_POST['click']) {
-      $graph = 'lineandshade.php';
-//      setcookie('graph', 'lineandshade.php');
-    }
-    break;
-
-  case 'balloon-graph':
-    if ($_POST['click']) {
-      $graph = 'balloon.php';
-//      setcookie('graph', 'balloon.php');
-    }
-    break;
-
-  default:
-    $graph = '';
-//    setcookie('graph', '');
-    break;
+if (isset($_POST['graph'])) {
+  $graph = get_graph_choice($_POST['graph']);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,19 +19,25 @@ switch ($_POST['click']) {
 <?php require_once 'header.php'; ?>
 <form method="post" action="data_analytics.php">
   <div class="data_button">
-    <input type="submit" name="click" value="3dpie-graph"/>
+    <input type="submit" name="graph" value="3dpie-graph"/>
   </div>
   <div class="data_button">
-    <input type="submit" name="click" value="lineandshade-graph"/>
+    <input type="submit" name="graph" value="lineandshade-graph"/>
   </div>
   <div class="data_button">
-    <input type="submit" name="click" value="balloon-graph"/>
+    <input type="submit" name="graph" value="balloon-graph"/>
   </div>
 
 </form>
 
 <div class="graph-output">
-  <?php print '<img src="'.$graph.'" alt="Choose your graph"/>';?>
+  <?php
+  if (isset($graph) {
+    print '<img src="'.$graph.'" alt="Data Graph"/>';
+  }
+  else
+    print '<h1>Please Choose a Graph</h1>'
+  ?>
 </div>
 </body>
 </html>
