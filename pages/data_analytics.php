@@ -6,19 +6,19 @@ require_once __DIR__ . '/../jpgraph/src/jpgraph.php';
 switch ($_POST_['click']) {
 
   case '3dpie-graph':
-    $graph = '3dpie.php';
+    setcookie('graph', '3dpie.php');
     break;
 
   case 'lineandshade-graph':
-    $graph = 'lineandshade.php';
+    setcookie('graph', 'lineandshade.php');
     break;
 
   case 'balloon-graph':
-    $graph = 'balloon.php';
+    setcookie('graph', 'balloon.php');
     break;
 
   default:
-    $graph = '3dpie.php';
+    setcookie('graph', '3dpie.php');
     break;
 }
 ?>
@@ -45,7 +45,7 @@ switch ($_POST_['click']) {
   </div>
 </form>
 <div class="graph-output">
-  <?php print '<img src="'.$graph.'"/>';?>
+  <?php print '<img src="'.$_COOKIE['graph'].'"/>';?>
 </div>
 </body>
 </html>
