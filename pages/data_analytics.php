@@ -5,24 +5,28 @@ switch ($_POST['click']) {
 
   case '3dpie-graph':
     if ($_POST['click']) {
-      setcookie('graph', '3dpie.php');
+      $graph = '3dpie.php';
+//      setcookie('graph', '3dpie.php');
     }
     break;
 
   case 'lineandshade-graph':
     if ($_POST['click']) {
-      setcookie('graph', 'lineandshade.php');
+      $graph = 'lineandshade.php';
+//      setcookie('graph', 'lineandshade.php');
     }
     break;
 
   case 'balloon-graph':
     if ($_POST['click']) {
-      setcookie('graph', 'balloon.php');
+      $graph = 'balloon.php';
+//      setcookie('graph', 'balloon.php');
     }
     break;
 
   default:
-    setcookie('graph', '');
+    $graph = '';
+//    setcookie('graph', '');
     break;
 }
 ?>
@@ -51,7 +55,7 @@ switch ($_POST['click']) {
 </form>
 
 <div class="graph-output">
-  <?php print '<img src="'.$_COOKIE['graph'].'" alt="Choose your graph"/>';?>
+  <?php print '<img src="'.$graph.'" alt="Choose your graph"/>';?>
 </div>
 </body>
 </html>
