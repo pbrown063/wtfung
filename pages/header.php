@@ -13,7 +13,16 @@ if(check_authorization_level()){
            <a href="substrate_form.php">Substrate</a>
            <a href="building_form.php">Building</a>
       </div>
-      <a href="account_form.php">Create Account</a>';
+      <a href="account_form.php">Create Account</a>
+  <button class="dropdown-btn">Farm Schedule
+       <i class="fa fa-caret-down"></i>
+       </button>
+      <div class="dropdown-container">
+          <a href="#">Enter New Schedule</a>
+          <a href="#">Look At Existing Schedule</a>
+      </div>
+      <a href="data_analytics.php">Data Analytics</a>
+';
 
 echo '
 <nav>
