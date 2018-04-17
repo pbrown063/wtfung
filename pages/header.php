@@ -52,7 +52,7 @@ echo '
   	'.$adminmenu.'
    
       <div class="logout">
-        <a href="#">Logout</a>
+        <a href="logout.php">Logout</a>
       </div>
       
     </div>
@@ -87,7 +87,7 @@ echo '
       <a href="harvest_form.php">Harvest</a>
        
       <div class="logout">
-        <a href="#">Logout</a>
+        <a href="logout.php">Logout</a>
       </div>
 </div>
 	<script src="nav_script.js" type="text/javascript"></script>
