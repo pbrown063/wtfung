@@ -12,14 +12,19 @@ require_once __DIR__ . '/bootstrap.php';
 </head>
 <body>
 <?php require_once 'header.php'; ?>
+<form method="POST" action="make-graph.php">
 <div class="data_button">
-  <a href="3dpie-1.php">3d PIE CHART</a>
+  <input type="submit" name="choose-graph" value="3dpie-graph"/>
 </div>
 <div class="data_button">
-  <a href="balloon-1.php">BALLON CHART</a>
+  <input type="submit" name="choose-graph" value="lineandshade-graph"/>
 </div>
 <div class="data_button">
-  <a href="lineandshade-1.php">LINE SHADED GRAPH</a>
+  <input type="submit" name="choose-graph" value="balloon-graph"/>
+</div>
+</form>
+<div class="graph-output">
+  print '<img src="'.$graph-script.'"/>';
 </div>
 </body>
 </html>
