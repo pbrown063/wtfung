@@ -35,8 +35,9 @@ if (isset($_POST['graph'])) {
   if (isset($graph) {
     print '<img src="'.$graph.'" alt="Data Graph"/>';
   }
-  else
-    print '<h1>Please Choose a Graph</h1>'
+  else {
+    print '<h1>Please Choose a Graph</h1>';
+  }
   ?>
 </div>
 </body>
