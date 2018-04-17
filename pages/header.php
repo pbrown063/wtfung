@@ -3,7 +3,7 @@ require_once __DIR__ . '/bootstrap.php';
 session_start();
 $name = $_SESSION['name'];
 
-if(check_authorization_level()){
+if($_COOKIE['authorized'] == 5409){
 	$adminmenu = 
 	'<button class="dropdown-btn">Library 
       <i class="fa fa-caret-down"></i>
