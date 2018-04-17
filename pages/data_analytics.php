@@ -19,20 +19,20 @@ if (isset($_POST['graph'])) {
 <?php require_once 'header.php'; ?>
 <form method="post" action="data_analytics.php">
   <div class="data_button">
-    <input type="submit" name="graph" value="3dpie-graph"/>
+    <button type="submit" name="graph" value="3dpie-graph"/>
   </div>
   <div class="data_button">
-    <input type="submit" name="graph" value="lineandshade-graph"/>
+    <button type="submit" name="graph" value="lineandshade-graph"/>
   </div>
   <div class="data_button">
-    <input type="submit" name="graph" value="balloon-graph"/>
+    <button type="submit" name="graph" value="balloon-graph"/>
   </div>
 
 </form>
 
 <div class="graph-output">
   <?php
-  if (isset($graph) {
+  if (isset($graph)) {
     print '<img src="'.$graph.'" alt="Data Graph"/>';
   }
   else {
