@@ -3,7 +3,7 @@ require_once __DIR__ . '/bootstrap.php';
 session_start();
 $name = $_SESSION['name'];
 
-if($_COOKIE["authorized"] == 2){
+if($_COOKIE['authorized'] == 5409){
 	$adminmenu = 
 	'<button class="dropdown-btn">Library 
       <i class="fa fa-caret-down"></i>
@@ -59,7 +59,7 @@ echo '
     <script src="nav_script.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     ';
-} else if ($_COOKIE["authorized"] == 1) {
+} else if ($_COOKIE["authorized"] == 5301) {
 echo '
 <nav>
     <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
