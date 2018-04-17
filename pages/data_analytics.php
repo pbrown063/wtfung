@@ -49,9 +49,7 @@ switch ($_POST['click']) {
   </div>
 
 </form>
-<div>
-  <input type="button" name="balloon-graph" onclick="<?php setcookie('graph', 'balloon.php')?>" value="fast balloon">
-</div>
+
 <div class="graph-output">
   <?php print '<img src="'.$_COOKIE['graph'].'"/>';?>
 </div>
