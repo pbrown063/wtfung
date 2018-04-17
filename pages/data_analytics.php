@@ -33,7 +33,7 @@ switch ($_POST_['click']) {
 </head>
 <body>
 <?php require_once 'header.php'; ?>
-<form method="POST" action="#">
+<form method="POST" action="data_analytics.php">
   <div class="data_button">
     <input type="submit" name="click" value="3dpie-graph"/>
   </div>
