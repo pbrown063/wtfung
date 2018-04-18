@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
+if($_COOKIE["authorized"] != 2){
+	header('Location: home.php');
+}
+
 $account_added = add_new_account();
 
 if ($account_added) {
