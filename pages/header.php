@@ -11,8 +11,17 @@ if(is_admin()){
   echo get_header_menu($name, TRUE);
 }
 else if (is_farmer()) {
+  $page = basename($_SERVER['PHP_SELF']);
+  $protected_pages = [
+      'data_analytics.php',
+      'strain_form.php',
+  ];
+  foreach($protected_pages as $value) {
+    if ($page == $protected_pages) {
+      header('Location: home.php');
+    }
+  }
   echo get_header_menu($name);
-  echo basename($_SERVER['PHP_SELF']);
 }
 else {
   header('Location: login.php');
