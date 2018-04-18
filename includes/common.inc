@@ -172,6 +172,25 @@ function display_account(){
 }
 
 /**
+ * Creates and prints a form dropdown called @greenhouse
+ * that is generated from the building library
+ */
+function display_greehouse() {
+  $mysqli = sql_connect();
+  $account = "SELECT id FROM building";
+  $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
+
+  echo " <select name='greenhouse' required>
+ <option value='' disabled selected hidden>Select Greenhouse</option>";
+  while ($row = $sql->fetch_assoc()) {
+    echo "<option value='".$row["id"]."'>".$row["id"]."</option>";
+  }
+  echo "</select>";
+  mysqli_close($mysqli);
+}
+
+
+/**
  * Creates a table spit out of the plates
  */
 function plate_table(){
