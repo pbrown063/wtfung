@@ -12,6 +12,7 @@ if(is_admin()){
 }
 else if (is_farmer()) {
   echo get_header_menu($name);
+  echo basename($_SERVER['PHP_SELF']);
 }
 else {
   header('Location: login.php');

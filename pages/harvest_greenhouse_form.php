@@ -59,7 +59,6 @@ require_once __DIR__ . '/bootstrap.php';
         <button onclick="add_batch_to_harvest_list()" value='add_batch'>Harvest Another Batch</button>
       </li>
     </ul>
-<? print $headers;?>
     <!--    THERE WILL BE A TABLE DISPLAY DOWN HERE THAT SHOWS ALL
     OF THE BATCHES HARVESTED FOR THE GREENHOUSE IN QUEUE
     SHOULD BE ABLE TO GENERATE A TABLE WITH THE JAVASCRIPT-->
