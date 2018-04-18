@@ -16,15 +16,14 @@
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-    <form method="POST" action="">
+    <form method="POST" action="bags.php" id="bag_form">
         <ul class="flex-outer">
                 <!--User shown in header-->
             <li>
                 <input type="hidden" name="user" value="user"> <!--fill in value with correct user function-->
             </li>
             <li>
-                <!--Batch ID drop down-->
-
+                <input type="text" name="batch" placeholder="Batch Identification" required>
             </li>
             <li>
                 <?php display_substrate(); ?>
@@ -33,7 +32,7 @@
                 <input type="number" name="num_bags" min ="1" placeholder="Number of Bags" required>
             </li>
             <li>
-                <input type="date" name="date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
+                <input type="date" name="creation_date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
             </li>
             <li>
                 <?php display_account(); ?>
@@ -42,7 +41,7 @@
                 <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea> <!--To be added to bags table-->
             </li>
             <li>
-                <button type='submit'>Submit</button>
+                <button type='submit' name='submit' value='submit' form="bag_form">Submit</button>
             </li>
         </ul>
     </form>

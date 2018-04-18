@@ -1,7 +1,9 @@
 .contain {
     width: 60%;
     max-width: 1200px;
-    margin: 5% auto;
+    margin: 2% auto;
+    height: 250px;
+    overflow-y: scroll;
 }
 
 .contain * {
@@ -12,12 +14,16 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    max-height: 250px;
-    overflow-y: auto;
 }
-th {
+
+thead th {
     text-transform: uppercase;
     background-color: #222;
+}
+
+tbody{
+    height: 200px;
+    overflow-y: scroll;
 }
 
 th, td {
