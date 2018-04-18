@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 session_start();
-$name = $_SESSION['name'];
+if (isset($_SESSION['name'])) {
+  $name = $_SESSION['name'];
+}
 
 if($_COOKIE['authorized'] == 5409){
 	$adminmenu = 
