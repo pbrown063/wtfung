@@ -7,10 +7,10 @@ if (isset($_SESSION['name'])) {
   $name = $_SESSION['name'];
 }
 
-if($_COOKIE['authorized'] == 5409){
+if(is_admin()){
   echo get_header_menu($name, TRUE);
 }
-else if ($_COOKIE["authorized"] == 5301) {
+else if (is_farmer()) {
   echo get_header_menu($name);
 }
 else {

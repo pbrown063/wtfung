@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-if($_COOKIE["authorized"] != 2){
+if(!is_admin()){
 	header('Location: home.php');
 }
 
