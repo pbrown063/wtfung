@@ -181,13 +181,16 @@ function plate_table(){
 
   echo '
     <table>
+      <thead>
         <tr>
             <th>id</th>
             <th>strain code</th>
             <th>plate number</th>
             <th>generation</th>
             <th>creation date</th>
-        </tr>';
+        </tr>
+      </thead>
+      <tbody>';
     while ($row = $sql->fetch_assoc()) {
       echo '
        <tr>
@@ -198,7 +201,8 @@ function plate_table(){
           <td>' . $row["creation_date"] . '</td>
        </tr>';
     }
-    echo '</table>';
+    echo '</tbody>
+      </table>';
     mysqli_close($mysqli);
   }
 
