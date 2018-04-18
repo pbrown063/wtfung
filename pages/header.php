@@ -13,16 +13,17 @@ if(is_admin()){
 else if (is_farmer()) {
   $page = basename($_SERVER['PHP_SELF']);
   $protected_page = 'data_analytics.php'
-  $protected_pages = [
-      'data_analytics.php',
-      'strain_form.php',
-      'substrate_form.php',
-      'building_form.php',
-      'account_form.php',
-      'lineandshade.php',
-      'balloon.php',
-      '3dpie.php',
-  ];
+//  $protected_pages = [
+//      'data_analytics.php',
+//      'strain_form.php',
+//      'substrate_form.php',
+//      'building_form.php',
+//      'account_form.php',
+//      'lineandshade.php',
+//      'balloon.php',
+//      '3dpie.php',
+//  ];
+
   if ($page == $protected_page) {
     header('Location: home.php');
   }
