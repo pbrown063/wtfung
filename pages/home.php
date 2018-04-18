@@ -15,17 +15,19 @@ require_once __DIR__ . '/bootstrap.php';
 
 <ul class="flex-outer">
   <li>
-    <h1>Welcome to What The Fungus, click the</h1>
+    <h1>Welcome to What The Fungus</h1>
   </li>
+
   <li>
     <h1>
+      The
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
     </h1>
   </li>
   <li>
-    <h1>To start farming some mycelium!</h1>
+    <h1>Above is your farming menu</h1>
   </li>
 
 </ul>
