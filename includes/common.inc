@@ -200,15 +200,18 @@ function plate_table(){
 
   echo '
     <table>
+      <thead>
         <tr>
             <th>id</th>
             <th>strain code</th>
             <th>number of plates</th>
             <th>generation</th>
             <th>creation date</th>
-        </tr>';
-  while ($row = $sql->fetch_assoc()) {
-    echo '
+        </tr>
+      </thead>
+      <tbody>';
+    while ($row = $sql->fetch_assoc()) {
+      echo '
        <tr>
           <td>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_code"] . '</td>
@@ -216,10 +219,11 @@ function plate_table(){
           <td>' . $row["generation"] . '</td>
           <td>' . $row["creation_date"] . '</td>
        </tr>';
+    }
+    echo '</tbody>
+      </table>';
+    mysqli_close($mysqli);
   }
-  echo '</table>';
-  mysqli_close($mysqli);
-}
 
 /**
  * looks at the email fromauthenticate.php and
