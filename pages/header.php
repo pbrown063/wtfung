@@ -15,5 +15,6 @@ else if (is_farmer()) {
 }
 else {
   header('Location: login.php');
+  echo "HELLO!";
 }
 
