@@ -291,6 +291,8 @@ function get_admin_header_menu() {
  */
 function get_header_menu($user_name, $is_admin = FALSE) {
 
+  $admin_menu = '';
+
   if ($is_admin) {
     $admin_menu = get_admin_header_menu();
   }
