@@ -18,9 +18,11 @@ require_once __DIR__ . '/bootstrap.php';
     <h1>Welcome to What The Fungus, click the</h1>
   </li>
   <li>
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
+    <h1>
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </h1>
   </li>
   <li>
     <h1>To start farming some mycelium!</h1>
