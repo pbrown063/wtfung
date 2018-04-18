@@ -32,6 +32,9 @@ if (isset($_POST['graph'])) {
         <button type="submit" name="graph" value="balloon-graph">BALLOON GRAPH</button>
       </li>
       <li>
+        <button type="submit" name="graph" value="harvest-by-date">HARVEST BY DATE</button>
+      </li>
+      <li>
         <div class="graph-output">
           <?php
           if (isset($graph)) {
