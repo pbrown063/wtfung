@@ -27,11 +27,11 @@ else if (is_farmer()) {
   if ($page == $protected_page) {
     header('Location: home.php');
   }
-  foreach($protected_pages as $value) {
-    if ($page == $protected_pages) {
-      header('Location: home.php');
-    }
-  }
+//  foreach($protected_pages as $value) {
+//    if ($page == $protected_pages) {
+//      header('Location: home.php');
+//    }
+//  }
   echo get_header_menu($name);
 }
 else {
