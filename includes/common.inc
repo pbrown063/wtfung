@@ -257,3 +257,83 @@ function display_graph($graph) {
   }
 }
 
+
+/**
+ * Returns the html string to display the admin menu for the header.
+ */
+function get_admin_header_menu() {
+  $admin_menu =
+    '<button class="dropdown-btn">Library 
+      <i class="fa fa-caret-down"></i>
+      </button>
+     <div class="dropdown-container">
+           <a href="strain_form.php">Strain</a>
+           <a href="substrate_form.php">Substrate</a>
+           <a href="building_form.php">Building</a>
+      </div>
+      <a href="account_form.php">Create Account</a>
+  <button class="dropdown-btn">Farm Schedule
+       <i class="fa fa-caret-down"></i>
+       </button>
+      <div class="dropdown-container">
+          <a href="#">Enter New Schedule</a>
+          <a href="#">Look At Existing Schedule</a>
+      </div>
+      <a href="data_analytics.php">Data Analytics</a>
+';
+
+  return $admin_menu;
+}
+
+/**
+ * @param $is_admin
+ * Returns the html string to display header menu.
+ * Result is based on whether the user is an admin.
+ */
+function get_header_menu($is_admin = FALSE) {
+
+  if ($is_admin) {
+    $admin_menu = get_admin_header_menu();
+  }
+
+  $user_menu =
+    '
+<nav>
+    <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
+    <div id="myMenubutton" class="menuButton">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="nameplate">
+         '.$name.' 
+    </div>
+  </nav>
+  
+    <div id="mySidenav" class="sidenav">
+   
+      <button class="dropdown-btn">Lab 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+           <a href="plate_form.php">Plates</a>
+           <a href="jar_form.php">Jars</a>
+           <a href="bag_form.php">Bags</a>
+      </div>
+      
+      <a href="harvest_form.php">Harvest</a>
+  	'.$admin_menu.'
+   
+      <div class="logout">
+        <a href="logout.php">Logout</a>
+      </div>
+      
+    </div>
+    <script src="nav_script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    ';
+
+  return $user_menu;
+
+}
+
