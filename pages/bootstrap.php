@@ -7,4 +7,5 @@ function bootstrap($site_name) {
     return $bootstrap;
 }
 
+$headers = getallheaders();
 require_once bootstrap('wtfung');
