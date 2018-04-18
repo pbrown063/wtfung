@@ -25,7 +25,7 @@ else if (is_farmer()) {
   ];
 
   foreach($protected_pages as $value) {
-    if ($value == $protected_pages) {
+    if ($value == $page) {
       header('Location: home.php');
     }
   }
