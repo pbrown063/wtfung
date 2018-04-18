@@ -2,6 +2,13 @@
 
 ?>
 
+<?php
+if(!is_admin()){
+	header("Location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

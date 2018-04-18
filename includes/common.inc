@@ -256,3 +256,27 @@ function display_graph($graph) {
   }
 }
 
+/**
+* authenticates whether its brian or farmer or reble scum
+* trying to gain access
+**/
+
+function is_admin(){
+	if($_COOKIE["authorized"] == 5409){
+		return TRUE;
+	}
+	return FALSE;
+}
+
+
+/**
+* is it the farmer that is accessing the page
+**/
+
+function is_farmer(){
+	if($_COOKIE["authorized"] == 5301){
+		return TRUE;
+	}
+	return FALSE;
+}
+

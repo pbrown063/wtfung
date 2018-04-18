@@ -2,7 +2,11 @@
 //file containing functions -- needed for every page
 require_once __DIR__ . '/bootstrap.php';
 
-if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, "id"))) {
+if (!is_admin()){
+	
+	header('Location: login.php');
+
+}else if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, "id"))) {
 
 header("Location:building_form.php");
 die();
