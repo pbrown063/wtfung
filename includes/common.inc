@@ -207,13 +207,15 @@ function plate_table(){
 * sets the authorized cookie to either 5409(ADMIN)
 * or 5301(FARMER)
 **/
-function get_authorization_level($useremail){
+function get_authorization_level($useremail) {
   session_start();
 
-	if($useremail == 'bcallow@gmail.com'){
-		return 5409;
-	} else {
-		return 5301;
+  if ($useremail == 'bcallow@gmail.com') {
+    return 5409;
+  }
+  else {
+    return 5301;
+  }
 }
 
 /**
