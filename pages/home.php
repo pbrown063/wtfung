@@ -19,13 +19,15 @@ require_once __DIR__ . '/bootstrap.php';
   </li>
 
   <li>
-    <h1>Click The</h1>
     <h1>
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
+      Click The
+      <div id="welcome-bars">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      At The Top To Farm
     </h1>
-    <h1>At The Top To Farm</h1>
   </li>
 
 </ul>
