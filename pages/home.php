@@ -12,5 +12,15 @@ require_once __DIR__ . '/bootstrap.php';
 </head>
 <body>
 <?php require_once 'header.php'; ?>
+
+<ul class="flex-outer">
+  <h1>Welcome to What The Fungus, click the
+  <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+    to start farming some mycelium!
+  </h1>
+</ul>
+
 </body>
 </html>
