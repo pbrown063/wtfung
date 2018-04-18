@@ -203,10 +203,10 @@ function plate_table(){
 }
 
 /**
-* looks at the email fromauthenticate.php and
-* sets the authorized cookie to either 5409(ADMIN)
-* or 5301(FARMER)
-**/
+ * looks at the email fromauthenticate.php and
+ * sets the authorized cookie to either 5409(ADMIN)
+ * or 5301(FARMER)
+ **/
 function get_authorization_level($useremail) {
   session_start();
 
@@ -257,7 +257,6 @@ function display_graph($graph) {
   }
 }
 
-
 /**
  * Returns the html string to display the admin menu for the header.
  */
@@ -290,7 +289,7 @@ function get_admin_header_menu() {
  * Returns the html string to display header menu.
  * Result is based on whether the user is an admin.
  */
-function get_header_menu($is_admin = FALSE) {
+function get_header_menu($user_name, $is_admin = FALSE) {
 
   if ($is_admin) {
     $admin_menu = get_admin_header_menu();
@@ -306,7 +305,7 @@ function get_header_menu($is_admin = FALSE) {
       <div class="bar3"></div>
     </div>
     <div class="nameplate">
-         '.$name.' 
+         '.$user_name.' 
     </div>
   </nav>
   
