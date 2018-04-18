@@ -361,3 +361,25 @@ function get_header_menu($user_name, $is_admin = FALSE) {
 
 }
 
+/**
+* Returns true if the user is an admin
+**/
+
+function is_admin(){
+	if($_COOKIE["authorized"] == 5409){
+		return TRUE;
+	}
+	return FALSE;
+}
+
+
+/**
+* Returns true if the user is valid
+**/
+
+function is_farmer(){
+	if($_COOKIE["authorized"] == 5301){
+		return TRUE;
+	}
+	return FALSE;
+}
