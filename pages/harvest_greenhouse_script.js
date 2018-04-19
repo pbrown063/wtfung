@@ -49,7 +49,12 @@ function add_batch_to_harvest_list() {
 
 
 
-  document.getElementsByName("greenhouse")[0].disabled = true;
+  if (document.getElementsByName("greenhouse")[0].enabled) {
+    document.getElementsByName("greenhouse")[0].disabled = true;
+    var building = document.createTextNode(greenhouse);
+    documtnt.getElementById('harvest-table-caption').appendChild(building);
+  }
+
   document.getElementById('harvest_greenhouse_form').reset();
 }
 

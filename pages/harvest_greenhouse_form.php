@@ -30,9 +30,6 @@ require_once __DIR__ . '/bootstrap.php';
     <form method="POST" action="harvest_greenhouse.php" id='harvest_greenhouse_form'>
       <ul class="flex-outer">
         <li>
-          <input type='text' name='batch' placeholder='Batch Harvested'>
-        </li>
-        <li>
           <?php display_strains();?>
         </li>
         <li>
@@ -69,11 +66,12 @@ require_once __DIR__ . '/bootstrap.php';
 </div>
 <div class="contain" id="harvest-queue-table">
   <table>
+    <caption id="harvest-table-caption">Harvest For</caption>
     <thead>
     <tr>
-      <th>batch code</th>
       <th>strain</th>
       <th>weight</th>
+      <th>date</th>
     </tr>
     </thead>
     <tbody id="harvest-queue">
