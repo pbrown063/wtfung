@@ -62,13 +62,9 @@ function submit_batches() {
   $.ajax({
     type: "POST",
     url: "harvest_greenhouse.php",
-    data: json_harvest,
+    data: {harvest:json_harvest},
     cache: false,
-    success: function() {
-      alert(json_harvest);
     }
-  }).done(function(data){
-    alert(data);
   });
 
 }
