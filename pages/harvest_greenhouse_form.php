@@ -56,7 +56,7 @@ require_once __DIR__ . '/bootstrap.php';
         <li>
 
           <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
-          <button onclick="return add_batch_to_harvest_list()" value='add_batch'>Harvest Another Batch</button>
+          <button onclick="return add_harvest_to_list()" value='add_harvest'>add another harvest</button>
         </li>
       </ul>
     </form>
@@ -82,7 +82,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 <ul class="flex-outer">
   <li>
-    <button form='harvest_form' onclick="submit_batches()">Finished Harvesting</button>
+    <button form='harvest_form' onclick="submit_harvests()">Finished Harvesting</button>
   </li>
 </ul>
 
