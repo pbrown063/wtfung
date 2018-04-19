@@ -64,7 +64,6 @@ function submit_batches() {
     url: "harvest_greenhouse.php",
     data: {harvest:json_harvest},
     cache: false,
-    }
   });
 
 }
