@@ -3,11 +3,12 @@
 require_once __DIR__ . '/bootstrap.php';
 
 $greenhouse_list = json_decode($_POST['harvest'], true);
-
+//Batch is not a mandatory field for harvesting.
+$batch_default = '00';
 $mysqli = sql_connect();
 
 foreach ($greenhouse_list as $harvest) {
-  $batch = addslashes($harvest['batch_id']);
+  $batch = is_string($batch) ? addslashes($harvest['batch_id']) : $batch_default;
   $strain = addslashes($harvest['strain']);
   $weight = addslashes($harvest['weight']);
   $date = addslashes($harvest['date']);
