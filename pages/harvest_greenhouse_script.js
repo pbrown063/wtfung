@@ -15,15 +15,13 @@ function add_batch_to_harvest_list() {
   var time = document.getElementsByName('time')[0].value;
   var notes = document.getElementsByName('notes')[0].value;
 
-  var batch = {
-    greenhouse: greenhouse,
-    batch: batch_id,
-    strain: strain,
-    weight: weight,
-    date: date,
-    time: time,
-    notes: notes
-  };
+  var batch = { };
+  batch.batch_id = batch_id;
+  batch.strain = strain;
+  batch.weight = weight;
+  batch.date = date;
+  batch.time = time;
+  batch.notes = notes;
 
   harvest_list.push(batch);
 
@@ -53,8 +51,18 @@ function add_batch_to_harvest_list() {
   document.getElementById('harvest_greenhouse_form').reset();
 }
 
-function submit_batches() {
+
+function submit_batches(path, params, method) {
+  method = method || 'POST';
+
 
   // READ https://stackoverflow.com/questions/10955017/sending-json-to-php-using-ajax
+  var send = $.ajax({
+    type: "POST",
+    dataType: "json",
+    cache: false,
+    url: "harvest_greenhouse.php",
+    data: {greenhouse:harvest_list}
+  });
 
 }

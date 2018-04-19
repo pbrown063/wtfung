@@ -12,27 +12,27 @@ if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST,"
 
 }
 else {
-  $greenhouse_list = [];
+
   if (isset($_POST['harvest_list'])) {
-    $greenhouse_list = $_POST['greehouse_list'];
+    $greenhouse_list = $_POST['harvest'];
   }
-  // Compiled harvest data for greenhouse is complete. This block will insert the data by cycling
-  // through all of the batches in the greenhouse array
-  // We're going to use AJAX style JSON strings here... json_decode($the_harvest_greenhouse_array);
-  // This will require some serious work.
+
   $mysqli = sql_connect();
 
   foreach ($greenhouse_list as $batch) {
     // @TODO Put arrary cycle and query in here.
-    $batch_id = $batch;
 
-// PULL JSON data and set up the queries, cycling through array.
-      //$insert = "INSERT INTO harvest (date, weight, time, notes, batch, strain) VALUES ('$date', '$weight', '$time', '$notes','$batch', '$strain');";
-    //connect to database
+    $batch = addslashes($batch->'batch_id');
+    $strain = addslashes($batch->'strain');
+    $date = addslashes($batch->'date');
+    $weight = addslashes($batch->'weight');
+    $time = addslashes($batch->'time');
+    $notes = addslashes($batch->'notest');
 
-    //insert into database or error message
+    $insert = "INSERT INTO harvest (date, weight, time, notes, batch, strain) VALUES ('$date', '$weight', '$time', '$notes','$batch', '$strain');";
     $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
   }
+
   header('Location: harvest_greenhouse_form.php');
   die();
 

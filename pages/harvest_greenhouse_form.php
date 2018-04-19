@@ -36,7 +36,7 @@ require_once __DIR__ . '/bootstrap.php';
           <?php display_strains();?>
         </li>
         <li>
-          <input type='text' name='weight' placeholder='Input weight'>
+          <input type='number' name='weight' placeholder='Input weight'>
         </li>
         <li>
           <input type='date' name='date' value="<?php current_date(); ?>" placeholder='yyyy-mm-d'> </input>
@@ -84,7 +84,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 <ul class="flex-outer">
   <li>
-    <button type='submit' name='submit' value='submit' form='harvest_form'>Finished Harvesting</button>
+    <button type='submit' name='submit' value='submit' form='harvest_form' onclick="submit_batches()">Finished Harvesting</button>
   </li>
 </ul>
 
