@@ -1,6 +1,12 @@
 var harvest_list = [];
 var lock = false;
 
+/**
+ * Pulls the harvest form data
+ * Validates it
+ * Pushes it onto the harvest list
+ * Populates a table that shows harvests in queue
+ */
 function add_harvest_to_list() {
 
   document.getElementById("harvest_greenhouse_form").addEventListener("click", function(event){
@@ -16,64 +22,39 @@ function add_harvest_to_list() {
   var notes = document.getElementsByName('notes')[0].value;
 
 
-  // Validation block
-  var validated = false;
+  var harvest = {};
+  harvest.strain = strain;
+  harvest.weight = weight;
+  harvest.date = date;
+  harvest.time = time;
+  harvest.notes = notes;
+  harvest.greenhouse = greenhouse;
 
-  validated = true;
+  var validated = is_harvest_valid(harvest);
 
   if (validated) {
-    var harvest = {};
-    harvest.strain = strain;
-    harvest.weight = weight;
-    harvest.date = date;
-    harvest.time = time;
-    harvest.notes = notes;
-    harvest.greenhouse = greenhouse;
 
     harvest_list.push(harvest);
 
-    // Creates a new table row and outputs it on page
-    document.getElementById("harvest-queue-table").style.display = "block";
-    var body = document.getElementById("harvest-queue");
-    var harvest_row = document.createElement("TR");
+    add_harvest_to_queue_table(harvest);
 
-    var strain_row = document.createElement("TD");
-    var text = document.createTextNode(strain);
-    strain_row.appendChild(text);
-    harvest_row.appendChild(strain_row);
+    if (!lock) {
+      document.getElementsByName("greenhouse")[0].disabled = true;
+      var tableTitle = document.createTextNode("\u00A0" + greenhouse.toUpperCase());
+      document.getElementById('harvest-table-title').appendChild(tableTitle);
+      document.getElementById('harvest-table-title').style.display = "block";
+    }
 
-    var weight_row = document.createElement("TD");
-    var text = document.createTextNode(weight);
-    weight_row.appendChild(text);
-    harvest_row.appendChild(weight_row);
-
-    var date_row = document.createElement("TD");
-    var text = document.createTextNode(date);
-    date_row.appendChild(text);
-    harvest_row.appendChild(date_row);
-
-    body.appendChild(harvest_row);
+    document.getElementById('harvest_greenhouse_form').reset();
   }
-
-
-
-  if (!lock) {
-    lock = true;
-    document.getElementsByName("greenhouse")[0].disabled = true;
-    var tableTitle = document.createTextNode("\u00A0" + greenhouse.toUpperCase());
-    document.getElementById('harvest-table-title').appendChild(tableTitle);
-    document.getElementById('harvest-table-title').style.display = "block";
-
-  }
-
-  document.getElementById('harvest_greenhouse_form').reset();
 }
 
-
+/**
+ * Builds json string and sends it to the server side.
+ */
 function submit_harvests() {
 
   var json_harvest = JSON.stringify(harvest_list);
-
 
   $.ajax({
     type: "POST",
@@ -81,5 +62,75 @@ function submit_harvests() {
     data: {harvest:json_harvest},
     cache: false,
   });
+
+}
+
+
+/**
+ * Validates the harvest data.
+ * Only processes one error at a time.
+ */
+function is_harvest_valid(harvest) {
+
+  if (harvest.greenhouse.length > 30) {
+    alert('The greenhouse name is too long.');
+    return false;
+  }
+  else if (harvest.strain.length > 45) {
+    alert('The strain name is too long.');
+    return false;
+  }
+  else if (harvest.time.length > 5) {
+    alert('The time of day is invalid');
+    return false;
+  }
+  else if (harvest.weight <= 0) {
+    alert('Please enter a positive value for the harvest weight.');
+    return false;
+  }
+  else if (isNaN(harvest.weight)) {
+    alert('Please enter a valid number for weight.');
+    return false;
+  }
+  else if (
+      harvest.greenhouse.length < 1 ||
+      harvest.strain.length < 1 ||
+      harvest.time.length < 1 ) {
+    alert('Please fill in all fields.');
+    return false;
+  }
+  else if (harvest.notes.length < 1) {
+    return confirm('Are you sure you want to harvest with no notes?');
+  }
+  return true;
+}
+
+/**
+ * Creates elements and adds a row to the harvest to the harvest queue table.
+ * @param strain
+ * @param weight
+ * @param date
+ */
+function add_harvest_to_queue_table(harvest) {
+  document.getElementById("harvest-queue-table").style.display = "block";
+  var body = document.getElementById("harvest-queue");
+  var harvest_row = document.createElement("TR");
+
+  var strain_row = document.createElement("TD");
+  var text = document.createTextNode(harvest.strain);
+  strain_row.appendChild(text);
+  harvest_row.appendChild(strain_row);
+
+  var weight_row = document.createElement("TD");
+  var text = document.createTextNode(harvest.weight);
+  weight_row.appendChild(text);
+  harvest_row.appendChild(weight_row);
+
+  var date_row = document.createElement("TD");
+  var text = document.createTextNode(harvest.date);
+  date_row.appendChild(text);
+  harvest_row.appendChild(date_row);
+
+  body.appendChild(harvest_row);
 
 }
