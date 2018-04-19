@@ -30,9 +30,6 @@ require_once __DIR__ . '/bootstrap.php';
     <form method="POST" action="harvest_greenhouse.php" id='harvest_greenhouse_form'>
       <ul class="flex-outer">
         <li>
-          <input type='text' name='batch' placeholder='Batch Harvested'>
-        </li>
-        <li>
           <?php display_strains();?>
         </li>
         <li>
@@ -59,7 +56,7 @@ require_once __DIR__ . '/bootstrap.php';
         <li>
 
           <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
-          <button onclick="return add_batch_to_harvest_list()" value='add_batch'>Harvest Another Batch</button>
+          <button onclick="return add_harvest_to_list()" value='add_harvest'>add another harvest</button>
         </li>
       </ul>
     </form>
@@ -69,11 +66,12 @@ require_once __DIR__ . '/bootstrap.php';
 </div>
 <div class="contain" id="harvest-queue-table">
   <table>
+    <caption id="harvest-table-caption">Harvest For</caption>
     <thead>
     <tr>
-      <th>batch code</th>
       <th>strain</th>
       <th>weight</th>
+      <th>date</th>
     </tr>
     </thead>
     <tbody id="harvest-queue">
@@ -84,7 +82,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 <ul class="flex-outer">
   <li>
-    <button form='harvest_form' onclick="submit_batches()">Finished Harvesting</button>
+    <button form='harvest_form' onclick="submit_harvests()">Finished Harvesting</button>
   </li>
 </ul>
 

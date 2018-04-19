@@ -229,8 +229,8 @@ function plate_table(){
         </tr>
       </thead>
       <tbody>';
-    while ($row = $sql->fetch_assoc()) {
-      echo '
+  while ($row = $sql->fetch_assoc()) {
+    echo '
        <tr>
           <td>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_code"] . '</td>
@@ -238,11 +238,11 @@ function plate_table(){
           <td>' . $row["generation"] . '</td>
           <td>' . $row["creation_date"] . '</td>
        </tr>';
-    }
-    echo '</tbody>
-      </table>';
-    mysqli_close($mysqli);
   }
+  echo '</tbody>
+      </table>';
+  mysqli_close($mysqli);
+}
 
 /**
  * looks at the email fromauthenticate.php and
@@ -299,13 +299,16 @@ function display_graph($graph) {
   }
 }
 
+
+
 /**
  * Returns the html string to display the admin menu for the header.
  */
 function get_admin_header_menu() {
   $admin_menu =
-    '<button class="dropdown-btn">Library 
-      <i class="fa fa-caret-down"></i>
+    '
+      <button class="dropdown-btn">Library 
+        <i class="fa fa-caret-down"></i>
       </button>
      <div class="dropdown-container">
            <a href="strain_form.php">Strain</a>
@@ -313,14 +316,23 @@ function get_admin_header_menu() {
            <a href="building_form.php">Building</a>
       </div>
       <a href="account_form.php">Create Account</a>
-  <button class="dropdown-btn">Farm Schedule
+  
+        <button class="dropdown-btn">Farm Schedule
        <i class="fa fa-caret-down"></i>
        </button>
-      <div class="dropdown-container">
+        <div class="dropdown-container">
           <a href="#">Enter New Schedule</a>
           <a href="#">Look At Existing Schedule</a>
+        </div>
+
+      <button class="dropdown-btn">Data Analytics
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="data_analytics.php">Graphs</a>
+        <a href="data_analytics_tables.php">Tables</a>
       </div>
-      <a href="data_analytics.php">Data Analytics</a>
+
 ';
 
   return $admin_menu;
@@ -404,3 +416,93 @@ function is_farmer()
   }
   return FALSE;
 }
+
+function get_table_choice($table, $start_date, $end_date) {
+  switch($table) {
+
+    case 'total-harvest':
+      // Query function harvest by date passed in
+      return get_total_harvest_by_date($start_date, $end_date);;
+      break;
+
+    case 'total-by-greenhouse':
+      // Query function by date passed in .. greenhouse sort
+      return get_total_harvest_by_greenhouse($start_date, $end_date);
+      break;
+
+    case 'total-by-species':
+      // Query function by date passed in species ...
+      return get_total_harvest_by_species($start_date, $end_date);
+      break;
+
+    default:
+      return 'Please make a valid selection';
+      break;
+
+  }
+}
+
+/**
+ *  returns a html block to be printed
+ * containing the total harvest between (inclusive) two dates
+ */
+function get_total_harvest_by_date($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  $harvests = "SELECT * FROM harvest WHERE date>='$start_date' AND date<='$end_date';";
+  $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+  <table>
+  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
+      <thead>
+        <tr>
+            <th>strain</th>
+            <th>greenhouse</th>
+            <th>weight</th>
+            <th>date</th>
+            <th>time</th>
+            <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["strain"] . '</td>
+          <td>' . $row["greenhouse"] . '</td>
+          <td>' . $row["weight"] . '</td>
+          <td>' . $row["date"] . '</td>
+          <td>' . $row["time"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      ';
+  mysqli_close($mysqli);
+return $table_string;
+}
+
+/**
+ *  returns a html block to be printed
+ * containing the total harvest between (inclusive) two dates grouped by GH
+ */
+function get_total_harvest_by_greenhouse($start_date, $end_date) {
+
+}
+
+
+
+/**
+ *  returns a html block to be printed
+ * containing the total harvest between (inclusive) two dates grouped by species
+ */
+
+function get_total_harvest_by_species($start_date, $end_date) {
+
+}
+
+
