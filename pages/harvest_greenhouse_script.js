@@ -48,6 +48,7 @@ function add_batch_to_harvest_list() {
   body.appendChild(harvest_row);
 
 
+  document.getElementsByName("greenhouse")[0].disabled = true;
   document.getElementById('harvest_greenhouse_form').reset();
 }
 
