@@ -51,6 +51,7 @@ function add_harvest_to_list() {
 
 /**
  * Builds json string and sends it to the server side.
+ * deletes harvest data and refreshes page.
  */
 function submit_harvests() {
 
@@ -63,6 +64,9 @@ function submit_harvests() {
     cache: false,
   });
 
+  delete harvest_list;
+  delete harvest;
+  window.location.replace('harvest_greenhouse_form.php');
 }
 
 
