@@ -48,22 +48,27 @@ function add_batch_to_harvest_list() {
   body.appendChild(harvest_row);
 
 
+
   document.getElementsByName("greenhouse")[0].disabled = true;
   document.getElementById('harvest_greenhouse_form').reset();
 }
 
 
-function submit_batches(path, params, method) {
-  method = method || 'POST';
+function submit_batches() {
+
+  var json_harvest = JSON.stringify(harvest_list);
 
 
-  // READ https://stackoverflow.com/questions/10955017/sending-json-to-php-using-ajax
-  var send = $.ajax({
+  $.ajax({
     type: "POST",
-    dataType: "json",
-    cache: false,
     url: "harvest_greenhouse.php",
-    data: {greenhouse:harvest_list}
+    data: json_harvest,
+    cache: false,
+    success: function() {
+      alert(json_harvest);
+    }
+  }).done(function(data){
+    alert(data);
   });
 
 }

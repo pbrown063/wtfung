@@ -84,12 +84,13 @@ require_once __DIR__ . '/bootstrap.php';
 
 <ul class="flex-outer">
   <li>
-    <button type='submit' name='submit' value='submit' form='harvest_form' onclick="submit_batches()">Finished Harvesting</button>
+    <button form='harvest_form' onclick="submit_batches()">Finished Harvesting</button>
   </li>
 </ul>
 
 
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="harvest_greenhouse_script.js" type="text/javascript"></script>
 </html>
