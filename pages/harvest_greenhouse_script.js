@@ -15,44 +15,55 @@ function add_harvest_to_list() {
   var time = document.getElementsByName('time')[0].value;
   var notes = document.getElementsByName('notes')[0].value;
 
-  var harvest = { };
-  harvest.strain = strain;
-  harvest.weight = weight;
-  harvest.date = date;
-  harvest.time = time;
-  harvest.notes = notes;
 
-  harvest_list.push(harvest);
+  // Validation block
+  var validated = false;
 
-  // Creates a new table row and outputs it on page
-  document.getElementById("harvest-queue-table").style.display = "block";
-  var body = document.getElementById("harvest-queue");
-  var harvest_row = document.createElement("TR");
+  validated = true;
 
-  var strain_row = document.createElement("TD");
-  var text = document.createTextNode(strain);
-  strain_row.appendChild(text);
-  harvest_row.appendChild(strain_row);
+  if (validated) {
+    var harvest = {};
+    harvest.strain = strain;
+    harvest.weight = weight;
+    harvest.date = date;
+    harvest.time = time;
+    harvest.notes = notes;
+    harvest.greenhouse = greenhouse;
 
-  var weight_row = document.createElement("TD");
-  var text = document.createTextNode(weight);
-  weight_row.appendChild(text);
-  harvest_row.appendChild(weight_row);
+    harvest_list.push(harvest);
 
-  var date_row = document.createElement("TD");
-  var text = document.createTextNode(date);
-  date_row.appendChild(text);
-  harvest_row.appendChild(date_row);
+    // Creates a new table row and outputs it on page
+    document.getElementById("harvest-queue-table").style.display = "block";
+    var body = document.getElementById("harvest-queue");
+    var harvest_row = document.createElement("TR");
 
-  body.appendChild(harvest_row);
+    var strain_row = document.createElement("TD");
+    var text = document.createTextNode(strain);
+    strain_row.appendChild(text);
+    harvest_row.appendChild(strain_row);
+
+    var weight_row = document.createElement("TD");
+    var text = document.createTextNode(weight);
+    weight_row.appendChild(text);
+    harvest_row.appendChild(weight_row);
+
+    var date_row = document.createElement("TD");
+    var text = document.createTextNode(date);
+    date_row.appendChild(text);
+    harvest_row.appendChild(date_row);
+
+    body.appendChild(harvest_row);
+  }
 
 
 
   if (!lock) {
     lock = true;
     document.getElementsByName("greenhouse")[0].disabled = true;
-    var building = document.createTextNode("\u00A0" + greenhouse.toUpperCase());
-    document.getElementById('harvest-table-caption').appendChild(building);
+    var tableTitle = document.createTextNode("\u00A0" + greenhouse.toUpperCase());
+    document.getElementById('harvest-table-title').appendChild(tableTitle);
+    document.getElementById('harvest-table-title').style.display = "block";
+
   }
 
   document.getElementById('harvest_greenhouse_form').reset();
