@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-if (isset($_POST['table']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
+if (isset($_POST['sort_data_by']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
   $table = get_table_choice(
-    filter_input(INPUT_POST, 'table'),
+    filter_input(INPUT_POST, 'sort_data_by'),
     filter_input(INPUT_POST, 'start_date'),
     filter_input(INPUT_POST, 'end_date'));
 }
@@ -36,18 +36,10 @@ else {
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
       </li>
       <li>
-      <button type="submit" name="table" value="total-harvest">HARVEST TOTALS BY DAY</button>
+        <?php display_analytics_sort_types(); ?>
       </li>
       <li>
-        <button type="submit" name="table" value="total-by-greenhouse">HARVEST RESULTS BY GREENHOUSE</button>
-      </li>
-      <li>
-        <button type="submit" name="table" value="total-by-species">HARVEST RESULTS BY SPECIES</button>
-      </li>
-      <li>
-        <button type="submit" name="table" value="all-harvests-in-range">ALL HARVEST DATA IN DATE RANGE</button>
-      </li>
-      <li>
+        <button type="submit" name="table" value="">view schedule</button>
       </li>
     </ul>
   </form>

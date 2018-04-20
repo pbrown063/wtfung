@@ -36,7 +36,7 @@ else {
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
       </li>
       <li>
-      <?php display_schedule_phases(TRUE) ?>
+      <?php display_schedule_phases(TRUE); ?>
       </li>
       <li>
         <button type="submit" name="table" value="">view schedule</button>
