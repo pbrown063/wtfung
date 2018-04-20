@@ -36,7 +36,7 @@ else {
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
       </li>
       <li>
-        <button type="submit" name="table" value="total-harvest">HARVEST TOTALS BY DAY</button>
+      <button type="submit" name="table" value="total-harvest">HARVEST TOTALS BY DAY</button>
       </li>
       <li>
         <button type="submit" name="table" value="total-by-greenhouse">HARVEST RESULTS BY GREENHOUSE</button>

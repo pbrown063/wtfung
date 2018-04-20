@@ -501,11 +501,27 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
 
-  $harvests = "SELECT date, sum(weight) as total_weight FROM harvest 
-                WHERE date>='$start_date' 
-                AND date<='$end_date'
-                GROUP BY date
-                ORDER BY date DESC;";
+  $harvests = "SELECT harvest.date, am_weight.am_column, pm_weight.pm_column, sum(weight) as total_weight 
+                    
+                FROM harvest,
+                (  SELECT date, sum(weight) as am_column
+                       FROM harvest
+                       WHERE date>='$start_date'
+                       AND date<='$end_date'
+                       AND time='am'
+                       GROUP BY date ) as am_weight,
+                (  SELECT date, sum(weight) as pm_column
+                       FROM harvest
+                       WHERE date>='$start_date'
+                       AND date<='$end_date'
+                       AND time='pm'
+                       GROUP BY date ) as pm_weight
+                WHERE harvest.date>='$start_date' 
+                AND harvest.date<='$end_date'
+                AND am_weight.date = harvest.date 
+                AND pm_weight.date = harvest.date
+                GROUP BY harvest.date
+                ORDER BY harvest.date DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
@@ -516,7 +532,9 @@ function get_total_harvest_by_date($start_date, $end_date) {
       <thead>
         <tr>
             <th>date</th>
-            <th>total harvest</th>           
+            <th>AM</th>
+            <th>PM</th>
+            <th>total harvest</th>                       
         </tr>
       </thead>
       <tbody>
@@ -524,7 +542,9 @@ function get_total_harvest_by_date($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
     $table_string .= '
        <tr>
-          <td>' . $row["date"] . '</td>         
+          <td>' . $row["date"] . '</td>      
+          <td>' . $row["am_column"] . '</td>
+          <td>' . $row["pm_column"] . '</td>   
           <td>' . $row["total_weight"] . '</td>
        </tr>';
   }
