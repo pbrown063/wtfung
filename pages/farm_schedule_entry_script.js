@@ -1,5 +1,5 @@
 var entry_list = [];
-
+var lock = false;
 /**
  * Pulls the harvest form data
  * Validates it
@@ -13,12 +13,12 @@ function add_schedule_to_list() {
   });
 
   // Collect fields and push them onto the schedule_list.
-  var date = document.getElementByName('entry_date')[0].value;
-  var strain = document.getElementByName('strain')[0].value;
-  var substrate = document.getElementByName('substrate')[0].value;
-  var phase = document.getElementByName('schedule_phase')[0].value;
-  var volume = document.getElementByName('volume')[0].value;
-  var notes = document.getElementByName('notes')[0].value;
+  var date = document.getElementsByName('entry_date')[0].value;
+  var strain = document.getElementsByName('strain')[0].value;
+  var substrate = document.getElementsByName('substrate')[0].value;
+  var phase = document.getElementsByName('schedule_phase')[0].value;
+  var volume = document.getElementsByName('volume')[0].value;
+  var notes = document.getElementsByName('notes')[0].value;
 
   var entry = {};
   entry.date = date;
@@ -34,22 +34,23 @@ function add_schedule_to_list() {
   if (validated) {
 
     entry_list.push(entry);
-
     add_entry_to_queue_table(entry);
 
-    var tableTitle = document.createTextNode("ENTRY QUEUE TAQBLE");
+    if (!lock) {
+      var tableTitle = document.createTextNode("SCHEDULE ENTRY QUEUE");
+      lock = true;
+    }
     document.getElementById('entry-table-title').appendChild(tableTitle);
     document.getElementById('entry-table-title').style.display = "block";
     document.getElementById('entry-table').style.display = "block";
 
-
-    document.getElementById('farm_schedule_entry_form').reset();
+    document.getElementById("farm_schedule_entry_form").reset();
   }
 }
 
 /**
  * Builds json string and sends it to the server side.
- * deletes harvest data and refreshes page.
+ * deletes schedule data and refreshes page.
  */
 function submit_schedule() {
 
@@ -71,12 +72,40 @@ function submit_schedule() {
 /**
  * Validates the harvest data.
  * Only processes one error at a time.
+ * var entry = {};
+ entry.date = date;
+ entry.strain = strain;
+ entry.substrate = substrate;
+ entry.phase = phase;
+ entry.volume = volume;
+ entry.notes = notes;
+
  */
 function is_entry_valid(entry) {
-
+  if (entry.strain.length < 1) {
+    alert('Choose a strain');
+    return false;
+  }
+  if (entry.substrate.length < 1) {
+    alert('Choose a substrate');
+    return false;
+  }
+  if (entry.phase.length < 1) {
+    alert('Choose a phase');
+    return false;
+  }
+  if (entry.volume < 0) {
+    alert('Enter a positive value for number of items');
+    return false;
+  }
+  if (isNaN(entry.volume)) {
+    alert('Number of items must be a number');
+    return false;
+  }
   if (entry.notes.length < 1) {
     return confirm('Are you sure you want to create schedule entry with no notes?');
   }
+
   return true;
 }
 

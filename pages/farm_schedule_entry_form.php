@@ -18,12 +18,12 @@ require_once __DIR__ . '/bootstrap.php';
 
 <!--Schedule entry form-->
 <div class="container">
-  <ul class="flex-outer">
-    <form method="POST" action="farm_schedule_entry.php" id='farm_schedule_entry_form'>
+  <form method="POST" action="farm_schedule_entry.php" id='farm_schedule_entry_form'>
+    <ul class="flex-outer">
       <h1>Make Entry Into Farm Schedule</h1>
       <ul class="flex-outer">
         <li>
-          <input type="date" name="entry_date" value="<?php current_date(); ?>" placeholder="1999/12/31"> </input>
+          <input type="date" name="entry_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
         </li>
         <li>
           <?php display_strains(); ?>
@@ -35,7 +35,7 @@ require_once __DIR__ . '/bootstrap.php';
           <?php display_schedule_phases(); ?>
         </li>
         <li>
-          <input type='number' name='volume' value="item-count" placeholder='Enter Number of Items'> </input>
+          <input type='number' name='volume' value="item-count" placeholder='Enter Number of Items'>
         </li>
         <li>
           <textarea name='notes' rows='5' cols='20' placeholder='Scheduling Notes'></textarea>
@@ -44,8 +44,8 @@ require_once __DIR__ . '/bootstrap.php';
           <button onclick="return add_schedule_to_list()" value='add_harvest'>add event</button>
         </li>
       </ul>
-    </form>
-  </ul>
+    </ul>
+  </form>
 </div>
 
 <!--Queue table for schedule events to be submitted-->
