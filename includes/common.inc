@@ -453,8 +453,9 @@ function get_all_harvests_in_range($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-  <table>
-  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
+<h3 id="harvest-table-title">From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
       <thead>
         <tr>
             <th>strain</th>
@@ -481,6 +482,7 @@ function get_all_harvests_in_range($start_date, $end_date) {
   $table_string .= '
       </tbody>
       </table>
+      </div>
       ';
   mysqli_close($mysqli);
 return $table_string;
@@ -502,8 +504,9 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
+<h3 id="harvest-table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
   <table>
-  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
       <thead>
         <tr>
             <th>date</th>
@@ -522,6 +525,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $table_string .= '
       </tbody>
       </table>
+      </div>
       ';
   mysqli_close($mysqli);
   return $table_string;
@@ -543,8 +547,9 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
+<h3 id="harvest-table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
   <table>
-  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
       <thead>
         <tr>
             <th>greenhouse</th>
@@ -563,6 +568,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   $table_string .= '
       </tbody>
       </table>
+      </div>
       ';
   mysqli_close($mysqli);
   return $table_string;
@@ -587,8 +593,9 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
+<h3 id="harvest-table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
   <table>
-  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
       <thead>
         <tr>
             <th>strain</th>
@@ -607,6 +614,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $table_string .= '
       </tbody>
       </table>
+      </div>
       ';
   mysqli_close($mysqli);
   return $table_string;
