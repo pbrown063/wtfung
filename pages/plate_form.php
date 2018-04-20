@@ -30,7 +30,7 @@
         <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
       </li>
       <li>
-        <button type='submit' name='submit' value='submit' form='plate_form'>Smash that Plate</button>
+        <button type='submit' name='submit' value='submit' form='plate_form'>Create Plates</button>
       </li>
     </ul>
   </form>

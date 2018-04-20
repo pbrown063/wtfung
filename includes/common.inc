@@ -454,7 +454,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   $harvests = "SELECT * FROM harvest 
                 WHERE date>='$start_date' 
                 AND date<='$end_date' 
-                ORDER BY date;";
+                ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
@@ -505,7 +505,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
                 GROUP BY date
-                ORDER BY date;";
+                ORDER BY date DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
@@ -549,7 +549,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
                 GROUP BY greenhouse
-                ORDER BY total_weight;";
+                ORDER BY total_weight DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
@@ -596,7 +596,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
                 GROUP BY strain
-                ORDER BY total_weight;";
+                ORDER BY total_weight DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=

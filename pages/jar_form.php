@@ -38,7 +38,7 @@
                 <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>
             </li>
             <li>
-                <button type='submit'value='submit' name='submit' form='jar_form' >Pickle Jar?</button>
+                <button type='submit'value='submit' name='submit' form='jar_form' >Make Jars</button>
             </li>
         </ul>
     </form>
