@@ -253,7 +253,7 @@ function plate_table(){
   $sql = mysqli_query($mysqli, $plate) or die(mysqli_error($mysqli));
 
   echo '
-    <table>
+    <table id="plate_table">
       <thead>
         <tr>
             <th>id</th>

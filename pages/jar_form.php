@@ -13,11 +13,12 @@
 
 </head>
 <body>
-<?php include 'header.php'; ?>
 
 <div class="contain">
   <?php plate_table(); ?>
 </div>
+<?php include 'header.php'; ?>
+
 
 <div class="container">
     <form method="POST" action="jars.php" id="jar_form">
