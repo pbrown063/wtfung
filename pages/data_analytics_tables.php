@@ -28,7 +28,7 @@ else {
 <div class="container">
   <form method="POST" action="data_analytics_tables.php" id="table-selector">
     <ul class="flex-outer">
-      <h1>Select From and To dates and info type</h1>
+      <h1>Select From And To Dates</h1>
       <li>
         <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
       </li>
