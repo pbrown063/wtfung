@@ -37,12 +37,13 @@ function add_schedule_to_list() {
     add_entry_to_queue_table(entry);
 
     if (!lock) {
-      var tableTitle = document.createTextNode("SCHEDULE ENTRY QUEUE");
       lock = true;
+      var tableTitle = document.createTextNode("SCHEDULE ENTRY QUEUE");
+      document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
+      document.getElementsByClassName('table-title')[0].style.display = "block";
+      document.getElementById('schedule-queue-table').style.display = "block";
     }
-    document.getElementById('entry-table-title').appendChild(tableTitle);
-    document.getElementById('entry-table-title').style.display = "block";
-    document.getElementById('entry-table').style.display = "block";
+
 
     document.getElementById("farm_schedule_entry_form").reset();
   }
@@ -117,7 +118,7 @@ function is_entry_valid(entry) {
  *
  */
 function add_entry_to_queue_table(entry) {
-  document.getElementById("entry-queue-table").style.display = "block";
+  document.getElementById("schedule-queue-table").style.display = "block";
   var body = document.getElementById("entry-queue");
   var entry_row = document.createElement("TR");
 

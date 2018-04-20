@@ -64,7 +64,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 
 </div>
-<h3 id="harvest-table-title"> </h3>
+<h3 class="table-title"> </h3>
 <div class="contain" id="harvest-queue-table">
 
   <table>

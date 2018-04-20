@@ -30,13 +30,13 @@ else {
     <ul class="flex-outer">
       <h1>Select Farm Schedule Options</h1>
       <li>
-        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
+        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
       </li>
       <li>
-        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
+        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
       </li>
       <li>
-        <button type="submit" name="table" value="">option one placeholder</button>
+        <button type="submit" name="table" value="all-schedule-data-in-range">all schedule data</button>
       </li>
       <li>
         <button type="submit" name="table" value="">option two placeholder</button>

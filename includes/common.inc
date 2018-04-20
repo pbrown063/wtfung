@@ -456,6 +456,10 @@ function get_table_choice($table, $start_date, $end_date) {
 
     case 'all-harvests-in-range':
       return get_all_harvest_data_in_range($start_date, $end_date);
+
+    case 'all-schedule-data-in-range':
+      return get_all_schedule_data_in_range($start_date, $end_date);
+
     default:
       return 'Please make a valid submission';
       break;
@@ -477,7 +481,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 id="harvest-table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class=".table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
       <thead>
@@ -544,7 +548,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 id="harvest-table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class=".table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
       <thead>
@@ -592,7 +596,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 id="harvest-table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class=".table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
       <thead>
@@ -639,7 +643,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 id="harvest-table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class=".table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
       <thead>
@@ -667,3 +671,51 @@ function get_total_harvest_by_species($start_date, $end_date) {
 }
 
 
+/**
+ *  returns a html block to be printed
+ * containing the entire between (inclusive) two dates
+ */
+function get_all_schedule_data_in_range($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  $schedule = "SELECT * FROM schedule 
+                WHERE date>='$start_date' 
+                AND date<='$end_date' 
+                ORDER BY date DESC;";
+  $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 class="table-title">Farm Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>date</th>
+            <th>strain</th>
+            <th>phase</th>
+            <th>substrate</th>
+            <th>volume</th>
+            <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["date"] . '</td>
+          <td>' . $row["strain"] . '</td>
+          <td>' . $row["substrate"] . '</td>
+          <td>' . $row["phase"] . '</td>
+          <td>' . $row["volume"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
+}

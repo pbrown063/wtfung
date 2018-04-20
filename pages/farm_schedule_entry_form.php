@@ -49,8 +49,8 @@ require_once __DIR__ . '/bootstrap.php';
 </div>
 
 <!--Queue table for schedule events to be submitted-->
-<h3 id="entry-table-title"> </h3>
-<div class="contain" id="entry-queue-table">
+<h3 class="table-title"> </h3>
+<div class="contain" id="schedule-queue-table">
   <table>
     <thead>
     <tr>
