@@ -45,6 +45,9 @@ else {
         <button type="submit" name="table" value="total-by-species">HARVEST RESULTS BY SPECIES</button>
       </li>
       <li>
+        <button type="submit" name="table" value="all-harvests-in-range">ALL HARVEST DATA IN DATE RANGE</button>
+      </li>
+      <li>
       </li>
     </ul>
   </form>

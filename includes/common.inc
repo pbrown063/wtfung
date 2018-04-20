@@ -435,8 +435,10 @@ function get_table_choice($table, $start_date, $end_date) {
       return get_total_harvest_by_species($start_date, $end_date);
       break;
 
+    case 'all-harvests-in-range':
+      return get_all_harvest_data_in_range($start_date, $end_date);
     default:
-      return 'Please make a valid selection';
+      return 'Please make a valid submission';
       break;
 
   }
@@ -446,14 +448,17 @@ function get_table_choice($table, $start_date, $end_date) {
  *  returns a html block to be printed
  * containing the total harvest between (inclusive) two dates
  */
-function get_all_harvests_in_range($start_date, $end_date) {
+function get_all_harvest_data_in_range($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
-  $harvests = "SELECT * FROM harvest WHERE date>='$start_date' AND date<='$end_date';";
+  $harvests = "SELECT * FROM harvest 
+                WHERE date>='$start_date' 
+                AND date<='$end_date' 
+                ORDER BY date;";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 id="harvest-table-title">From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 id="harvest-table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
       <thead>
@@ -499,7 +504,8 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $harvests = "SELECT date, sum(weight) as total_weight FROM harvest 
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
-                GROUP BY date;";
+                GROUP BY date
+                ORDER BY date;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
@@ -542,7 +548,8 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   $harvests = "SELECT greenhouse, sum(weight) as total_weight FROM harvest 
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
-                GROUP BY greenhouse;";
+                GROUP BY greenhouse
+                ORDER BY total_weight;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
@@ -588,7 +595,8 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $harvests = "SELECT strain, sum(weight) as total_weight FROM harvest 
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
-                GROUP BY strain;";
+                GROUP BY strain
+                ORDER BY total_weight;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
