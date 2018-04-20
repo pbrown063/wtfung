@@ -208,6 +208,25 @@ function display_greehouse() {
   mysqli_close($mysqli);
 }
 
+/**
+ * Creates and prints a form dropdown called @schedule_phase
+ * that is generated from the building library
+ */
+function display_schedule_phases() {
+
+  echo " <select name='schedule_phase' required>
+ <option value='' disabled selected hidden>Select Phase</option>";
+
+    echo "
+<option value=plate>Transfer to Plates</option>
+<option value=jar>Innoculate Jars</option>
+<option value=bag>Sterilize & Innoculate</option>
+<option value=block>Bagging</option>
+
+";
+
+  echo "</select>";
+}
 
 /**
  * Creates a table spit out of the plates
@@ -321,8 +340,8 @@ function get_admin_header_menu() {
        <i class="fa fa-caret-down"></i>
        </button>
         <div class="dropdown-container">
-          <a href="#">Enter New Schedule</a>
-          <a href="#">Look At Existing Schedule</a>
+          <a href="farm_schedule_entry_form.php">Make Entry</a>
+          <a href="farm_schedule_view_form.php">View Schedule</a>
         </div>
 
       <button class="dropdown-btn">Data Analytics
