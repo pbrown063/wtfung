@@ -361,6 +361,7 @@ function get_admin_header_menu() {
 
         <a href="data_analytics_tables.php">Data Analytics</a>
         <a href="account_form.php">Create Account</a>     
+        <a href="developer_manual.php">Dev Docs</a>
 ';
 
   return $admin_menu;
@@ -411,7 +412,9 @@ function get_header_menu($user_name, $is_admin = FALSE) {
                 
   	'.$admin_menu.'
    
+      <a href="user_manual.php">Manual</a>
       <div class="logout">
+      
         <a href="logout.php">Logout</a>
       </div>
       
