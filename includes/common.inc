@@ -360,14 +360,7 @@ function get_admin_header_menu() {
           <a href="farm_schedule_view_form.php">View Schedule</a>
         </div>
 
-      <button class="dropdown-btn">Data Analytics
-      <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="data_analytics.php">Graphs</a>
-        <a href="data_analytics_tables.php">Tables</a>
-      </div>
-
+        <a href="data_analytics_tables.php">Data Analytics</a>     
 ';
 
   return $admin_menu;
