@@ -28,9 +28,9 @@
             <li>
                 <input type="number" name="count" min="1" placeholder="Number of Jars" required>
             </li>
-            <li>
+
                 <?php display_substrate(); ?>
-            </li>
+
             <li>
                 <input type="number" name="number_of_plates" min='1' placeholder="Number of plates used" required>
             </li>

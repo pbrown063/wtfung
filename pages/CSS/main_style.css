@@ -74,7 +74,7 @@ nav{
     left: 0;
     background-color: #222; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 20px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -94,6 +94,7 @@ nav{
     transition: 0.3s;
 }
 
+
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .dropdown-btn:hover {
     color: #db7093;
@@ -106,6 +107,15 @@ nav{
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+#logout > a{
+    color: #3AAFAB;
+    font-size: 18px;
+}
+
+#logout > a:hover {
+    color: #db7093;
 }
 
 #welcome-bars { margin-left: 45%; }
@@ -127,6 +137,10 @@ nav{
     display: none;
     background-color: #303030;
     padding-left: 12%;
+}
+
+.dropdown-container a {
+    font-size: 18px;
 }
 
 /* Optional: Style the caret down icon */
