@@ -6,7 +6,7 @@ require_once __DIR__ . '/bootstrap.php';
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Harvest by greenhous</title>
+  <title>Harvest Species</title>
 
   <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -17,16 +17,16 @@ require_once __DIR__ . '/bootstrap.php';
 <?php include 'header.php'; ?>
 <div class="container">
 
-  <!--Greenhouse field locks upon first harvest entry into queue -->
+  <!--Lock field for strains once harvests are in queue-->
   <ul class="flex-outer">
     <li>
-      <?php display_greehouse();?>
+      <?php display_strains();?>
     </li>
-    <!--    Inner harvest form -->
-    <form method="POST" action="harvest.php" id='harvest_greenhouse_form'>
+    <!--    Inner form that denotes harvest info   -->
+    <form method="POST" action="harvest.php" id='harvest_species_form'>
       <ul class="flex-outer">
         <li>
-          <?php display_strains();?>
+          <?php display_greehouse();?>
         </li>
         <li>
           <input type='number' name='weight' placeholder='Input weight'>
@@ -51,31 +51,32 @@ require_once __DIR__ . '/bootstrap.php';
         </li>
         <li>
 
-
-          <button onclick="return add_greenhouse_entry_to_list()" value='add_harvest'>add harvest</button>
+          <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
+          <button onclick="return add_species_entry_to_list()" value='add_harvest'>add harvest</button>
         </li>
       </ul>
     </form>
   </ul>
-</div>
 
-<!--Harvest Queue table-->
+
+</div>
 <h3 class="table-title"> </h3>
 <div class="contain" id="harvest-queue-table">
+
   <table>
     <thead>
     <tr>
-      <th>strain</th>
+      <th>greenhouse</th>
       <th>weight</th>
       <th>date</th>
     </tr>
     </thead>
     <tbody id="harvest-queue">
+
     </tbody>
   </table>
 </div>
 
-<!--Finished harvesting button, sends JSON to server to process-->
 <ul class="flex-outer">
   <li>
     <button form='harvest_form' onclick="submit_harvests()">Finished Harvesting</button>

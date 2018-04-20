@@ -404,7 +404,14 @@ function get_header_menu($user_name, $is_admin = FALSE) {
            <a href="bag_form.php">Bags</a>
       </div>
       
-      <a href="harvest_greenhouse_form.php">Harvest</a>
+      <button class="dropdown-btn">Harvest 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+           <a href="harvest_greenhouse_form.php">Greenhouse</a>
+           <a href="harvest_species_form.php">Species</a>         
+      </div>
+                
   	'.$admin_menu.'
    
       <div class="logout">
