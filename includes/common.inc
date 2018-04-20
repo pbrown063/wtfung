@@ -349,8 +349,7 @@ function get_admin_header_menu() {
            <a href="strain_form.php">Strain</a>
            <a href="substrate_form.php">Substrate</a>
            <a href="building_form.php">Building</a>
-      </div>
-      <a href="account_form.php">Create Account</a>
+      </div>     
   
         <button class="dropdown-btn">Farm Schedule
        <i class="fa fa-caret-down"></i>
@@ -360,7 +359,8 @@ function get_admin_header_menu() {
           <a href="farm_schedule_view_form.php">View Schedule</a>
         </div>
 
-        <a href="data_analytics_tables.php">Data Analytics</a>     
+        <a href="data_analytics_tables.php">Data Analytics</a>
+        <a href="account_form.php">Create Account</a>     
 ';
 
   return $admin_menu;
