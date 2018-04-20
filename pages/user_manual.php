@@ -21,9 +21,9 @@ require_once __DIR__ . '/bootstrap.php';
   <h3>Table of Contents</h3>
 
   <ul>
-    <button class="dropdown-btn">Production Process
+    <button class="toc-dropdown-btn">Production Process
     </button>
-    <div class="dropdown-container, table-of-contents">
+    <div class="toc-dropdown-container, table-of-contents">
       <ul><a href="#plates">Plates</a></ul>
       <ul><a href="#jars">Jars</a></ul>
       <ul><a href="#bags">Bags</a></ul>
@@ -31,9 +31,9 @@ require_once __DIR__ . '/bootstrap.php';
       <ul><a href="#harvest">Harvesting</a></ul>
       <ul><a href="#batches">Batches</a></ul>
     </div>
-    <button class="dropdown-btn">Admin Options
+    <button class="toc-dropdown-btn">Admin Options
     </button>
-    <div class="dropdown-container, table-of-contents">
+    <div class="toc-dropdown-container, table-of-contents">
       <ul><a href="#strain">Add New Strain</a></ul>
       <ul><a href="#substrate">Add New Substrate</a></ul>
       <ul><a href="#building">Add New Building</a></ul>
@@ -184,7 +184,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 
 </div>
-<script src="nav_script.js" type="text/javascript"></script>
+<script src="manual_script.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 

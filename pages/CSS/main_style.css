@@ -79,7 +79,7 @@ nav{
 }
 
 /* The navigation menu links */
-.sidenav a, .dropdown-btn {
+.sidenav a, .dropdown-btn, .toc-dropdown-btn {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
     text-transform: uppercase;
@@ -95,7 +95,7 @@ nav{
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .dropdown-btn:hover {
+.sidenav a:hover, .dropdown-btn:hover, .toc-dropdown-btn:hover {
     color: #db7093;
 }
 
@@ -123,7 +123,7 @@ nav{
 
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
+.dropdown-container, .toc-dropdown-container {
     display: none;
     background-color: #303030;
     padding-left: 12%;
