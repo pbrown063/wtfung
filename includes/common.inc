@@ -532,7 +532,40 @@ function get_total_harvest_by_date($start_date, $end_date) {
  * containing the total harvest between (inclusive) two dates grouped by GH
  */
 function get_total_harvest_by_greenhouse($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
 
+  $harvests = "SELECT greenhouse, sum(weight) as total_weight FROM harvest 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                GROUP BY greenhouse;";
+
+  $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+  <table>
+  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
+      <thead>
+        <tr>
+            <th>greenhouse</th>
+            <th>total harvest</th>           
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["greenhouse"] . '</td>         
+          <td>' . $row["total_weight"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 
@@ -543,7 +576,40 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
  */
 
 function get_total_harvest_by_species($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
 
+  $harvests = "SELECT strain, sum(weight) as total_weight FROM harvest 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                GROUP BY strain;";
+
+  $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+  <table>
+  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
+      <thead>
+        <tr>
+            <th>strain</th>
+            <th>total harvest</th>           
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["strain"] . '</td>         
+          <td>' . $row["total_weight"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 
