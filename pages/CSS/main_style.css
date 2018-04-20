@@ -138,3 +138,9 @@ nav{
 .graph {
     margin: 0 auto;
 }
+
+.table-of-contents {
+    display: none;
+    background-color: #3AAFAB !important;
+    padding-left: 3% !important;
+}
