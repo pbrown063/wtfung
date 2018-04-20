@@ -45,20 +45,21 @@ else {
         <button type="submit" name="table" value="total-by-species">HARVEST RESULTS BY SPECIES</button>
       </li>
       <li>
-        <div class="table-output">
-          <?php
-
-          if (isset($table)) {
-            echo $table;
-          }
-          ?>
-
-
-
       </li>
     </ul>
   </form>
 </div>
+
+<?php
+
+if (isset($table)) {
+  echo $table;
+}
+?>
+
+
+
+
 
 
 </div>

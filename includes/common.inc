@@ -446,15 +446,16 @@ function get_table_choice($table, $start_date, $end_date) {
  *  returns a html block to be printed
  * containing the total harvest between (inclusive) two dates
  */
-function get_total_harvest_by_date($start_date, $end_date) {
+function get_all_harvests_in_range($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
   $harvests = "SELECT * FROM harvest WHERE date>='$start_date' AND date<='$end_date';";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-  <table>
-  <caption>From: ' .$start_date. ' To: ' .$end_date . ' </caption>
+<h3 id="harvest-table-title">From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
       <thead>
         <tr>
             <th>strain</th>
@@ -481,6 +482,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $table_string .= '
       </tbody>
       </table>
+      </div>
       ';
   mysqli_close($mysqli);
 return $table_string;
@@ -488,10 +490,88 @@ return $table_string;
 
 /**
  *  returns a html block to be printed
+ * containing the total harvest between (inclusive) two dates
+ */
+function get_total_harvest_by_date($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+
+  $harvests = "SELECT date, sum(weight) as total_weight FROM harvest 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                GROUP BY date;";
+
+  $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 id="harvest-table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table>
+      <thead>
+        <tr>
+            <th>date</th>
+            <th>total harvest</th>           
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["date"] . '</td>         
+          <td>' . $row["total_weight"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
+}
+
+/**
+ *  returns a html block to be printed
  * containing the total harvest between (inclusive) two dates grouped by GH
  */
 function get_total_harvest_by_greenhouse($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
 
+  $harvests = "SELECT greenhouse, sum(weight) as total_weight FROM harvest 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                GROUP BY greenhouse;";
+
+  $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 id="harvest-table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table>
+      <thead>
+        <tr>
+            <th>greenhouse</th>
+            <th>total harvest</th>           
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["greenhouse"] . '</td>         
+          <td>' . $row["total_weight"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 
@@ -502,7 +582,42 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
  */
 
 function get_total_harvest_by_species($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
 
+  $harvests = "SELECT strain, sum(weight) as total_weight FROM harvest 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                GROUP BY strain;";
+
+  $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 id="harvest-table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table>
+      <thead>
+        <tr>
+            <th>strain</th>
+            <th>total harvest</th>           
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["strain"] . '</td>         
+          <td>' . $row["total_weight"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 
