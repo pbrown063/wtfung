@@ -373,11 +373,7 @@ function get_admin_header_menu() {
  */
 function get_header_menu($user_name, $is_admin = FALSE) {
 
-  $admin_menu = '';
-
-  if ($is_admin) {
-    $admin_menu = get_admin_header_menu();
-  }
+  $admin_menu = $is_admin ? get_admin_header_menu() : '';
 
   $user_menu =
     '
@@ -410,6 +406,7 @@ function get_header_menu($user_name, $is_admin = FALSE) {
       <div class="dropdown-container">
            <a href="harvest_greenhouse_form.php">Greenhouse</a>
            <a href="harvest_species_form.php">Species</a>         
+           <a href="harvest_ampm_form.php">AM / PM</a>
       </div>
                 
   	'.$admin_menu.'
