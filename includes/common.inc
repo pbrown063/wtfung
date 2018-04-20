@@ -232,7 +232,7 @@ function display_schedule_phases($all = FALSE) {
 function display_analytics_sort_types() {
   $output_block =
     " <select name='sort_data_by' required>
- <option value='' disabled selected hidden>Select Phase</option>";
+ <option value='' disabled selected hidden>Harvest Result Sort Criteria</option>";
 
   $output_block .= "  
 <option value=day>Harvest Totals By Day</option>

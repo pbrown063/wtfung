@@ -28,7 +28,7 @@ else {
 <div class="container">
   <form method="POST" action="data_analytics_tables.php" id="table-selector">
     <ul class="flex-outer">
-      <h1>Select From And To Dates</h1>
+      <h1>Harvest Data</h1>
       <li>
         <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
       </li>
@@ -39,7 +39,7 @@ else {
         <?php display_analytics_sort_types(); ?>
       </li>
       <li>
-        <button type="submit" name="table" value="">view schedule</button>
+        <button type="submit" name="table" value="">display harvest data</button>
       </li>
     </ul>
   </form>
