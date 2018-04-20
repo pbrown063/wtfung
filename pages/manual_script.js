@@ -33,11 +33,9 @@ for (i = 0; i < dropdown.length; i++) {
 
     if (dropdownContent.style.display === "block") {
       dropdownContent.style.display = "none";
-      console.log('close');
 
     } else {
       dropdownContent.style.display = "block";
-      console.log('open');
     }
   });
 }
