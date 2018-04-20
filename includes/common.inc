@@ -222,7 +222,7 @@ function display_schedule_phases($all = FALSE) {
 <option value=plate>Transfer to Plates</option>
 <option value=jar>Innoculate Jars</option>
 <option value=bag>Sterilize & Innoculate</option>
-<option value=block>Bagging</option>
+<option value=block>Bagging Blocks</option>
 ";
 
   $output_block .= "</select>";
