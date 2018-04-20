@@ -40,7 +40,7 @@ function add_harvest_to_list() {
 
     if (!lock) {
       document.getElementsByName("greenhouse")[0].disabled = true;
-      var tableTitle = document.createTextNode("\u00A0" + greenhouse.toUpperCase());
+      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + greenhouse.toUpperCase());
       document.getElementById('harvest-table-title').appendChild(tableTitle);
       document.getElementById('harvest-table-title').style.display = "block";
     }
