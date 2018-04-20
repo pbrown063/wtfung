@@ -145,7 +145,7 @@ function display_phase(){
   $sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
 
   echo " <select name='phase' required>
-        <option value='' disabled selected hidden> Select Phase</option>";
+        <option value='' disabled selected hidden> Select Production Phase</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["phase_name"]. "'>" . $row["phase_name"] . "</option>";
   }
@@ -215,7 +215,7 @@ function display_greehouse() {
 function display_schedule_phases($all = FALSE) {
   $output_block =
     " <select name='schedule_phase' required>
- <option value='' disabled selected hidden>Select Phase</option>";
+ <option value='' disabled selected hidden>Select Production Phase</option>";
 
   $output_block .= $all ? "<option value=all_phases>All Phases</option>" : "";
   $output_block .= "  
