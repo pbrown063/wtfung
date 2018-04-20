@@ -1,5 +1,6 @@
-#harvest-queue-table { display: none; }
-#harvest-table-title { text-align: center; }
+#harvest-queue-table, #entry-queue-table { display: none; }
+
+#harvest-table-title, #harvest-queue-table { text-align: center; }
 
 .contain {
     width: 90%;

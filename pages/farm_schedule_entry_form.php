@@ -16,13 +16,10 @@ require_once __DIR__ . '/bootstrap.php';
 <body>
 <?php include 'header.php'; ?>
 
+<!--Schedule entry form-->
 <div class="container">
-
-
   <ul class="flex-outer">
-    <form method="POST" action="farm_schedule_entry.php.php" id='farm_schedule_entry_form'>
-
-
+    <form method="POST" action="farm_schedule_entry.php" id='farm_schedule_entry_form'>
       <h1>Make Entry Into Farm Schedule</h1>
       <ul class="flex-outer">
         <li>
@@ -41,41 +38,39 @@ require_once __DIR__ . '/bootstrap.php';
           <input type='number' name='volume' value="item-count" placeholder='Enter Number of Items'> </input>
         </li>
         <li>
-        </li>
-        <li>
           <textarea name='notes' rows='5' cols='20' placeholder='Scheduling Notes'></textarea>
         </li>
         <li>
-
-          <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
-          <button onclick="return add_harvest_to_list()" value='add_harvest'>add another harvest</button>
+          <button onclick="return add_schedule_to_list()" value='add_harvest'>add event</button>
         </li>
       </ul>
     </form>
   </ul>
-
-
 </div>
-<h3 id="harvest-table-title"> </h3>
-<div class="contain" id="harvest-queue-table">
 
+<!--Queue table for schedule events to be submitted-->
+<h3 id="entry-table-title"> </h3>
+<div class="contain" id="entry-queue-table">
   <table>
     <thead>
     <tr>
-      <th>strain</th>
-      <th>weight</th>
       <th>date</th>
+      <th>strain</th>
+      <th>phase</th>
+      <th>substrate</th>
+      <th>volume</th>
     </tr>
     </thead>
-    <tbody id="harvest-queue">
-
+    <tbody id="entry-queue">
+    <!--Javascript will place entries in queue here-->
     </tbody>
   </table>
 </div>
 
+<!--Final page submit button-->
 <ul class="flex-outer">
   <li>
-    <button form='harvest_form' onclick="submit_harvests()">Finished Harvesting</button>
+    <button form='farm_schedule_entry' onclick="submit_schedule()">add to schedule</button>
   </li>
 </ul>
 
@@ -83,5 +78,5 @@ require_once __DIR__ . '/bootstrap.php';
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="harvest_greenhouse_script.js" type="text/javascript"></script>
+<script src="farm_schedule_entry_script.js" type="text/javascript"></script>
 </html>

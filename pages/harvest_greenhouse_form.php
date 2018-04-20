@@ -56,7 +56,7 @@ require_once __DIR__ . '/bootstrap.php';
         <li>
 
           <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
-          <button onclick="return add_harvest_to_list()" value='add_harvest'>add another harvest</button>
+          <button onclick="return add_harvest_to_list()" value='add_harvest'>add harvest</button>
         </li>
       </ul>
     </form>
