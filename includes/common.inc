@@ -212,20 +212,21 @@ function display_greehouse() {
  * Creates and prints a form dropdown called @schedule_phase
  * that is generated from the building library
  */
-function display_schedule_phases() {
-
-  echo " <select name='schedule_phase' required>
+function display_schedule_phases($all = FALSE) {
+  $output_block =
+    " <select name='schedule_phase' required>
  <option value='' disabled selected hidden>Select Phase</option>";
 
-    echo "
+  $output_block .= $all ? "<option value=all_phases>All Phases</option>" : "";
+  $output_block .= "  
 <option value=plate>Transfer to Plates</option>
 <option value=jar>Innoculate Jars</option>
 <option value=bag>Sterilize & Innoculate</option>
 <option value=block>Bagging</option>
-
 ";
 
-  echo "</select>";
+  $output_block .= "</select>";
+  print $output_block;
 }
 
 /**
@@ -436,6 +437,18 @@ function is_farmer()
   return FALSE;
 }
 
+/**
+ * @param $table
+ * @param $start_date
+ * @param $end_date
+ *
+ * @return string
+ * all_phases
+ * plate
+ * bag
+ * jar
+ * block
+ */
 function get_table_choice($table, $start_date, $end_date) {
   switch($table) {
 
@@ -457,11 +470,19 @@ function get_table_choice($table, $start_date, $end_date) {
     case 'all-harvests-in-range':
       return get_all_harvest_data_in_range($start_date, $end_date);
 
-    case 'all-schedule-data-in-range':
+    case 'all_phases':
       return get_all_schedule_data_in_range($start_date, $end_date);
+    case 'plate':
+      return get_schedule_data_for_plates($start_date, $end_date);
+    case 'jar':
+      return get_schedule_data_for_jars($start_date, $end_date);
+    case 'bag':
+      return get_schedule_data_for_bags($start_date, $end_date);
+    case 'block':
+      return get_schedule_data_for_blocks($start_date, $end_date);
 
     default:
-      return 'Please make a valid submission';
+      return '<h1 class="table-title">Please make a valid submission</h1>';
       break;
 
   }
@@ -481,7 +502,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 class=".table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class="table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
       <thead>
@@ -513,7 +534,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
       </div>
       ';
   mysqli_close($mysqli);
-return $table_string;
+  return $table_string;
 }
 
 /**
@@ -548,7 +569,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 class=".table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class="table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
       <thead>
@@ -596,7 +617,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 class=".table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class="table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
       <thead>
@@ -643,7 +664,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
   $table_string .=
     '
-<h3 class=".table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<h3 class="table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
       <thead>
@@ -707,6 +728,178 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
           <td>' . $row["strain"] . '</td>
           <td>' . $row["substrate"] . '</td>
           <td>' . $row["phase"] . '</td>
+          <td>' . $row["volume"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
+}
+
+function get_schedule_data_for_plates($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  $schedule = "SELECT * FROM schedule 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                AND phase = 'plate'
+                ORDER BY date DESC;";
+  $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 class="table-title">Plating Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>date</th>
+            <th>strain</th>                     
+            <th>number of plates</th>
+            <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["date"] . '</td>
+          <td>' . $row["strain"] . '</td>                    
+          <td>' . $row["volume"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
+}
+
+function get_schedule_data_for_jars($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  $schedule = "SELECT * FROM schedule 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                AND phase = 'jar'
+                ORDER BY date DESC;";
+  $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 class="table-title">Innoculation Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>date</th>
+            <th>strain</th>        
+            <th>substrate</th>             
+            <th>number of jars</th>          
+            <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["date"] . '</td>
+          <td>' . $row["strain"] . '</td>
+          <td>' . $row["substrate"] . '</td>                    
+          <td>' . $row["volume"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
+}
+
+function get_schedule_data_for_bags($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  $schedule = "SELECT * FROM schedule 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                AND phase = 'bag'
+                ORDER BY date DESC;";
+  $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 class="table-title">Sterilize and Innoculate Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>date</th>
+            <th>strain</th>          
+            <th>substrate</th>           
+            <th>number of bags</th>
+            <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["date"] . '</td>
+          <td>' . $row["strain"] . '</td>
+          <td>' . $row["substrate"] . '</td>                   
+          <td>' . $row["volume"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
+}
+
+function get_schedule_data_for_blocks($start_date, $end_date) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  $schedule = "SELECT * FROM schedule 
+                WHERE date>='$start_date' 
+                AND date<='$end_date'
+                AND phase = 'block'
+                ORDER BY date DESC;";
+  $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+  $table_string .=
+    '
+<h3 class="table-title">Block Bagging Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>date</th>
+            <th>strain</th>                     
+            <th>number of blocks</th>
+            <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["date"] . '</td>
+          <td>' . $row["strain"] . '</td>                    
           <td>' . $row["volume"] . '</td>
           <td>' . $row["notes"] . '</td>
        </tr>';

@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-if (isset($_POST['table']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
+if (isset($_POST['schedule_phase']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
   $table = get_table_choice(
-    filter_input(INPUT_POST, 'table'),
+    filter_input(INPUT_POST, 'schedule_phase'),
     filter_input(INPUT_POST, 'start_date'),
     filter_input(INPUT_POST, 'end_date'));
 }
@@ -26,7 +26,7 @@ else {
 <?php require_once 'header.php'; ?>
 
 <div class="container">
-  <form method="POST" action="data_analytics_tables.php" id="table-selector">
+  <form method="POST" action="farm_schedule_view_form.php" id="table-selector">
     <ul class="flex-outer">
       <h1>Select Farm Schedule Options</h1>
       <li>
@@ -36,16 +36,10 @@ else {
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
       </li>
       <li>
-        <button type="submit" name="table" value="all-schedule-data-in-range">all schedule data</button>
+      <?php display_schedule_phases(TRUE) ?>
       </li>
       <li>
-        <button type="submit" name="table" value="">option two placeholder</button>
-      </li>
-      <li>
-        <button type="submit" name="table" value="">option three placeholder</button>
-      </li>
-      <li>
-        <button type="submit" name="table" value="">option four placeholder</button>
+        <button type="submit" name="table" value="">view schedule</button>
       </li>
       <li>
       </li>
