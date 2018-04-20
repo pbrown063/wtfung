@@ -163,6 +163,25 @@ function display_phase(){
 }
 
 /**
+ * Creates and prints a form dropdown called @batch
+ * that is generated from the batch table
+ */
+
+function display_batches() {
+  $mysqli = sql_connect();
+  $account = "SELECT firstname, lastname FROM account";
+  $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
+
+  echo " <select name='account' required>
+        <option value='' disabled selected hidden> Select Worker</option>";
+  while ($row = $sql->fetch_assoc()){
+    echo "<option value='" .$row["firstname"]. "'>" .$row["firstname"]. " " .$row["lastname"]."</option>";
+  }
+  echo "</select>";
+  mysqli_close($mysqli);
+}
+
+/**
  * Creates and prints a form dropdown called @account
  * that is generated from the phase library.
  */
@@ -360,7 +379,7 @@ function get_header_menu($user_name, $is_admin = FALSE) {
            <a href="bag_form.php">Bags</a>
       </div>
       
-      <a href="harvest_form.php">Harvest</a>
+      <a href="harvest_greenhouse_form.php">Harvest</a>
   	'.$admin_menu.'
     </div>
     <script src="nav_script.js" type="text/javascript"></script>

@@ -1,10 +1,11 @@
 <?php
 //file containing functions -- needed for every page
+
+require_once __DIR__ . '/bootstrap.php';
+
 if (!is_admin()) {
   header('Location: home.php');
 }
-
-require_once __DIR__ . '/bootstrap.php';
 
 if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, "id"))) {
 header("Location:building_form.php");
