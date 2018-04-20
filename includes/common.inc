@@ -501,8 +501,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
 
-  $harvests = "SELECT harvest.date, am_weight.am_column, pm_weight.pm_column, sum(weight) as total_weight 
-                    
+  $harvests = "SELECT harvest.date, am_weight.am_column, pm_weight.pm_column, sum(weight) as total_weight                     
                 FROM harvest,
                 (  SELECT date, sum(weight) as am_column
                        FROM harvest
