@@ -144,3 +144,12 @@ nav{
     background-color: #3AAFAB !important;
     padding-left: 3% !important;
 }
+
+h3:before {
+    content:"";
+    display:block;
+    height:80px; /* fixed header height*/
+    margin:-80px 0 0; /* negative fixed header height */
+    visibility: hidden;
+    pointer-events: none;
+}
