@@ -994,7 +994,66 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
 }
 
 function get_plates_data($start_date, $end_date, $sort_by) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  if ($sort_by = 'strain') {
+    $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain
+                FROM plates_creation,
+                 (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date' 
+                AND creation_date<='$end_date'     
+                AND plates_creation.strain_code = strains.strain_code         
+                ORDER BY strain DESC;";
+  }
+  else {
+    $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain
+                FROM plates_creation p,
+                   (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date' 
+                AND creation_date<='$end_date'
+                AND plates_creation.strain_code = strains.strain_code              
+                ORDER BY creation_date DESC;";
+  }
+  $sql = mysqli_query($mysqli, $plates) or die(mysqli_error($mysqli));
 
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
+  $table_string .=
+    '
+<h3 class="table-title">Plates Records From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>creation date</th>
+            <th>strain</th>
+            <th>number of plates</th>                     
+            <th>generation</th>            
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["creation_date"] . '</td>
+          <td>' . $row["strain"] . '</td>                    
+          <td>' . $row["plate_count"] . '</td>
+          <td>' . $row["generation"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 function get_jars_data($start_date, $end_date, $sort_by) {

@@ -14,7 +14,9 @@ document.getElementById('plate_table').onclick = function(event) {
       rows[i].classList.remove("selected-row");
     }
   }
-  cells[0].parentNode.classList.add('selected-row');
+  if (cells[0].parentNode.parentNode.tagName !== "THEAD") {
+    cells[0].parentNode.classList.add('selected-row');
+  }
 
 
   if (!cells.length || target.parentNode.nodeName == 'THEAD') {
