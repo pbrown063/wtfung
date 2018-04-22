@@ -30,10 +30,10 @@ else {
     <ul class="flex-outer">
       <h1>Select Farm Schedule Options</h1>
       <li>
-        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
+        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="FROM: ">
       </li>
       <li>
-        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
+        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="TO: ">
       </li>
       <li>
       <?php display_schedule_phases(TRUE); ?>

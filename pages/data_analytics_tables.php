@@ -40,13 +40,15 @@ else {
         </select>
       </li>
       <li>
-        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
+        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="FROM: ">
       </li>
       <li>
-        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
+        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="TO:">
       </li>
-      <li>
-        <?php display_analytics_sort_types(); ?>
+      <li id="">
+        <!--       <?php //display_analytics_sort_types(); ?>  -->
+
+
       </li>
       <li>
         <button type="submit" name="table" value="">display harvest data</button>

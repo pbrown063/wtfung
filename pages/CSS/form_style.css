@@ -108,3 +108,15 @@ li select:invalid {
   background-color: white;
   text-transform: capitalize;
 }
+
+input[name="start_date"]:before, input[name="end_date"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  margin-right: 0.5em;
+}
+input[name="start_date"]:focus:before,
+input[name="start_date"]:valid:before,
+input[name="end_date"]:focus:before,
+input[name="end_date"]:valid:before {
+  content: "";
+}
