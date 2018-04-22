@@ -35,7 +35,7 @@ require_once __DIR__ . '/bootstrap.php';
           <?php display_schedule_phases(); ?>
         </li>
         <li>
-          <input type='number' name='volume' value="item-count" placeholder='Enter Number of Items'>
+          <input type='number' name='volume' placeholder='Enter Number of Items'>
         </li>
         <li>
           <textarea name='notes' rows='5' cols='20' placeholder='Scheduling Notes'></textarea>
