@@ -30,10 +30,20 @@ else {
     <ul class="flex-outer">
       <h1>Harvest Data</h1>
       <li>
-        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
+        <select name="phase" required>
+          <option value="" disabled selected hidden>Select Production Phase</option>
+          <option value="plate">Plating</option>
+          <option value="jar">Jarring</option>
+          <option value="bag">Innoculating Bags</option>
+          <option value="block">Blocking</option>
+          <option value="harvest">Harvest</option>
+        </select>
       </li>
       <li>
-        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
+        <input type="date" name="start_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
+      </li>
+      <li>
+        <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
       </li>
       <li>
         <?php display_analytics_sort_types(); ?>
@@ -52,11 +62,3 @@ if (isset($table)) {
 }
 ?>
 
-
-
-
-
-
-</div>
-</body>
-</html>
