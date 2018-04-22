@@ -450,37 +450,37 @@ function get_table_choice($table, $start_date, $end_date) {
 
     // Data Analytics cases
     case 'plate_strain':
-      return;
+      return get_plates_data($start_date, $end_date, 'strain');
       break;
     case 'plate_date':
-      return;
+      return get_plates_data($start_date, $end_date, 'date');
       break;
     case 'jar_strain':
-      return;
+      return get_jars_data($start_date, $end_date, 'strain');
       break;
     case 'jar_substrate':
-      return;
+      return get_jars_data($start_date, $end_date, 'substrate');
       break;
     case 'jar_date':
-      return;
+      return get_jars_data($start_date, $end_date, 'date');
       break;
     case 'bag_strain':
-      return;
+      return get_bags_data($start_date, $end_date, 'strain');
       break;
     case 'bag_substrate':
-      return;
+      return get_bags_data($start_date, $end_date, 'substrate');
       break;
     case 'bag_date':
-      return;
+      return get_bags_data($start_date, $end_date, 'date');
       break;
     case 'block_strain':
-      return;
+      return get_blocks_data($start_date, $end_date, 'strain');
       break;
     case 'block_substrate':
-      return;
+      return get_blocks_data($start_date, $end_date, 'substrate');
       break;
     case 'block_date':
-      return;
+      return get_block_data($start_date, $end_date, 'date');
       break;
     case 'harvest_day':
       return get_total_harvest_by_date($start_date, $end_date);;
@@ -992,3 +992,20 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
   mysqli_close($mysqli);
   return $table_string;
 }
+
+function get_plates_data($start_date, $end_date, $sort_by) {
+
+}
+
+function get_jars_data($start_date, $end_date, $sort_by) {
+
+}
+
+function get_bags_data($start_date, $end_date, $sort_by) {
+
+}
+
+function get_block_data($start_date, $end_date, $sort_by) {
+
+}
+
