@@ -46,10 +46,9 @@ else {
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="TO:">
       </li>
       <li>
-        <!--       <?php //display_analytics_sort_types(); ?>  -->
         <select name="sort-type" required>
           <option value="" disabled selected hidden>Select Phase First</option>
-
+          <!-- Javascript will populate and dynamically change options based on phase -->
         </select>
       </li>
       <li>

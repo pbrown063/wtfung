@@ -455,7 +455,33 @@ function get_table_choice($table, $start_date, $end_date) {
     case 'plate_date':
       return;
       break;
-
+    case 'jar_strain':
+      return;
+      break;
+    case 'jar_substrate':
+      return;
+      break;
+    case 'jar_date':
+      return;
+      break;
+    case 'bag_strain':
+      return;
+      break;
+    case 'bag_substrate':
+      return;
+      break;
+    case 'bag_date':
+      return;
+      break;
+    case 'block_strain':
+      return;
+      break;
+    case 'block_substrate':
+      return;
+      break;
+    case 'block_date':
+      return;
+      break;
     case 'harvest_day':
       return get_total_harvest_by_date($start_date, $end_date);;
       break;
