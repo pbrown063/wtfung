@@ -44,5 +44,6 @@
         </ul>
     </form>
 </div>
+<script src="jars_script.js" type="text/javascript"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
                 <input type="hidden" name="user" value="user"> <!--fill in value with correct user function-->
             </li>
             <li>
-                <input type="text" name="batch" placeholder="Batch Identification" required>
+                <input type="text" name="batch" placeholder="Batch Name" required>
             </li>
             <li>
                 <?php display_substrate(); ?>

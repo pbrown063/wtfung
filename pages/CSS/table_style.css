@@ -1,5 +1,7 @@
 #harvest-queue-table, #schedule-queue-table { display: none; }
 
+.selected-row { background-color: #8b8b00!important; }
+
 .table-title { text-align: center; }
 
 .contain {
