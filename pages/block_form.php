@@ -16,7 +16,7 @@ $date = date("Y-m-j");
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-  <form method="POST" action="bags.php" id="bag_form">
+  <form method="POST" action="block.php" id="block_form">
     <ul class="flex-outer">
       <!--User shown in header-->
       <li>
@@ -32,19 +32,16 @@ $date = date("Y-m-j");
         <?php display_substrate(); ?>
       </li>
       <li>
-        <input type="number" name="num_bags" min ="1" placeholder="Number of Bags" required>
+        <input type="number" name="block_count" min ="1" placeholder="Number of Blocks" required>
       </li>
       <li>
         <input type="date" name="creation_date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
       </li>
-<!--      <li>-->
-<!--        --><?php //display_account(); ?>
-<!--      </li>-->
       <li>
         <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea> <!--To be added to bags table-->
       </li>
       <li>
-        <button type='submit' name='submit' value='submit' form="bag_form">Make Bags</button>
+        <button type='submit' name='submit' value='submit' form="block_form">Make Blocks</button>
       </li>
     </ul>
   </form>
