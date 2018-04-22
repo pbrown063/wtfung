@@ -47,7 +47,7 @@ function add_species_entry_to_list() {
     if (!lock) {
       lock = true;
       document.getElementsByName("strain")[0].disabled = true;
-      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + strain.toUpperCase());
+      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.strain.toUpperCase());
       document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
       document.getElementsByClassName('table-title')[0].style.display = "block";
     }
@@ -81,7 +81,7 @@ function add_time_entry_to_list() {
 
     if (!lock) {
       lock = true;
-      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + time.toUpperCase());
+      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.time.toUpperCase());
       document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
       document.getElementsByClassName('table-title')[0].style.display = "block";
     }
@@ -116,7 +116,7 @@ function add_greenhouse_entry_to_list() {
     if (!lock) {
       lock = true;
       document.getElementsByName("greenhouse")[0].disabled = true;
-      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + greenhouse.toUpperCase());
+      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.greenhouse.toUpperCase());
       document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
       document.getElementsByClassName('table-title')[0].style.display = "block";
     }
