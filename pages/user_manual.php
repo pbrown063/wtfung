@@ -83,7 +83,7 @@ require_once __DIR__ . '/bootstrap.php';
   </ul>
 
   <h3 id="blocks">4. Inoculating blocks with the culture from the bags</h3>
-  Blocks are created.  This step is very similar to bagging. and requires the same data:
+  <a href="block_form.php">Blocks are created.</a>  This step is very similar to bagging. and requires the same data:
   <ul>
     <li>Batch name (eg A1, C3, etc)</li>
     <li>Strain being used</li>
@@ -162,14 +162,31 @@ require_once __DIR__ . '/bootstrap.php';
   </ul>
 
   <h3 id="data">Data Analytics</h3>
-  <a href="data_analytics_tables.php">Harvest data</a> can be called upon.  Selecting the <em>From</em> and <em>To</em>
-  dates will determine the harvest window that you want to see. Harvest totals
+  <a href="data_analytics_tables.php">Records and Data</a> can be called upon.  Selecting the <em>From</em> and <em>To</em>
+  dates will determine the time window that you want to see. Production information is available for each phase and
   can be sorted in several ways:
   <ul>
-    <li>By day (AM / PM / Total)</li>
-    <li>By species</li>
-    <li>By building (greenhouse)</li>
-    <li>All harvest data for window</li>
+
+    <li>Plating</li>
+    <ul>
+      <li>Strain</li>
+      <li>Date</li>
+    </ul>
+
+    <li>Jarring, Bagging, Blocking</li>
+    <ul>
+      <li>Strain</li>
+      <li>Substrate</li>
+      <li>Date</li>
+    </ul>
+
+    <li>Harvest Data</li>
+    <ul>
+      <li>By day (AM / PM / Total)</li>
+      <li>By species</li>
+      <li>By building (greenhouse)</li>
+      <li>All harvest data for window</li>
+    </ul>
   </ul>
 
   <h3 id="account">Adding a new account</h3>
