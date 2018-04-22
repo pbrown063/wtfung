@@ -463,24 +463,21 @@ function is_farmer()
 function get_table_choice($table, $start_date, $end_date) {
   switch($table) {
 
+    // Harvest cases
     case 'day':
-      // Query function harvest by date passed in
       return get_total_harvest_by_date($start_date, $end_date);;
       break;
-
     case 'greenhouse':
-      // Query function by date passed in .. greenhouse sort
       return get_total_harvest_by_greenhouse($start_date, $end_date);
       break;
-
     case 'species':
-      // Query function by date passed in species ...
       return get_total_harvest_by_species($start_date, $end_date);
       break;
-
     case 'all_data':
       return get_all_harvest_data_in_range($start_date, $end_date);
+      break;
 
+      //Scedule cases
     case 'all_phases':
       return get_all_schedule_data_in_range($start_date, $end_date);
     case 'plate':
@@ -511,6 +508,12 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
                 AND date<='$end_date' 
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -578,6 +581,12 @@ function get_total_harvest_by_date($start_date, $end_date) {
                 ORDER BY harvest.date DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -626,6 +635,12 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
                 ORDER BY total_weight DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -673,6 +688,12 @@ function get_total_harvest_by_species($start_date, $end_date) {
                 ORDER BY total_weight DESC;";
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -715,6 +736,12 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
                 AND date<='$end_date' 
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Farm Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -761,6 +788,12 @@ function get_schedule_data_for_plates($start_date, $end_date) {
                 AND phase = 'plate'
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Plating Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -803,6 +836,12 @@ function get_schedule_data_for_jars($start_date, $end_date) {
                 AND phase = 'jar'
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Innoculation Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -847,6 +886,12 @@ function get_schedule_data_for_bags($start_date, $end_date) {
                 AND phase = 'bag'
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Sterilize and Innoculate Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -891,6 +936,12 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
                 AND phase = 'block'
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
+
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
   $table_string .=
     '
 <h3 class="table-title">Block Bagging Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
