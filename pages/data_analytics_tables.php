@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-if (isset($_POST['sort_data_by']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
+if (isset($_POST['sort-type']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
   $table = get_table_choice(
-    filter_input(INPUT_POST, 'sort_data_by'),
+    filter_input(INPUT_POST, 'sort-type'),
     filter_input(INPUT_POST, 'start_date'),
     filter_input(INPUT_POST, 'end_date'));
 }
@@ -30,7 +30,7 @@ else {
     <ul class="flex-outer">
       <h1>Harvest Data</h1>
       <li>
-        <select name="phase" required>
+        <select name="phase" required onchange="phaseEntry()">
           <option value="" disabled selected hidden>Select Production Phase</option>
           <option value="plate">Plating</option>
           <option value="jar">Jarring</option>
@@ -45,10 +45,12 @@ else {
       <li>
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="TO:">
       </li>
-      <li id="">
+      <li>
         <!--       <?php //display_analytics_sort_types(); ?>  -->
+        <select name="sort-type" required>
+          <option value="" disabled selected hidden>Select Phase First</option>
 
-
+        </select>
       </li>
       <li>
         <button type="submit" name="table" value="">display harvest data</button>
@@ -63,4 +65,6 @@ if (isset($table)) {
   echo $table;
 }
 ?>
-
+<script src="data_analytics_script.js" type="text/javascript"></script>
+</body>
+</html>

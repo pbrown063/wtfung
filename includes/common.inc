@@ -229,21 +229,6 @@ function display_schedule_phases($all = FALSE) {
   print $output_block;
 }
 
-function display_analytics_sort_types() {
-  $output_block =
-    " <select name='sort_data_by' required>
- <option value='' disabled selected hidden>Harvest Result Sort Criteria</option>";
-
-  $output_block .= "  
-<option value=day>Harvest Totals By Day</option>
-<option value=greenhouse>Harvest Results By Greenhouse</option>
-<option value=species>Harvest Results By Sepecies</option>
-<option value=all_data>All Harvest Data In Range</option>
-";
-  $output_block .= "</select>";
-  print $output_block;
-}
-
 /**
  * Creates a table spit out of the plates
  */
@@ -463,17 +448,24 @@ function is_farmer()
 function get_table_choice($table, $start_date, $end_date) {
   switch($table) {
 
-    // Harvest cases
-    case 'day':
+    // Data Analytics cases
+    case 'plate_strain':
+      return;
+      break;
+    case 'plate_date':
+      return;
+      break;
+
+    case 'harvest_day':
       return get_total_harvest_by_date($start_date, $end_date);;
       break;
-    case 'greenhouse':
+    case 'harvest_greenhouse':
       return get_total_harvest_by_greenhouse($start_date, $end_date);
       break;
-    case 'species':
+    case 'harvest_species':
       return get_total_harvest_by_species($start_date, $end_date);
       break;
-    case 'all_data':
+    case 'harvest_all_data':
       return get_all_harvest_data_in_range($start_date, $end_date);
       break;
 
