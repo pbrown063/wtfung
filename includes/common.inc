@@ -996,19 +996,19 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
 function get_plates_data($start_date, $end_date, $sort_by) {
   $table_string = '';
   $mysqli = sql_connect();
-  if ($sort_by = 'strain') {
-    $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain
+  if ($sort_by == 'strain') {
+    $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain, notes
                 FROM plates_creation,
                  (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date' 
                 AND creation_date<='$end_date'     
                 AND plates_creation.strain_code = strains.strain_code         
-                ORDER BY strain DESC;";
+                ORDER BY strain;";
   }
   else {
-    $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain
-                FROM plates_creation p,
+    $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain, notes
+                FROM plates_creation,
                    (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date' 
@@ -1032,8 +1032,9 @@ function get_plates_data($start_date, $end_date, $sort_by) {
         <tr>
             <th>creation date</th>
             <th>strain</th>
-            <th>number of plates</th>                     
-            <th>generation</th>            
+            <th>plates created</th>                     
+            <th>generation</th>     
+            <th>notes</th>       
         </tr>
       </thead>
       <tbody>
@@ -1045,6 +1046,7 @@ function get_plates_data($start_date, $end_date, $sort_by) {
           <td>' . $row["strain"] . '</td>                    
           <td>' . $row["plate_count"] . '</td>
           <td>' . $row["generation"] . '</td>
+          <td>' . $row["notes"] . '</td>
        </tr>';
   }
   $table_string .= '
@@ -1057,11 +1059,153 @@ function get_plates_data($start_date, $end_date, $sort_by) {
 }
 
 function get_jars_data($start_date, $end_date, $sort_by) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  if ($sort_by == 'strain') {
+    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
+                FROM jars,
+                 (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date'
+                AND creation_date<='$end_date'
+                AND jars.strain_code = strains.strain_code
+                ORDER BY strain;";
+  }
+  else if($sort_by == 'substrate') {
+    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
+                FROM jars,
+                   (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date'
+                AND creation_date<='$end_date'
+                AND jars.strain_code = strains.strain_code
+                ORDER BY substrate;";
+  }
+  else {
+    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
+                FROM jars,
+                   (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date'
+                AND creation_date<='$end_date'
+                AND jars.strain_code = strains.strain_code
+                ORDER BY creation_date DESC;";
+  }
+  $sql = mysqli_query($mysqli, $jars) or die(mysqli_error($mysqli));
 
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
+  $table_string .=
+    '
+<h3 class="table-title">Plates Records From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>creation date</th>
+            <th>strain</th>
+            <th>jars created</th>                     
+            <th>substrate</th>     
+            <th>notes</th>       
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["creation_date"] . '</td>
+          <td>' . $row["strain"] . '</td>                    
+          <td>' . $row["jar_count"] . '</td>
+          <td>' . $row["substrate"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 function get_bags_data($start_date, $end_date, $sort_by) {
+  $table_string = '';
+  $mysqli = sql_connect();
+  if ($sort_by == 'strain') {
+    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
+                FROM jars,
+                 (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date'
+                AND creation_date<='$end_date'
+                AND jars.strain_code = strains.strain_code
+                ORDER BY strain;";
+  }
+  else if($sort_by == 'substrate') {
+    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
+                FROM jars,
+                   (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date'
+                AND creation_date<='$end_date'
+                AND jars.strain_code = strains.strain_code
+                ORDER BY substrate;";
+  }
+  else {
+    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
+                FROM jars,
+                   (SELECT common_name, strain_code
+                    FROM strains_library) as strains
+                WHERE creation_date>='$start_date'
+                AND creation_date<='$end_date'
+                AND jars.strain_code = strains.strain_code
+                ORDER BY creation_date DESC;";
+  }
+  $sql = mysqli_query($mysqli, $jars) or die(mysqli_error($mysqli));
 
+  // If no results, return
+  if ($sql->fetch_assoc() == NULL) {
+    return '<h3 class="table-title">No Results Found</h3>';
+  }
+
+  $table_string .=
+    '
+<h3 class="table-title">Plates Records From: ' .$start_date. ' To: ' .$end_date . ' </h3>
+<div class="contain">
+  <table> 
+      <thead>
+        <tr>
+            <th>creation date</th>
+            <th>strain</th>
+            <th>jars created</th>                     
+            <th>substrate</th>     
+            <th>notes</th>       
+        </tr>
+      </thead>
+      <tbody>
+  ';
+  while ($row = $sql->fetch_assoc()) {
+    $table_string .= '
+       <tr>
+          <td>' . $row["creation_date"] . '</td>
+          <td>' . $row["strain"] . '</td>                    
+          <td>' . $row["jar_count"] . '</td>
+          <td>' . $row["substrate"] . '</td>
+          <td>' . $row["notes"] . '</td>
+       </tr>';
+  }
+  $table_string .= '
+      </tbody>
+      </table>
+      </div>
+      ';
+  mysqli_close($mysqli);
+  return $table_string;
 }
 
 function get_block_data($start_date, $end_date, $sort_by) {

@@ -1,5 +1,5 @@
 <?php
-  require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/bootstrap.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
         <input type='text' name='generation' placeholder='Enter Plate Generation' required>
       </li>
       <li>
-         <input type="number" name="count" min="1" placeholder="Enter Number of Plates" required>
+        <input type="number" name="count" min="1" placeholder="Enter Number of Plates" required>
       </li>
       <li>
         <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="1999/12/31"></input>
