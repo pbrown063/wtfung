@@ -266,7 +266,7 @@ function plate_table(){
       <tbody>';
   while ($row = $sql->fetch_assoc()) {
     echo '
-       <tr>
+       <tr class="plate-row">
           <td>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_code"] . '</td>
           <td>' . $row["plate_count"] . '</td>

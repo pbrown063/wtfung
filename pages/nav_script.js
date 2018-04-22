@@ -43,18 +43,3 @@ for (i = 0; i < dropdown.length; i++) {
 }
 
 
-  document.getElementById('plate_table').onclick = function(event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement;
-    while (target && target.nodeName != 'TR') {
-      target = target.parentElement;
-    }
-    var cells = target.cells;
-
-    if (!cells.length || target.parentNode.nodeName == 'THEAD') {
-      return;
-    }
-
-    document.getElementsByName('plate_id')[0].value = cells[0].innerHTML;
-
-  }
