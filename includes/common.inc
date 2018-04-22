@@ -105,13 +105,13 @@ function display_strains(){
  */
 function display_strain_code(){
   $mysqli = sql_connect();
-  $substrate = "SELECT strain_code FROM strains_library";
+  $substrate = "SELECT strain_code, common_name FROM strains_library";
   $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
   echo" <select name='code' required>
       <option value='' disabled selected hidden> Select Strain Code</option>";
   while ($row = $sql->fetch_assoc()){
-    echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "</option>";
+    echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "  " .$row["common_name"]. "</option>";
   }
   echo "</select>";
   mysqli_close($mysqli);
