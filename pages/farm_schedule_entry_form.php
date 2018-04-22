@@ -20,7 +20,7 @@ require_once __DIR__ . '/bootstrap.php';
 <div class="container">
   <form method="POST" action="farm_schedule_entry.php" id='farm_schedule_entry_form'>
     <ul class="flex-outer">
-      <h1>Make Entry Into Farm Schedule</h1>
+      <h1>Create A Production Event</h1>
       <ul class="flex-outer">
         <li>
           <input type="date" name="entry_date" value="<?php current_date(); ?>" placeholder="1999/12/31">
