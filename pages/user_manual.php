@@ -75,15 +75,23 @@ require_once __DIR__ . '/bootstrap.php';
   will be added to sterilized bags filled with a substrate.  The following information will be entered:
   <ul>
     <li>Batch name (eg A1, C3, etc)</li>
+    <li>Strain being used</li>
     <li>Substrate in the bag</li>
     <li>Number of bags being made</li>
     <li>Date of work</li>
-    <li>The person who made the bags</li>
     <li>Any notes about this phase</li>
   </ul>
 
   <h3 id="blocks">4. Inoculating blocks with the culture from the bags</h3>
-  Blocks are created.
+  Blocks are created.  This step is very similar to bagging. and requires the same data:
+  <ul>
+    <li>Batch name (eg A1, C3, etc)</li>
+    <li>Strain being used</li>
+    <li>Substrate in the bag</li>
+    <li>Number of bags being made</li>
+    <li>Date of work</li>
+    <li>Any notes about this phase</li>
+  </ul>
 
   <h3 id="harvest">5. Harvesting the fruiting mycellium</h3>
   The fruit is flushed and <a href="harvest_ampm_form.php">harvested</a> from blocks.  Our system allows multiple
