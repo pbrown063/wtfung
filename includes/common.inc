@@ -1137,33 +1137,33 @@ function get_bags_data($start_date, $end_date, $sort_by) {
   $table_string = '';
   $mysqli = sql_connect();
   if ($sort_by == 'strain') {
-    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
-                FROM jars,
+    $jars = "SELECT creation_date, num_bags, substrate, strains.common_name as strain, notes, batch_id
+                FROM bags,
                  (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date'
                 AND creation_date<='$end_date'
-                AND jars.strain_code = strains.strain_code
+                AND bags.strain_code = strains.strain_code
                 ORDER BY strain;";
   }
   else if($sort_by == 'substrate') {
-    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
-                FROM jars,
+    $jars = "SELECT creation_date, num_bags, substrate, strains.common_name as strain, notes, batch_id
+                FROM bags,
                    (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date'
                 AND creation_date<='$end_date'
-                AND jars.strain_code = strains.strain_code
+                AND bags.strain_code = strains.strain_code
                 ORDER BY substrate;";
   }
   else {
-    $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
-                FROM jars,
+    $jars = "SELECT creation_date, num_bags, substrate, strains.common_name as strain, notes, batch_id
+                FROM bags,
                    (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date'
                 AND creation_date<='$end_date'
-                AND jars.strain_code = strains.strain_code
+                AND bags.strain_code = strains.strain_code
                 ORDER BY creation_date DESC;";
   }
   $sql = mysqli_query($mysqli, $jars) or die(mysqli_error($mysqli));
@@ -1180,9 +1180,10 @@ function get_bags_data($start_date, $end_date, $sort_by) {
   <table> 
       <thead>
         <tr>
+            <th>batch name</th>
             <th>creation date</th>
             <th>strain</th>
-            <th>jars created</th>                     
+            <th>bags made</th>                     
             <th>substrate</th>     
             <th>notes</th>       
         </tr>
@@ -1192,9 +1193,10 @@ function get_bags_data($start_date, $end_date, $sort_by) {
   while ($row = $sql->fetch_assoc()) {
     $table_string .= '
        <tr>
+          <td>' . $row["batch_id"] . '</td>
           <td>' . $row["creation_date"] . '</td>
           <td>' . $row["strain"] . '</td>                    
-          <td>' . $row["jar_count"] . '</td>
+          <td>' . $row["num_bags"] . '</td>
           <td>' . $row["substrate"] . '</td>
           <td>' . $row["notes"] . '</td>
        </tr>';

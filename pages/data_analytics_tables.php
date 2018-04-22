@@ -28,7 +28,7 @@ else {
 <div class="container">
   <form method="POST" action="data_analytics_tables.php" id="table-selector">
     <ul class="flex-outer">
-      <h1>Harvest Data</h1>
+      <h1>Data Analytics And Records</h1>
       <li>
         <select name="phase" required onchange="phaseEntry()">
           <option value="" disabled selected hidden>Select Production Phase</option>
