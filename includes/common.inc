@@ -344,7 +344,7 @@ function display_admin_menu() {
  * Returns the html string to display header menu.
  * Result is based on whether the user is an admin.
  */
-function get_header_menu($user_name, $is_admin = FALSE) {
+function get_header_menu($user_name, $message, $is_admin = FALSE) {
 
   $admin_menu = '';
 
@@ -355,6 +355,7 @@ function get_header_menu($user_name, $is_admin = FALSE) {
   $user_menu =
     '
 <nav>
+    <div id="snackbar">'.$message.'</div>
     <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
     <div id="myMenubutton" class="menuButton">
       <div class="bar1"></div>
