@@ -1155,13 +1155,16 @@ function get_bags_data($start_date, $end_date, $sort_by) {
   $table_string = '';
   $mysqli = sql_connect();
 
-  $bags = "SELECT creation_date, num_bags, substrate, strains.common_name as strain, notes, batch_id
-                FROM bags,
+  $bags = "SELECT creation_date, num_bags, substrate, strains.common_name as strain, notes, batch.name as batch_name, batch_id
+                FROM bags_creation,
                  (SELECT common_name, strain_code
-                    FROM strains_library) as strains
+                    FROM strains_library) as strains,
+                 (SELECT name, id
+                    FROM batches) as batch
                 WHERE creation_date>='$start_date'
                 AND creation_date<='$end_date'
-                AND bags.strain_code = strains.strain_code
+                AND bags_creation.strain_code = strains.strain_code
+                AND batch_id = batch.id
                 ";
 
   if ($sort_by == 'strain') {
@@ -1203,7 +1206,7 @@ function get_bags_data($start_date, $end_date, $sort_by) {
 
     $table_string .= '
        <tr>
-          <td>' . $row["batch_id"] . '</td>
+          <td>' . $row["batch_name"] . '</td>
           <td>' . $row["creation_date"] . '</td>
           <td>' . $row["strain"] . '</td>                    
           <td>' . $row["num_bags"] . '</td>
