@@ -1,7 +1,11 @@
-#harvest-queue-table { display: none; }
+#harvest-queue-table, #schedule-queue-table { display: none; }
+
+.selected-row { border: solid 2px white; }
+
+.table-title { text-align: center; }
 
 .contain {
-    width: 60%;
+    width: 90%;
     max-width: 1200px;
     margin: 2% auto;
     height: 250px;

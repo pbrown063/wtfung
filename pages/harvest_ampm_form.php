@@ -6,7 +6,7 @@ require_once __DIR__ . '/bootstrap.php';
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Harvest by greenhous</title>
+  <title>Harvest Species</title>
 
   <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
@@ -16,15 +16,25 @@ require_once __DIR__ . '/bootstrap.php';
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
-
-  <!--Greenhouse field locks upon first harvest entry into queue -->
+  <!--Lock field for strains once harvests are in queue-->
   <ul class="flex-outer">
-    <li>
-      <?php display_greehouse();?>
-    </li>
-    <!--    Inner harvest form -->
-    <form method="POST" action="harvest.php" id='harvest_greenhouse_form'>
+    <ul class="flex-inner">
+      <li>
+        <label for="am">AM</label>
+        <input type='radio' name='time' value='am' id="am" checked>
+      </li>
+      <li>
+        <label for="pm">PM</label>
+        <input type='radio' name='time' value='pm' id="pm">
+      </li>
+    </ul>
+
+    <!--    Inner form that denotes harvest info   -->
+    <form method="POST" action="harvest.php" id='harvest_time_form'>
       <ul class="flex-outer">
+        <li>
+          <?php display_greehouse();?>
+        </li>
         <li>
           <?php display_strains();?>
         </li>
@@ -35,47 +45,39 @@ require_once __DIR__ . '/bootstrap.php';
           <input type='date' name='date' value="<?php current_date(); ?>" placeholder='yyyy-mm-d'> </input>
         </li>
         <li>
-          <ul class="flex-inner">
-            <li>
-              <label for="am">AM</label>
-              <input type='radio' name='time' value='am' id="am" checked>
-            </li>
-            <li>
-              <label for="pm">PM</label>
-              <input type='radio' name='time' value='pm' id="pm">
-            </li>
-          </ul>
         </li>
         <li>
           <textarea name='notes' rows='5' cols='20' placeholder='Harvest Notes'></textarea>
         </li>
         <li>
 
-
-          <button onclick="return add_greenhouse_entry_to_list()" value='add_harvest'>add harvest</button>
+          <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
+          <button onclick="return add_time_entry_to_list()" value='add_harvest'>add harvest</button>
         </li>
       </ul>
     </form>
   </ul>
-</div>
 
-<!--Harvest Queue table-->
+
+</div>
 <h3 class="table-title"> </h3>
 <div class="contain" id="harvest-queue-table">
+
   <table>
     <thead>
     <tr>
+      <th>greenhouse</th>
       <th>strain</th>
       <th>weight</th>
       <th>date</th>
     </tr>
     </thead>
     <tbody id="harvest-queue">
+
     </tbody>
   </table>
 </div>
 
-<!--Finished harvesting button, sends JSON to server to process-->
 <ul class="flex-outer">
   <li>
     <button form='harvest_form' onclick="submit_harvests()">Finished Harvesting</button>

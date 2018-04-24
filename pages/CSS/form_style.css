@@ -52,7 +52,6 @@ input[type="radio"]{
   text-transform: uppercase;
   vertical-align: middle;
 }
-
 .flex-outer > li > label + *,
 .flex-inner {
   flex: 1 0 220px;
@@ -64,7 +63,7 @@ input[type="radio"]{
 
 .flex-outer li input:not([type='checkbox']),
 .flex-outer li textarea,
-.flex-outer .icon select{
+.flex-outer li select{
   padding: 15px;
   border: none;
   font-size: 1em;
@@ -74,12 +73,6 @@ input[type="radio"]{
 li select:invalid {
   border-right: 2px solid red;
 }
-.flex-outer input[type=number]::-webkit-inner-spin-button,
-.flex-outer input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 
 .flex-outer li button {
   font-size: .75em;
@@ -101,40 +94,29 @@ li select:invalid {
   color: palevioletred;
 }
 
-.flex-outer .icon {
-  position: relative;
-}
-
-.flex-outer .icon:after {
-  content: '\f078';
-  font: normal 14px FontAwesome;
-  color: #444;
-  position: absolute;
-  pointer-events: none;
-  right: 28%;
-  top: 35%;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
-.flex-outer .icon select {
+.flex-outer li select, li select option{
+  font-style: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0;
+  border: 0;
+  outline: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  /* Add some styling */
-  outline: 0;
-  display: block;
-  font-style: inherit;
-  color: #999;
-  background-color: #ffffff;
-  background-image: none;
-  border: none;
-  -ms-word-break: normal;
-  word-break: normal;
+  border-radius: 0;
+  color:#999;
+  background-color: white;
   text-transform: capitalize;
+}
+
+input[name="start_date"]:before, input[name="end_date"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  margin-right: 0.5em;
+}
+input[name="start_date"]:focus:before,
+input[name="start_date"]:valid:before,
+input[name="end_date"]:focus:before,
+input[name="end_date"]:valid:before {
+  content: "";
 }
