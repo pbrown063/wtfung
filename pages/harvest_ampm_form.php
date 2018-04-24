@@ -32,7 +32,7 @@ require_once __DIR__ . '/bootstrap.php';
             <?php display_greehouse();?>
           </li>
           <li>
-            <?php display_strains();?>
+            <?php display_strain_code(); ?>
           </li>
           <li>
             <input type='number' name='weight' placeholder='Input weight'>
