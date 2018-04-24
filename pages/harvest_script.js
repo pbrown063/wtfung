@@ -81,6 +81,9 @@ function add_time_entry_to_list() {
 
     if (!lock) {
       lock = true;
+
+      document.getElementsByClassName('radio-container')[0].style.display = "none";
+      document.getElementsByClassName('radio-container')[1].style.display = "none";
       var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.time.toUpperCase());
       document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
       document.getElementsByClassName('table-title')[0].style.display = "block";

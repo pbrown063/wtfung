@@ -12,6 +12,8 @@ require_once __DIR__ . '/bootstrap.php';
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/table_style.css">
 
+
+
 </head>
 <body>
 <?php include 'header.php'; ?>
@@ -19,44 +21,41 @@ require_once __DIR__ . '/bootstrap.php';
   <!--Lock field for strains once harvests are in queue-->
   <ul class="flex-outer">
     <ul class="flex-inner">
-      <li class="radio-container">
-        <label for="am">AM</label>
-        <input type='radio' name='time' value='am' id="am" checked>
+      <li>
+        <select name="time" required>
+          <option value="" disabled selected hidden>Time Of Day</option>
+          <option value="am">AM</option>
+          <option value="pm">PM</option>
+        </select>
       </li>
-      <li class="radio-container">
-        <label for="pm">PM</label>
-        <input type='radio' name='time' value='pm' id="pm">
-      </li>
+      <!--    Inner form that denotes harvest info   -->
+      <form method="POST" action="harvest.php" id='harvest_time_form'>
+        <ul class="flex-outer">
+          <li>
+            <?php display_greehouse();?>
+          </li>
+          <li>
+            <?php display_strains();?>
+          </li>
+          <li>
+            <input type='number' name='weight' placeholder='Input weight'>
+          </li>
+          <li>
+            <input type='date' name='date' value="<?php current_date(); ?>" placeholder='yyyy-mm-d'> </input>
+          </li>
+          <li>
+          </li>
+          <li>
+            <textarea name='notes' rows='5' cols='20' placeholder='Harvest Notes'></textarea>
+          </li>
+          <li>
+
+            <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
+            <button onclick="return add_time_entry_to_list()" value='add_harvest'>add harvest</button>
+          </li>
+        </ul>
+      </form>
     </ul>
-
-    <!--    Inner form that denotes harvest info   -->
-    <form method="POST" action="harvest.php" id='harvest_time_form'>
-      <ul class="flex-outer">
-        <li>
-          <?php display_greehouse();?>
-        </li>
-        <li>
-          <?php display_strains();?>
-        </li>
-        <li>
-          <input type='number' name='weight' placeholder='Input weight'>
-        </li>
-        <li>
-          <input type='date' name='date' value="<?php current_date(); ?>" placeholder='yyyy-mm-d'> </input>
-        </li>
-        <li>
-        </li>
-        <li>
-          <textarea name='notes' rows='5' cols='20' placeholder='Harvest Notes'></textarea>
-        </li>
-        <li>
-
-          <!--        THESE BUTTONS WILL DETERMINE IF MORE HARVESTS WILL BE MADE -->
-          <button onclick="return add_time_entry_to_list()" value='add_harvest'>add harvest</button>
-        </li>
-      </ul>
-    </form>
-  </ul>
 
 
 </div>
