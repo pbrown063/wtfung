@@ -230,36 +230,51 @@ function display_schedule_phases($all = FALSE) {
 }
 
 /**
- * Creates a table spit out of the plates
+ *
+$plates = "SELECT creation_date, plate_count, strains.common_name as strain, notes
+FROM plates_creation,
+(SELECT common_name, strain_code
+FROM strains_library) as strains
+WHERE creation_date >= '$start_date'
+AND creation_date <= '$end_date'
+AND plates_creation.strain_code = strains.strain_code
+";
+ * Creates a table spit out of the plates (not plates_creation)
  */
 function plate_table(){
   $mysqli = sql_connect();
-  $plate = "SELECT * FROM plates WHERE plate_count >= 1";
+  $plate = "SELECT plate_id, strains.common_name strain_name, plate_count, creation_date
+            FROM plates, 
+            (SELECT common_name, strain_code
+             FROM strains_library) as strains
+            WHERE plates.strain_code = strains.strain_code
+            AND plate_count >= 1";
   $sql = mysqli_query($mysqli, $plate) or die(mysqli_error($mysqli));
-
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    echo '<h3 class="table-title">No Results Found</h3>';
-    return;
-  }
 
 
   echo '
     <table id="plate_table">
       <thead>
         <tr>
-            <th>id</th>
-            <th>strain code</th>
+            <th>plate id</th>
+            <th>strain</th>
             <th>number of plates</th>           
             <th>creation date</th>
         </tr>
       </thead>
       <tbody>';
   while ($row = $sql->fetch_assoc()) {
+
+    if ($row == NULL) {
+      mysqli_close($mysqli);
+      echo '<h3 class="table-title">No Results Found</h3>';
+      return;
+    }
+
     echo '
        <tr class="plate-row">
           <td>' . $row["plate_id"] . '</td>
-          <td>' . $row["strain_code"] . '</td>
+          <td>' . $row["strain_name"] . '</td>
           <td>' . $row["plate_count"] . '</td>         
           <td>' . $row["creation_date"] . '</td>
        </tr>';
@@ -487,12 +502,6 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -511,6 +520,13 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["strain"] . '</td>
@@ -561,12 +577,6 @@ function get_total_harvest_by_date($start_date, $end_date) {
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -583,6 +593,13 @@ function get_total_harvest_by_date($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["date"] . '</td>      
@@ -616,12 +633,6 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -636,6 +647,13 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["greenhouse"] . '</td>         
@@ -670,12 +688,6 @@ function get_total_harvest_by_species($start_date, $end_date) {
 
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -690,6 +702,13 @@ function get_total_harvest_by_species($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["strain"] . '</td>         
@@ -719,12 +738,6 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Farm Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -743,6 +756,13 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["date"] . '</td>
@@ -772,12 +792,6 @@ function get_schedule_data_for_plates($start_date, $end_date) {
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Plating Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -794,6 +808,13 @@ function get_schedule_data_for_plates($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["date"] . '</td>
@@ -821,12 +842,6 @@ function get_schedule_data_for_jars($start_date, $end_date) {
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Innoculation Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -844,6 +859,13 @@ function get_schedule_data_for_jars($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["date"] . '</td>
@@ -872,12 +894,6 @@ function get_schedule_data_for_bags($start_date, $end_date) {
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Sterilize and Innoculate Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -895,6 +911,13 @@ function get_schedule_data_for_bags($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["date"] . '</td>
@@ -923,12 +946,6 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Block Bagging Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -945,6 +962,13 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["date"] . '</td>
@@ -983,12 +1007,6 @@ function get_plates_data($start_date, $end_date, $sort_by) {
   }
   $sql = mysqli_query($mysqli, $plates) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -1005,6 +1023,13 @@ function get_plates_data($start_date, $end_date, $sort_by) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["creation_date"] . '</td>
@@ -1046,12 +1071,6 @@ function get_jars_data($start_date, $end_date, $sort_by) {
   }
   $sql = mysqli_query($mysqli, $jars) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -1069,6 +1088,13 @@ function get_jars_data($start_date, $end_date, $sort_by) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["creation_date"] . '</td>
@@ -1112,12 +1138,6 @@ function get_bags_data($start_date, $end_date, $sort_by) {
 
   $sql = mysqli_query($mysqli, $bags) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -1136,6 +1156,13 @@ function get_bags_data($start_date, $end_date, $sort_by) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["batch_id"] . '</td>
@@ -1180,12 +1207,6 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
   }
   $sql = mysqli_query($mysqli, $blocks) or die(mysqli_error($mysqli));
 
-  // If no results, return
-  if ($sql->fetch_assoc() == NULL) {
-    mysqli_close($mysqli);
-    return '<h3 class="table-title">No Results Found</h3>';
-  }
-
   $table_string .=
     '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
@@ -1204,6 +1225,13 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
       <tbody>
   ';
   while ($row = $sql->fetch_assoc()) {
+
+    // If no results, return
+    if ($sql->fetch_assoc() == NULL) {
+      mysqli_close($mysqli);
+      return '<h3 class="table-title">No Results Found</h3>';
+    }
+
     $table_string .= '
        <tr>
           <td>' . $row["batch_id"] . '</td>
