@@ -90,12 +90,14 @@ function display_strains(){
   $strain = "SELECT common_name FROM strains_library";
   $sql = mysqli_query($mysqli, $strain) or die(mysqli_error($mysqli));
 
-  echo " <select name='strain' required>
-        <option value='' disabled selected hidden> Select Strain Name</option>";
+  echo "<li class='icon'>
+        <select name='strain' required>
+        <option value='' disabled selected hidden>Select Strain Name</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["common_name"]. "'>" . $row["common_name"] . "</option>";
   }
-  echo "</select>";
+  echo "</select>
+        </li>";
   mysqli_close($mysqli);
 }
 
@@ -108,12 +110,14 @@ function display_strain_code(){
   $substrate = "SELECT strain_code, common_name FROM strains_library";
   $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
-  echo" <select name='code' required>
+  echo" <li class='icon'>
+     <select name='code' required>
       <option value='' disabled selected hidden> Select Strain Code</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='". $row['strain_code']. "'>" . $row['strain_code'] . "  " .$row["common_name"]. "</option>";
   }
-  echo "</select>";
+  echo "</select>
+    </li>";
   mysqli_close($mysqli);
 }
 
@@ -126,12 +130,14 @@ function display_substrate(){
   $substrate = "SELECT substrate_type FROM substrate_library";
   $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
-  echo " <select name='substrate' required>
-        <option value='' disabled selected hidden> Select Substrate Type</option>";
+  echo "<li class='icon'>
+        <select name='substrate' required>
+        <option value='' disabled selected hidden>Select Substrate Type</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["substrate_type"]. "'>" . $row["substrate_type"] . "</option>";
   }
-  echo "</select>";
+  echo "</select>
+        </li>";
   mysqli_close($mysqli);
 }
 
@@ -144,12 +150,15 @@ function display_phase(){
   $phase = "SELECT phase_name FROM phase_library";
   $sql = mysqli_query($mysqli, $phase) or die(mysqli_error($mysqli));
 
-  echo " <select name='phase' required>
-        <option value='' disabled selected hidden> Select Production Phase</option>";
+  echo " 
+     <li class='icon'>
+      <select name='phase' required>
+        <option value='' disabled selected hidden> Select Phase</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["phase_name"]. "'>" . $row["phase_name"] . "</option>";
   }
-  echo "</select>";
+  echo "</select>
+        </li>";
   mysqli_close($mysqli);
 }
 
@@ -163,12 +172,14 @@ function display_batches() {
   $account = "SELECT firstname, lastname FROM account";
   $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
 
-  echo " <select name='account' required>
+  echo "<li class='icon'>
+         <select name='account' required>
         <option value='' disabled selected hidden> Select Worker</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["firstname"]. "'>" .$row["firstname"]. " " .$row["lastname"]."</option>";
   }
-  echo "</select>";
+  echo "</select>
+        </li>";
   mysqli_close($mysqli);
 }
 
@@ -181,12 +192,14 @@ function display_account(){
   $account = "SELECT firstname, lastname FROM account";
   $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
 
-  echo " <select name='account' required>
+  echo "<li class='icon'>
+        <select name='account' required>
         <option value='' disabled selected hidden> Select Worker</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["firstname"]. "'>" .$row["firstname"]. " " .$row["lastname"]."</option>";
   }
-  echo "</select>";
+  echo "</select>
+    </li>";
   mysqli_close($mysqli);
 }
 
@@ -199,12 +212,14 @@ function display_greehouse() {
   $account = "SELECT id FROM building";
   $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
 
-  echo " <select name='greenhouse' required>
+  echo "<li class='icon'>
+        <select name='greenhouse' required>
  <option value='' disabled selected hidden>Select Greenhouse</option>";
   while ($row = $sql->fetch_assoc()) {
     echo "<option value='".$row["id"]."'>".$row["id"]."</option>";
   }
-  echo "</select>";
+  echo "</select>
+        </li>";
   mysqli_close($mysqli);
 }
 
@@ -343,7 +358,7 @@ function get_authorization_level($useremail) {
 /**
  * Returns the html string to display the admin menu for the header.
  */
-function get_admin_header_menu() {
+function display_admin_menu() {
   $admin_menu =
     '
       <button class="dropdown-btn">Library 
@@ -376,13 +391,14 @@ function get_admin_header_menu() {
  * Returns the html string to display header menu.
  * Result is based on whether the user is an admin.
  */
-function get_header_menu($user_name, $is_admin = FALSE) {
+function get_header_menu($user_name, $message, $is_admin = FALSE) {
 
   $admin_menu = $is_admin ? get_admin_header_menu() : '';
 
   $user_menu =
     '
 <nav>
+    <div id="snackbar">'.$message.'</div>
     <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
     <div id="myMenubutton" class="menuButton">
       <div class="bar1"></div>
@@ -395,7 +411,9 @@ function get_header_menu($user_name, $is_admin = FALSE) {
   </nav>
   
     <div id="mySidenav" class="sidenav">
-   
+      <div id="logout">
+        <a href="logout.php">Logout</a>
+      </div>
       <button class="dropdown-btn">Lab 
       <i class="fa fa-caret-down"></i>
       </button>

@@ -22,6 +22,7 @@ if (isset($_POST['email']) && isset($_POST['password'])){
       $f_name = stripslashes($info['firstname']);
       $l_name = stripslashes($info['lastname']);
       $_SESSION['name'] = $f_name . ' ' . $l_name;
+      $_SESSION['message'] = "Welcome!";
      setcookie("email", $useremail);
      setcookie("authorized", get_authorization_level($useremail));
      header('Location: home.php');    

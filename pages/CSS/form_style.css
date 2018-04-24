@@ -63,7 +63,7 @@ input[type="radio"]{
 
 .flex-outer li input:not([type='checkbox']),
 .flex-outer li textarea,
-.flex-outer li select{
+.flex-outer .icon select{
   padding: 15px;
   border: none;
   font-size: 1em;
@@ -72,6 +72,12 @@ input[type="radio"]{
 .flex-outer li input:invalid,
 li select:invalid {
   border-right: 2px solid red;
+}
+
+.flex-outer input[type=number]::-webkit-inner-spin-button,
+.flex-outer input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .flex-outer li button {
@@ -93,19 +99,41 @@ li select:invalid {
 .flex-outer li button:hover {
   color: palevioletred;
 }
+.flex-outer .icon {
+  position: relative;
+}
 
-.flex-outer li select, li select option{
-  font-style: inherit;
+.flex-outer .icon:after {
+  content: '\f078';
+  font: normal 14px FontAwesome;
+  color: #444;
+  position: absolute;
+  pointer-events: none;
+  right: 28%;
+  top: 35%;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.flex-outer .icon select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 0;
-  outline: 0;
+  border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  border-radius: 0;
-  color:#999;
-  background-color: white;
+  /* Add some styling */
+  outline: 0;
+  display: block;
+  font-style: inherit;
+  color: #999;
+  background-color: #ffffff;
+  background-image: none;
+  border: none;
+  -ms-word-break: normal;
+  word-break: normal;
   text-transform: capitalize;
 }
 

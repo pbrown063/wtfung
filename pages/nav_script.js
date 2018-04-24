@@ -33,11 +33,33 @@ for (i = 0; i < dropdown.length; i++) {
 
         if (dropdownContent.style.display === "block") {
             dropdownContent.style.display = "none";
+            console.log('close');
 
         } else {
                 dropdownContent.style.display = "block";
+                console.log('open');
         }
     });
 }
 
+function snack(){
+    var snack = sessionStorage.getItem('message');
+    if (snack !== ' '){
+       toast();
+    }else{
 
+    }
+}
+
+function toast() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+    sessionStorage.setItem('message', ' ');
+}
