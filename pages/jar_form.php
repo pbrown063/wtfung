@@ -24,16 +24,16 @@ require_once __DIR__ . '/bootstrap.php';
   <form method="POST" action="jars.php" id="jar_form">
     <ul class="flex-outer">
       <li>
-        <input type="number" name="plate_id" min='1' placeholder="Plate ID" required>
-      </li>
-      <li>
-        <input type="number" name="count" min="1" placeholder="Number of Jars" required>
-      </li>
-      <li>
-        <?php display_substrate(); ?>
+        <input type="number" name="plate_id" min='1' placeholder="Plate ID From Table" required>
       </li>
       <li>
         <input type="number" name="number_of_plates" min='1' placeholder="Number of plates used" required>
+      </li>
+      <li>
+        <input type="number" name="count" min="1" placeholder="Number of Jars Made" required>
+      </li>
+      <li>
+        <?php display_substrate(); ?>
       </li>
       <li>
         <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>

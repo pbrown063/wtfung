@@ -231,14 +231,6 @@ function display_schedule_phases($all = FALSE) {
 
 /**
  *
-$plates = "SELECT creation_date, plate_count, strains.common_name as strain, notes
-FROM plates_creation,
-(SELECT common_name, strain_code
-FROM strains_library) as strains
-WHERE creation_date >= '$start_date'
-AND creation_date <= '$end_date'
-AND plates_creation.strain_code = strains.strain_code
-";
  * Creates a table spit out of the plates (not plates_creation)
  */
 function plate_table(){
@@ -276,6 +268,53 @@ function plate_table(){
           <td>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_name"] . '</td>
           <td>' . $row["plate_count"] . '</td>         
+          <td>' . $row["creation_date"] . '</td>
+       </tr>';
+  }
+  echo '</tbody>
+      </table>';
+  mysqli_close($mysqli);
+}
+
+/**
+ *
+ * Creates a table spit out of the plates (not plates_creation)
+ */
+function jars_table(){
+  $mysqli = sql_connect();
+  $plate = "SELECT jar_id, strains.common_name strain_name, jar_count, creation_date
+            FROM jars, 
+            (SELECT common_name, strain_code
+             FROM strains_library) as strains       
+            WHERE jars.strain_code = strains.strain_code
+            AND jar_count >= 1";
+  $sql = mysqli_query($mysqli, $plate) or die(mysqli_error($mysqli));
+
+
+  echo '
+    <table id="jar_table">
+      <thead>
+        <tr>
+            <th>jar id</th>
+            <th>strain</th>
+            <th>number of jars</th>           
+            <th>creation date</th>
+        </tr>
+      </thead>
+      <tbody>';
+  while ($row = $sql->fetch_assoc()) {
+
+    if ($row == NULL) {
+      mysqli_close($mysqli);
+      echo '<h3 class="table-title">No Results Found</h3>';
+      return;
+    }
+
+    echo '
+       <tr class="jar-row">
+          <td>' . $row["jar_id"] . '</td>
+          <td>' . $row["strain_name"] . '</td>
+          <td>' . $row["jar_count"] . '</td>         
           <td>' . $row["creation_date"] . '</td>
        </tr>';
   }
