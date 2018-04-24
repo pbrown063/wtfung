@@ -13,6 +13,7 @@
 <div class="container">
   <form method="POST" action="create_account.php" id='account_form'>
     <ul class="flex-outer">
+      <h1>Create Account</h1>
       <li>
         <input type="text" id="first-name" placeholder="First Name" name="Fname" required>
       </li>

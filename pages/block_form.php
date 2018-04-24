@@ -18,10 +18,7 @@ $date = date("Y-m-j");
 <div class="container">
   <form method="POST" action="block.php" id="block_form">
     <ul class="flex-outer">
-      <!--User shown in header-->
-      <li>
-        <input type="hidden" name="user" value="user"> <!--fill in value with correct user function-->
-      </li>
+      <h1>Block</h1>
       <li>
         <input type="text" name="batch" placeholder="Batch Name" required>
       </li>

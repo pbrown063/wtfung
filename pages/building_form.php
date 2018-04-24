@@ -17,6 +17,7 @@
 <div class="container">
     <form method="POST" action="building.php" id="building">
         <ul class="flex-outer">
+          <h1>Add Building</h1>
             <li>
                 <input type='text' name='id' placeholder='Enter Building Name' required>
             </li>

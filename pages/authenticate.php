@@ -13,6 +13,7 @@ if (isset($_POST['email']) && isset($_POST['password'])){
       "' AND password = '".$userpasswd."'";
 
   $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+  
   setcookie("authorized", 0);
 
   if (mysqli_num_rows($result) >= 1) {

@@ -17,6 +17,7 @@
 <div class="container">
     <form method="POST" action="substrate.php" id="substrate_form">
         <ul class="flex-outer">
+          <h1>Add Substrate</h1>
             <li>
                 <input type='text' name='substrate' placeholder='Enter Substrate Type' required>
             </li>

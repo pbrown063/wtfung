@@ -16,6 +16,7 @@
 <div class="container">
     <form method="POST" action="strains.php" id="strains_form">
         <ul class="flex-outer">
+          <h1>Add Strain</h1>
             <li>
                 <input type='text' name='code' placeholder='Enter Strain Code' required>
             </li>

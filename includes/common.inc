@@ -46,7 +46,7 @@ function find_site_root($site_name = 'wtfung') {
  */
 function add_new_account() {
   if (isset($_POST['Fname']) && isset($_POST['Lname'])
-      && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])) {
+    && isset($_POST[strtolower('email')]) && isset($_POST['pswrd'])) {
 
     $mysqli = sql_connect();
 
@@ -63,7 +63,7 @@ function add_new_account() {
     }
     else {
       $sqli = "INSERT INTO account (firstname, lastname, email, password)"
-          . "VALUES('$firstname', '$lastname', '$newemail', '$pswrd')";
+        . "VALUES('$firstname', '$lastname', '$newemail', '$pswrd')";
       $result = mysqli_query($mysqli, $sqli) or die(mysqli_error($mysqli));
       mysqli_close($mysqli);
       return TRUE;
@@ -229,7 +229,8 @@ function display_greehouse() {
  */
 function display_schedule_phases($all = FALSE) {
   $output_block =
-      " <select name='schedule_phase' required>
+    " <li class='icon'>
+ <select name='schedule_phase' required>
  <option value='' disabled selected hidden>Select Production Phase</option>";
 
   $output_block .= $all ? "<option value=all_phases>All Phases</option>" : "";
@@ -240,7 +241,8 @@ function display_schedule_phases($all = FALSE) {
 <option value=block>Bagging Blocks</option>
 ";
 
-  $output_block .= "</select>";
+  $output_block .= "</select>
+        </li>";
   print $output_block;
 }
 
@@ -360,7 +362,7 @@ function get_authorization_level($useremail) {
  */
 function get_admin_header_menu() {
   $admin_menu =
-      '
+    '
       <button class="dropdown-btn">Library 
         <i class="fa fa-caret-down"></i>
       </button>
@@ -396,7 +398,7 @@ function get_header_menu($user_name, $message = '', $is_admin = FALSE) {
   $admin_menu = $is_admin ? get_admin_header_menu() : '';
 
   $user_menu =
-      '
+    '
 <nav>
     <div id="snackbar">'.$message.'</div>
     <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
@@ -555,7 +557,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">All Harvest Data From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -630,7 +632,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Harvest Totals By Day From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
@@ -686,7 +688,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Total Harvest By Greenhouse From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
@@ -741,7 +743,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Total Harvest By Species From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table>
@@ -791,7 +793,7 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Farm Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -845,7 +847,7 @@ function get_schedule_data_for_plates($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Plating Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -895,7 +897,7 @@ function get_schedule_data_for_jars($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Innoculation Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -947,7 +949,7 @@ function get_schedule_data_for_bags($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Sterilize and Innoculate Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -999,7 +1001,7 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Block Bagging Schedule From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -1059,7 +1061,7 @@ function get_plates_data($start_date, $end_date, $sort_by) {
   $sql = mysqli_query($mysqli, $plates) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -1123,7 +1125,7 @@ function get_jars_data($start_date, $end_date, $sort_by) {
   $sql = mysqli_query($mysqli, $jars) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -1193,7 +1195,7 @@ function get_bags_data($start_date, $end_date, $sort_by) {
   $sql = mysqli_query($mysqli, $bags) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 
@@ -1262,7 +1264,7 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
   $sql = mysqli_query($mysqli, $blocks) or die(mysqli_error($mysqli));
 
   $table_string .=
-      '
+    '
 <h3 class="table-title">Plates Records By ' . ucwords($sort_by) . ' From: ' .$start_date. ' To: ' .$end_date . ' </h3>
 <div class="contain">
   <table> 

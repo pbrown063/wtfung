@@ -29,7 +29,7 @@ else {
   <form method="POST" action="data_analytics_tables.php" id="table-selector">
     <ul class="flex-outer">
       <h1>Data Analytics And Records</h1>
-      <li>
+      <li class="icon">
         <select name="phase" required onchange="phaseEntry()">
           <option value="" disabled selected hidden>Select Production Phase</option>
           <option value="plate">Plating Records</option>
@@ -45,7 +45,7 @@ else {
       <li>
         <input type="date" name="end_date" value="<?php current_date(); ?>" placeholder="TO:">
       </li>
-      <li>
+      <li class="icon">
         <select name="sort-type" required>
           <option value="" disabled selected hidden>Select Phase First</option>
           <!-- Javascript will populate and dynamically change options based on phase -->

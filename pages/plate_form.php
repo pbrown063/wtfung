@@ -17,6 +17,7 @@ require_once __DIR__ . '/bootstrap.php';
 <div class="container">
   <form method="POST" action="plates.php" id='plate_form'>
     <ul class="flex-outer">
+      <h1>Create a Plate</h1>
       <li>
         <?php display_strain_code(); ?>
       </li>

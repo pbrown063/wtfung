@@ -30,7 +30,14 @@ require_once __DIR__ . '/bootstrap.php';
     </h1>
   </li>
 
+
+  <!-- Use a button to open the snackbar -->
+  <button onclick="snack()">Show Snackbar</button>
+
+
+
 </ul>
+
 
 </body>
 </html>
