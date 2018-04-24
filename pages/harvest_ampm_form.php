@@ -19,11 +19,11 @@ require_once __DIR__ . '/bootstrap.php';
   <!--Lock field for strains once harvests are in queue-->
   <ul class="flex-outer">
     <ul class="flex-inner">
-      <li>
+      <li class="radio-container">
         <label for="am">AM</label>
         <input type='radio' name='time' value='am' id="am" checked>
       </li>
-      <li>
+      <li class="radio-container">
         <label for="pm">PM</label>
         <input type='radio' name='time' value='pm' id="pm">
       </li>

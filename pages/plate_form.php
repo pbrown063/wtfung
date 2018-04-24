@@ -21,9 +21,6 @@ require_once __DIR__ . '/bootstrap.php';
         <?php display_strain_code(); ?>
       </li>
       <li>
-        <input type='text' name='generation' placeholder='Enter Plate Generation' required>
-      </li>
-      <li>
         <input type="number" name="count" min="1" placeholder="Enter Number of Plates" required>
       </li>
       <li>

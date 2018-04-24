@@ -243,8 +243,7 @@ function plate_table(){
         <tr>
             <th>id</th>
             <th>strain code</th>
-            <th>number of plates</th>
-            <th>generation</th>
+            <th>number of plates</th>           
             <th>creation date</th>
         </tr>
       </thead>
@@ -254,8 +253,7 @@ function plate_table(){
        <tr class="plate-row">
           <td>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_code"] . '</td>
-          <td>' . $row["plate_count"] . '</td>
-          <td>' . $row["generation"] . '</td>
+          <td>' . $row["plate_count"] . '</td>         
           <td>' . $row["creation_date"] . '</td>
        </tr>';
   }
@@ -383,18 +381,12 @@ function get_header_menu($user_name, $is_admin = FALSE) {
       <div class="dropdown-container">
            <a href="plate_form.php">Plates</a>
            <a href="jar_form.php">Jars</a>
-           <a href="bag_form.php">Bags</a>
-           <a href="block_form.php">Blocks</a>
+           <a href="bag_form.php">Spawn Bags</a>
+           <a href="block_form.php">Production Blocks</a>
       </div>
-      
-      <button class="dropdown-btn">Harvest 
-      <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-           <a href="harvest_greenhouse_form.php">Greenhouse</a>
-           <a href="harvest_species_form.php">Species</a>         
-           <a href="harvest_ampm_form.php">AM / PM</a>
-      </div>
+ 
+           <a href="harvest_ampm_form.php">Harvest</a>
+
                 
   	'.$admin_menu.'
    
