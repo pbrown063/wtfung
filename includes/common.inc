@@ -237,6 +237,13 @@ function plate_table(){
   $plate = "SELECT * FROM plates WHERE plate_count >= 1";
   $sql = mysqli_query($mysqli, $plate) or die(mysqli_error($mysqli));
 
+  if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
+    echo '<h3 class="table-title">No Results Found</h3>';
+    return;
+  }
+
+
   echo '
     <table id="plate_table">
       <thead>
@@ -277,46 +284,6 @@ function get_authorization_level($useremail) {
     return 5301;
   }
 }
-
-/**
- * Graph selector handler returns string with the script that
- * displays the graph selected.
- */
-
-function get_graph_choice($graph) {
-  switch ($graph) {
-
-    case '3dpie-graph':
-      return '3dpie.php';
-      break;
-
-    case 'lineandshade-graph':
-      return 'lineandshade.php';
-      break;
-
-    case 'balloon-graph':
-      return 'balloon.php';
-      break;
-
-    default:
-
-      break;
-  }
-}
-
-/**
- * Displays the graph selected
- */
-
-function display_graph($graph) {
-  if (isset($graph)) {
-    print '<img class="graph" src="'.$graph.'" alt="Data Graph"/>';
-  }
-  else {
-    print '<h1>Please Choose a Graph</h1>';
-  }
-}
-
 
 
 /**
@@ -522,6 +489,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -595,6 +563,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -649,6 +618,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -702,6 +672,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -750,6 +721,7 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -802,6 +774,7 @@ function get_schedule_data_for_plates($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -850,6 +823,7 @@ function get_schedule_data_for_jars($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -900,6 +874,7 @@ function get_schedule_data_for_bags($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -950,6 +925,7 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -990,17 +966,17 @@ function get_plates_data($start_date, $end_date, $sort_by) {
   $table_string = '';
   $mysqli = sql_connect();
 
-  $plates = "SELECT creation_date, plate_count, generation, strains.common_name as strain, notes
+  $plates = "SELECT creation_date, plate_count, strains.common_name as strain, notes
                 FROM plates_creation,
                    (SELECT common_name, strain_code
                     FROM strains_library) as strains
-                WHERE creation_date>='$start_date' 
-                AND creation_date<='$end_date'
+                WHERE creation_date >= '$start_date' 
+                AND creation_date <= '$end_date'
                 AND plates_creation.strain_code = strains.strain_code              
                 ";
 
   if ($sort_by == 'strain') {
-    $plates .= "ORDER BY strain;";
+    $plates .= " ORDER BY plates_creation.strain_code;";
   }
   else {
     $plates .= "ORDER BY creation_date DESC;";
@@ -1009,6 +985,7 @@ function get_plates_data($start_date, $end_date, $sort_by) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -1021,8 +998,7 @@ function get_plates_data($start_date, $end_date, $sort_by) {
         <tr>
             <th>creation date</th>
             <th>strain</th>
-            <th>plates created</th>                     
-            <th>generation</th>     
+            <th>plates created</th>                                 
             <th>notes</th>       
         </tr>
       </thead>
@@ -1033,8 +1009,7 @@ function get_plates_data($start_date, $end_date, $sort_by) {
        <tr>
           <td>' . $row["creation_date"] . '</td>
           <td>' . $row["strain"] . '</td>                    
-          <td>' . $row["plate_count"] . '</td>
-          <td>' . $row["generation"] . '</td>
+          <td>' . $row["plate_count"] . '</td>        
           <td>' . $row["notes"] . '</td>
        </tr>';
   }
@@ -1073,6 +1048,7 @@ function get_jars_data($start_date, $end_date, $sort_by) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -1138,6 +1114,7 @@ function get_bags_data($start_date, $end_date, $sort_by) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
@@ -1205,6 +1182,7 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
 
   // If no results, return
   if ($sql->fetch_assoc() == NULL) {
+    mysqli_close($mysqli);
     return '<h3 class="table-title">No Results Found</h3>';
   }
 
