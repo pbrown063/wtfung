@@ -229,7 +229,8 @@ function display_greehouse() {
  */
 function display_schedule_phases($all = FALSE) {
   $output_block =
-    " <select name='schedule_phase' required>
+    " <li class='icon'>
+ <select name='schedule_phase' required>
  <option value='' disabled selected hidden>Select Production Phase</option>";
 
   $output_block .= $all ? "<option value=all_phases>All Phases</option>" : "";
@@ -240,7 +241,8 @@ function display_schedule_phases($all = FALSE) {
 <option value=block>Bagging Blocks</option>
 ";
 
-  $output_block .= "</select>";
+  $output_block .= "</select>
+        </li>";
   print $output_block;
 }
 
@@ -393,7 +395,7 @@ function display_admin_menu() {
  */
 function get_header_menu($user_name, $message, $is_admin = FALSE) {
 
-  $admin_menu = $is_admin ? get_admin_header_menu() : '';
+  $admin_menu = $is_admin ? display_admin_menu() : '';
 
   $user_menu =
     '
@@ -430,11 +432,6 @@ function get_header_menu($user_name, $message, $is_admin = FALSE) {
   	'.$admin_menu.'
    
       <a href="user_manual.php">Manual</a>
-      <div class="logout">
-      
-        <a href="logout.php">Logout</a>
-      </div>
-      
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

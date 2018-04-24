@@ -15,6 +15,7 @@
 <div class="container">
   <form method="POST" action="authenticate.php">
     <ul class="flex-outer">
+      <h1>Login</h1>
       <li>
         <input type="email" id="email" placeholder="Email Address" name="email" required>
       </li>
@@ -22,7 +23,7 @@
         <input type="password" id="password" placeholder="Password" name="password" required>
       </li>
       <li>
-        <button type="submit"> Log in</button>
+        <button type="submit">Log in</button>
       </li>
     </ul>
   </form>

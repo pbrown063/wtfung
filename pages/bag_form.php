@@ -14,20 +14,17 @@ $date = date("Y-m-j");
   <link rel="stylesheet" type="text/css" href="./CSS/table_style.css">
 
 </head>
-
 <body>
+<?php include 'header.php'; ?>
+
 <div class="contain">
   <?php jars_table(); ?>
 </div>
 
-<?php include 'header.php'; ?>
 <div class="container">
   <form method="POST" action="bags.php" id="bag_form">
     <ul class="flex-outer">
-      <!--User shown in header-->
-      <li>
-        <input type="hidden" name="user" value="user"> <!--fill in value with correct user function-->
-      </li>
+      <h1>Spawn Bags</h1>
       <li>
         <input type="text" name="batch_name" placeholder="Batch Name" required>
       </li>
