@@ -994,16 +994,15 @@ function get_plates_data($start_date, $end_date, $sort_by) {
                 FROM plates_creation,
                    (SELECT common_name, strain_code
                     FROM strains_library) as strains
-                WHERE creation_date >= '$start_date' 
-                AND creation_date <= '$end_date'
-                AND plates_creation.strain_code = strains.strain_code              
-                ";
+                WHERE creation_date>='$start_date' 
+                AND creation_date<='$end_date'
+                AND plates_creation.strain_code = strains.strain_code";
 
   if ($sort_by == 'strain') {
     $plates .= " ORDER BY plates_creation.strain_code;";
   }
   else {
-    $plates .= "ORDER BY creation_date DESC;";
+    $plates .= " ORDER BY creation_date DESC;";
   }
   $sql = mysqli_query($mysqli, $plates) or die(mysqli_error($mysqli));
 
@@ -1025,7 +1024,7 @@ function get_plates_data($start_date, $end_date, $sort_by) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1052,12 +1051,12 @@ function get_jars_data($start_date, $end_date, $sort_by) {
   $mysqli = sql_connect();
 
   $jars = "SELECT creation_date, jar_count, substrate, strains.common_name as strain, notes
-                FROM jars,
+                FROM jars_creation,
                    (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date'
                 AND creation_date<='$end_date'
-                AND jars.strain_code = strains.strain_code
+                AND jars_creation.strain_code = strains.strain_code
                 ";
 
   if ($sort_by == 'strain') {

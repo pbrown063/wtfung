@@ -32,8 +32,8 @@ else {
       <li>
         <select name="phase" required onchange="phaseEntry()">
           <option value="" disabled selected hidden>Select Production Phase</option>
-          <option value="plate">Plating</option>
-          <option value="jar">Jarring</option>
+          <option value="plate">Plating Records</option>
+          <option value="jar">Jarring Records</option>
           <option value="bag">Innoculating Bags</option>
           <option value="block">Blocking</option>
           <option value="harvest">Harvest</option>
