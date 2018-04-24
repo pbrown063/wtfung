@@ -14,16 +14,16 @@
   <form method="POST" action="create_account.php" id='account_form'>
     <ul class="flex-outer">
       <li>
-        <input type="text" id="first-name" placeholder="First Name" name="Fname" required>
+        <input type="text" id="first-name" placeholder="First Name" name="Fname" maxlength="30" required>
       </li>
       <li>
-        <input type="text" id="last-name" placeholder="Last Name" name="Lname" required>
+        <input type="text" id="last-name" placeholder="Last Name" name="Lname" maxlength="30" required>
       </li>
       <li>
-        <input type="email" id="email" placeholder="Email Address" name="email" required>
+        <input type="email" id="email" placeholder="Email Address" name="email" maxlength="50"  required>
       </li>
       <li>
-        <input type="password" id="password" placeholder="Password" name="pswrd" required>
+        <input type="password" id="password" placeholder="Password" name="pswrd" maxlength="50"  required>
       </li>
       <li>
         <button type="submit" form='account_form'>Create Account</button>

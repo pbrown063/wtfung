@@ -18,7 +18,7 @@
     <form method="POST" action="substrate.php" id="substrate_form">
         <ul class="flex-outer">
             <li>
-                <input type='text' name='substrate' placeholder='Enter Substrate Type' required>
+                <input type='text' name='substrate' placeholder='Enter Substrate Type' maxlength="30" required>
             </li>
             <li>
                 <textarea name='notes' rows='5' cols='20' placeholder='Substrate Notes'></textarea>

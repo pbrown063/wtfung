@@ -23,7 +23,7 @@ $date = date("Y-m-j");
         <input type="hidden" name="user" value="user"> <!--fill in value with correct user function-->
       </li>
       <li>
-        <input type="text" name="batch" placeholder="Batch Name" required>
+        <input type="text" name="batch" placeholder="Batch Name" maxlength="10" required>
       </li>
       <li>
         <?php display_strain_code(); ?>
