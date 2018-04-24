@@ -82,8 +82,7 @@ function add_time_entry_to_list() {
     if (!lock) {
       lock = true;
 
-      document.getElementsByClassName('radio-container')[0].style.display = "none";
-      document.getElementsByClassName('radio-container')[1].style.display = "none";
+      document.getElementsByName('time')[0].disabled = true;
       var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.time.toUpperCase());
       document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
       document.getElementsByClassName('table-title')[0].style.display = "block";
@@ -226,7 +225,7 @@ function  get_harvest_object() {
   var strain = document.getElementsByName('strain')[0].value;
   var weight = document.getElementsByName('weight')[0].value;
   var date = document.getElementsByName('date')[0].value;
-  var time = document.getElementById('am').checked ? 'am' : 'pm';
+  var time = document.getElementsByName('time')[0].value;
   var notes = document.getElementsByName('notes')[0].value;
 
 

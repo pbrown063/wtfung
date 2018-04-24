@@ -12,15 +12,12 @@ require_once __DIR__ . '/bootstrap.php';
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/table_style.css">
 
-
-
 </head>
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
   <!--Lock field for strains once harvests are in queue-->
   <ul class="flex-outer">
-    <ul class="flex-inner">
       <li>
         <select name="time" required>
           <option value="" disabled selected hidden>Time Of Day</option>
