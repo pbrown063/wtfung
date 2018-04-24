@@ -10,7 +10,7 @@ require_once __DIR__ . '/bootstrap.php';
   <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
 </head>
-<body>
+<body onload = "snack()">
 <?php require_once 'header.php'; ?>
 
 <ul class="flex-outer">
