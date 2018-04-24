@@ -172,12 +172,14 @@ function display_batches() {
   $account = "SELECT firstname, lastname FROM account";
   $sql = mysqli_query($mysqli, $account) or die(mysqli_error($mysqli));
 
-  echo " <select name='account' required>
+  echo "<li class='icon'>
+         <select name='account' required>
         <option value='' disabled selected hidden> Select Worker</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["firstname"]. "'>" .$row["firstname"]. " " .$row["lastname"]."</option>";
   }
-  echo "</select>";
+  echo "</select>
+        </li>";
   mysqli_close($mysqli);
 }
 
@@ -217,7 +219,7 @@ function display_greehouse() {
     echo "<option value='".$row["id"]."'>".$row["id"]."</option>";
   }
   echo "</select>
-        <li class='icon'>";
+        </li>";
   mysqli_close($mysqli);
 }
 
