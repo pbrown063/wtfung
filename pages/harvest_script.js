@@ -222,7 +222,7 @@ function add_harvest_to_queue_table(harvest, entry_by) {
 function  get_harvest_object() {
 
   var greenhouse = document.getElementsByName('greenhouse')[0].value;
-  var strain = document.getElementsByName('strain')[0].value;
+  var strain = document.getElementsByName('code')[0].value;
   var weight = document.getElementsByName('weight')[0].value;
   var date = document.getElementsByName('date')[0].value;
   var time = document.getElementsByName('time')[0].value;
