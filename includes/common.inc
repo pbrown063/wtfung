@@ -159,14 +159,14 @@ function display_strain_code(){
  * Creates and prints a form dropdown called @substrate
  * that is generated from the substrate library.
  */
-function display_substrate(){
+function display_substrate($phase = ''){
   $mysqli = sql_connect();
   $substrate = "SELECT substrate_type FROM substrate_library";
   $sql = mysqli_query($mysqli, $substrate) or die(mysqli_error($mysqli));
 
   echo "<li class='icon'>
         <select name='substrate' required>
-        <option value='' disabled selected hidden>Select Substrate Type</option>";
+        <option value='' disabled selected hidden>Select ".$phase." Substrate</option>";
   while ($row = $sql->fetch_assoc()){
     echo "<option value='" .$row["substrate_type"]. "'>" . $row["substrate_type"] . "</option>";
   }
@@ -378,7 +378,7 @@ function jars_table(){
  */
 function bags_table(){
   $mysqli = sql_connect();
-  $plate = "SELECT id, strains.common_name strain_name, num_bags, creation_date, batch.name as batch_name, batch_id
+  $plate = "SELECT id, strains.common_name strain_name, num_bags, batch.name as batch_name, batch_id, bags.strain_code
             FROM bags, 
             (SELECT common_name, strain_code
              FROM strains_library) as strains,
@@ -394,11 +394,12 @@ function bags_table(){
     <table id="bag_table">
       <thead>
         <tr>
-            <th>bag id</th>
+            <th hidden>bag id</th>
             <th>batch name</th>
             <th>strain</th>
-            <th>number of bags</th>           
-            <th>creation date</th>           
+            <th>number of bags</th>                      
+            <th hidden>batch_id</th>        
+            <th hidden>strain_id</th>               
         </tr>
       </thead>
       <tbody>';
@@ -412,11 +413,12 @@ function bags_table(){
 
     echo '
        <tr class="bag-row">
-          <td>' . $row["id"] . '</td>
+          <td hidden>' . $row["id"] . '</td>
           <td>' . $row["batch_name"] . '</td>
           <td>' . $row["strain_name"] . '</td>
-          <td>' . $row["num_bags"] . '</td>         
-          <td>' . $row["creation_date"] . '</td>        
+          <td>' . $row["num_bags"] . '</td>                  
+          <td hidden>' . $row["batch_id"] . '</td>      
+          <td hidden>' . $row["strain_code"] . '</td>           
        </tr>';
   }
   echo '</tbody>

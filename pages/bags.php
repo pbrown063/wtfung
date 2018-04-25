@@ -31,7 +31,7 @@ else {
   $jar_id = filter_input(INPUT_POST, "jar_id");
   $update_jar_count = $update_jar_count - $jars_used;
 
-  $insert = "INSERT INTO batches (name, strain_code, creation_date) VALUES ('$batch_name', '$code', '$date');";
+  $insert = "INSERT INTO batches (name, strain_code, creation_date) VALUES (upper('$batch_name'), '$code', '$date');";
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
   $grab_batch_id = "SELECT id FROM batches WHERE creation_date = '$date';";

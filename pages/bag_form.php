@@ -35,7 +35,7 @@ $date = date("Y-m-j");
         <input type="number" name="number_of_jars" min='1' placeholder="Number of jars used" required>
       </li>
       <li>
-        <?php display_substrate(); ?>
+        <?php display_substrate('bag'); ?>
       </li>
       <li>
         <input type="number" name="num_bags" min ="1" placeholder="Number of Bags Made" required>
