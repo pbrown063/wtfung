@@ -37,7 +37,8 @@ else {
                       VALUES (lower('$strain_code'), '$jar_count', lower('$substrate'), '$date', '$plate_id', '$notes');";
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
 
-  header("Location: jar_form.php");
+  $_SESSION['message'] = 2;
+  header("Location: home.php");
   die();
 
 }

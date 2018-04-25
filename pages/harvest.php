@@ -18,7 +18,7 @@ foreach ($greenhouse_list as $harvest) {
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 }
 
-  $_SESSION['message'] = '2' ;
+  $_SESSION['message'] = 2 ;
 
 die();
 

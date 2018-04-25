@@ -37,6 +37,8 @@ else {
   $sql = mysqli_query($mysqli, $insert_block_creation) or die(mysqli_error($mysqli));
 
   header("Location: block_form.php");
+
+  $_SESSION['message'] = 2 ;
   die();
 
 }
