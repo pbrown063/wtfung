@@ -29,22 +29,28 @@ $date = date("Y-m-j");
         <input type="text" name="batch_name" placeholder="Batch Name" required>
       </li>
       <li>
-        <input type="number" name="jar_id" min='1' placeholder="Jar ID From Table" required>
-      </li>
-      <li>
-        <input type="number" name="number_of_jars" min='1' placeholder="Number of jars used" required>
-      </li>
-      <li>
         <?php display_substrate('bag'); ?>
       </li>
       <li>
         <input type="number" name="num_bags" min ="1" placeholder="Number of Bags Made" required>
       </li>
       <li>
+        <input type="number" name="jars_used" min='1' placeholder="Number of Jars Used" required>
+      </li>
+      <li>
         <input type="date" name="creation_date" value="<?php echo $date ?>" placeholder="yyyy-mm-d">
       </li>
       <li>
         <textarea name='notes' rows='5' cols='20' placeholder='Notes'></textarea> <!--To be added to bags table-->
+      </li>
+      <li>
+        <input type="text" name="strain" required hidden>
+      </li>
+      <li>
+        <input type="number" name="jar_id" required hidden>
+      </li>
+      <li>
+        <input type="number" name="num_jars" required hidden>
       </li>
       <li>
         <button type='submit' name='submit' value='submit' form="bag_form">Make Bags</button>

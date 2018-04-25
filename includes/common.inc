@@ -334,7 +334,7 @@ function plate_table(){
  */
 function jars_table(){
   $mysqli = sql_connect();
-  $plate = "SELECT jar_id, strains.common_name strain_name, jar_count, creation_date
+  $plate = "SELECT jar_id, strains.common_name strain_name, jar_count, creation_date, jars.strain_code strain
             FROM jars, 
             (SELECT common_name, strain_code
              FROM strains_library) as strains       
@@ -347,10 +347,11 @@ function jars_table(){
     <table id="jar_table">
       <thead>
         <tr>
-            <th>jar id</th>
+            <th hidden>jar id</th>
             <th>strain</th>
             <th>number of jars</th>           
             <th>creation date</th>
+            <th hidden>strain_code</th>
         </tr>
       </thead>
       <tbody>';
@@ -364,10 +365,11 @@ function jars_table(){
 
     echo '
        <tr class="jar-row">
-          <td>' . $row["jar_id"] . '</td>
+          <td hidden>' . $row["jar_id"] . '</td>
           <td>' . $row["strain_name"] . '</td>
           <td>' . $row["jar_count"] . '</td>         
           <td>' . $row["creation_date"] . '</td>
+          <td hidden>' . $row["strain"] . '</td>
        </tr>';
   }
   echo '</tbody>

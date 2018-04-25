@@ -24,6 +24,8 @@ document.getElementById('jar_table').onclick = function(event) {
   }
 
   document.getElementsByName('jar_id')[0].value = cells[0].innerHTML;
-  document.getElementsByName('number_of_jars')[0].setAttribute("max", cells[2].innerHTML);
+  document.getElementsByName('strain')[0].value = cells[4].innerHTML;
+  document.getElementsByName('num_jars')[0].value = cells[2].innerHTML;
+  document.getElementsByName('jars_used')[0].setAttribute("max", cells[2].innerHTML);
 }
 
