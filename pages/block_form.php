@@ -11,10 +11,16 @@ $date = date("Y-m-j");
 
   <link rel="stylesheet" type="text/css" href="./CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="./CSS/main_style.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/table_style.css">
 
 </head>
 <body>
 <?php include 'header.php'; ?>
+
+<div class="contain">
+  <?php bags_table(); ?>
+</div>
+
 <div class="container">
   <form method="POST" action="block.php" id="block_form">
     <ul class="flex-outer">
@@ -43,5 +49,6 @@ $date = date("Y-m-j");
     </ul>
   </form>
 </div>
+<script src="block_script.js" type="text/javascript"></script>
 </body>
 </html>

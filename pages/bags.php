@@ -11,8 +11,6 @@ if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, 
 
 else {
 
-
-
   $mysqli = sql_connect();
   // grabbing inputs from posted form and reference table and making variables
   $strainselect = "SELECT strain_code, jar_count FROM jars WHERE jar_id = ". $_POST['jar_id'];
@@ -36,14 +34,11 @@ else {
   $insert = "INSERT INTO batches (name, strain_code, creation_date) VALUES ('$batch_name', '$code', '$date');";
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
-
   $grab_batch_id = "SELECT id FROM batches WHERE creation_date = '$date';";
   $result3 = mysqli_query($mysqli, $grab_batch_id);
   while($row = mysqli_fetch_array($result3)) {
     $batch_id = $row['id'];
   }
-
-
 
   $insert = "INSERT INTO bags (num_bags, substrate, creation_date, strain_code, batch_id) 
             VALUES ('$num_bags', lower('$substrate'), '$date', '$code', '$batch_id');";
@@ -57,8 +52,6 @@ else {
   $insert_creation = "INSERT INTO bags_creation (num_bags, substrate, creation_date, notes, strain_code, batch_id, jar_id)
                         VALUES ('$num_bags', '$substrate', '$date', '$notes', '$code', '$batch_id', '$jar_id')";
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
-
-
 
   header("Location: bag_form.php");
   die();

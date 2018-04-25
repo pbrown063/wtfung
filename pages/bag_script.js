@@ -25,8 +25,5 @@ document.getElementById('jar_table').onclick = function(event) {
 
   document.getElementsByName('jar_id')[0].value = cells[0].innerHTML;
   document.getElementsByName('number_of_jars')[0].setAttribute("max", cells[2].innerHTML);
-
-  console.log(document.getElementsByName('number_of_jars')[0].value);
-
 }
 

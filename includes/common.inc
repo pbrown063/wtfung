@@ -328,8 +328,7 @@ function plate_table(){
 }
 
 /**
- *
- * Creates a table spit out of the plates (not plates_creation)
+ * Creates a table displays the jars (not jars_creation)
  */
 function jars_table(){
   $mysqli = sql_connect();
@@ -373,6 +372,59 @@ function jars_table(){
       </table>';
   mysqli_close($mysqli);
 }
+
+/**
+ * Creates a table that displays the spawn bags (not bags_creation)
+ */
+function bags_table(){
+  $mysqli = sql_connect();
+  $plate = "SELECT id, strains.common_name strain_name, num_bags, creation_date, batch.name as batch_name, batch_id
+            FROM bags, 
+            (SELECT common_name, strain_code
+             FROM strains_library) as strains,
+            (SELECT id as b_id, name 
+             FROM batches) as batch       
+            WHERE bags.strain_code = strains.strain_code
+            AND bags.batch_id = b_id
+            AND num_bags >= 1";
+  $sql = mysqli_query($mysqli, $plate) or die(mysqli_error($mysqli));
+
+
+  echo '
+    <table id="bag_table">
+      <thead>
+        <tr>
+            <th>bag id</th>
+            <th>batch name</th>
+            <th>strain</th>
+            <th>number of bags</th>           
+            <th>creation date</th>           
+        </tr>
+      </thead>
+      <tbody>';
+  while ($row = $sql->fetch_assoc()) {
+
+    if ($row == NULL) {
+      mysqli_close($mysqli);
+      echo '<h3 class="table-title">No Results Found</h3>';
+      return;
+    }
+
+    echo '
+       <tr class="bag-row">
+          <td>' . $row["id"] . '</td>
+          <td>' . $row["batch_name"] . '</td>
+          <td>' . $row["strain_name"] . '</td>
+          <td>' . $row["num_bags"] . '</td>         
+          <td>' . $row["creation_date"] . '</td>        
+       </tr>';
+  }
+  echo '</tbody>
+      </table>';
+  mysqli_close($mysqli);
+}
+
+
 
 /**
  * looks at the email fromauthenticate.php and
