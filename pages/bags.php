@@ -49,7 +49,6 @@ else {
   $_SESSION['message'] = '2' ;
 
   header("Location: bag_form.php");
-  $_SESSION['message'] = 2 ;
   die();
 
 }
