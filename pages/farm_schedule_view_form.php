@@ -54,11 +54,6 @@ if (isset($table)) {
 }
 ?>
 
-
-
-
-
-
 </div>
 </body>
 </html>

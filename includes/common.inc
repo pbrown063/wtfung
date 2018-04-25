@@ -271,7 +271,7 @@ function display_schedule_phases($all = FALSE) {
   $output_block .= "  
 <option value=plate>Transfer to Plates</option>
 <option value=jar>Innoculate Jars</option>
-<option value=bag>Sterilize & Innoculate</option>
+<option value='spawn bag'>Innoculate Spawn Bags</option>
 <option value=block>Bagging Blocks</option>
 ";
 
@@ -875,7 +875,7 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
   $schedule = "SELECT * FROM schedule 
-                WHERE date>='$start_date' 
+                WHERE date>='$start_date'
                 AND date<='$end_date' 
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $schedule) or die(mysqli_error($mysqli));
