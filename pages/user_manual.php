@@ -94,7 +94,7 @@ require_once __DIR__ . '/bootstrap.php';
   </ul>
 
   <h3 id="harvest">5. Harvesting the fruiting mycellium</h3>
-  The fruit is flushed and <a href="harvest_ampm_form.php">harvested</a> from blocks.  Our system allows multiple
+  The fruit is flushed and <a href="harvest_form.php">harvested</a> from blocks.  Our system allows multiple
   harvests entries to be done at once.
   Harvesting is done according to three strategies:
   <ul>

@@ -18,7 +18,8 @@ require_once __DIR__ . '/bootstrap.php';
 <div class="container">
   <!--Lock field for strains once harvests are in queue-->
   <ul class="flex-outer">
-      <li>
+    <h1>Harvest Production Blocks</h1>
+      <li class="icon">
         <select name="time" required>
           <option value="" disabled selected hidden>Time Of Day</option>
           <option value="am">AM</option>

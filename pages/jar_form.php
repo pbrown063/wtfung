@@ -21,7 +21,7 @@ require_once __DIR__ . '/bootstrap.php';
 <div class="container">
   <form method="POST" action="jars.php" id="jar_form">
     <ul class="flex-outer">
-      <h1>Jars</h1>
+      <h1>Select Plate to Jar</h1>
       <li>
         <input type="number" name="plate_id" min='1' placeholder="Plate ID From Table" required>
       </li>

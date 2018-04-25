@@ -24,7 +24,7 @@ $date = date("Y-m-j");
 <div class="container">
   <form method="POST" action="bags.php" id="bag_form">
     <ul class="flex-outer">
-      <h1>Spawn Bags</h1>
+      <h1>Select Jar to Bag</h1>
       <li>
         <input type="text" name="batch_name" placeholder="Batch Name" required>
       </li>

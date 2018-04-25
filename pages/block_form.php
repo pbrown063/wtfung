@@ -18,7 +18,7 @@ $date = date("Y-m-j");
 <div class="container">
   <form method="POST" action="block.php" id="block_form">
     <ul class="flex-outer">
-      <h1>Block</h1>
+      <h1>Select Spawn Bag to Block</h1>
       <li>
         <input type="text" name="batch" placeholder="Batch Name" required>
       </li>
