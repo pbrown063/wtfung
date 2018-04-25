@@ -23,6 +23,7 @@ else {
   $bag_id = filter_input(INPUT_POST, "bag_id");
   $num_bags = filter_input(INPUT_POST, "num_bags");
   $bags_used = filter_input(INPUT_POST, "bags_used");
+  $num_bags -= $bags_used;
 
   $updatebags = "UPDATE bags SET num_bags = ".$num_bags." WHERE id = ".$bag_id.";";
   $sqlupdate = mysqli_query($mysqli, $updatebags) or die(mysqli_error($mysqli));
