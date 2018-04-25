@@ -485,14 +485,14 @@ function get_admin_header_menu() {
  * Returns the html string to display header menu.
  * Result is based on whether the user is an admin.
  */
-function get_header_menu($user_name, $message = '', $is_admin = FALSE) {
+function get_header_menu($user_name, $is_admin = FALSE) {
 
   $admin_menu = $is_admin ? get_admin_header_menu() : '';
 
   $user_menu =
     '
 <nav>
-    <div id="snackbar">'.$message.'</div>
+    <div id="snackbar">'. snack_message($_SESSION["message"]) .'</div>
     <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>
     <div id="myMenubutton" class="menuButton">
       <div class="bar1"></div>
@@ -1404,5 +1404,25 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
       ';
   mysqli_close($mysqli);
   return $table_string;
+}
+
+function snack_message($note){
+  $_SESSION['message'] = 0;
+  switch($note){
+    case 0:
+      return '';
+      break;
+    case 1:
+      return 'Welcome!';
+      break;
+    case 2:
+      return 'Entry Successful!';
+      break;
+    case 3:
+      return 'Account Created!';
+      break;
+    default:
+      return '';
+  }
 }
 
