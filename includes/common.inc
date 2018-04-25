@@ -10,6 +10,40 @@ function initialize_error_reporting() {
 }
 
 /**
+ * @param $page
+ * Redirects the user if the page they are on is protected
+ * Admin has access to all pages.
+ */
+function redirect_if_protected($page) {
+
+  $protected_pages = [
+    'account_form.php',
+    'authenticate.php',
+    'building.php',
+    'building_form.php',
+    'developer_manual.php',
+    'farm_schedule_entry.php',
+    'farm_schedule_entry_form.php',
+    'farm_scedule_view.php',
+    'farm_scedule_view_form.php',
+    'strain_form.php',
+    'strains.php',
+    'substrate.php',
+    'substrate_form.php',
+    'data_analytics_tables.php',
+    'strain_form.php',
+    'substrate_form.php',
+    'building_form.php',
+    'account_form.php',
+  ];
+
+  foreach($protected_pages as $value) {
+    if ($value == $page) {
+      header('Location: home.php');
+    }
+  }
+}
+/**
  * Fairly rigid, currently connects with only one set of creds.
  * Main point with this function is to include connection error block.
  **/
