@@ -20,6 +20,8 @@ foreach ($greenhouse_list as $harvest) {
 
   $_SESSION['message'] = 2 ;
 
+  header("Location: harvest_form.php");
+
 die();
 
 

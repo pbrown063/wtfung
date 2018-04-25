@@ -21,4 +21,6 @@ foreach ($schedule_list as $entry) {
 
 $_SESSION['message'] = 2 ;
 
+header("Location: home.php");
+
 die();

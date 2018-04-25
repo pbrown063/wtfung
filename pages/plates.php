@@ -32,7 +32,7 @@ if (!filter_input(INPUT_POST, "submit") ) {
 
   $_SESSION['message'] = 2 ;
 
-  header("Location: home.php");
+  header("Location: plate_form.php");
   die();
 
 }

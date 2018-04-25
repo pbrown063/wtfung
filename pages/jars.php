@@ -38,7 +38,7 @@ else {
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
 
   $_SESSION['message'] = 2;
-  header("Location: home.php");
+  header("Location: jar_form.php");
   die();
 
 }
