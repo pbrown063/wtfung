@@ -24,9 +24,7 @@ document.getElementById('plate_table').onclick = function(event) {
   }
 
   document.getElementsByName('plate_id')[0].value = cells[0].innerHTML;
-  document.getElementsByName('number_of_plates')[0].setAttribute("max", cells[2].innerHTML);
-
-  console.log(document.getElementsByName('number_of_plates')[0].value);
-
+  document.getElementsByName('num_plates')[0].value = cells[2].innerHTML;
+  document.getElementsByName('strain')[0].value = cells[4].innerHTML
+  document.getElementsByName('plates_used')[0].setAttribute("max", cells[2].innerHTML);
 }
-

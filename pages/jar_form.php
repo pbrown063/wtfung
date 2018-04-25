@@ -23,22 +23,28 @@ require_once __DIR__ . '/bootstrap.php';
     <ul class="flex-outer">
       <h1>Select Plate to Jar</h1>
       <li>
-        <input type="number" name="plate_id" min='1' placeholder="Plate ID From Table" required>
-      </li>
-      <li>
-        <input type="number" name="number_of_plates" min='1' placeholder="Number of plates used" required>
+        <?php display_substrate(); ?>
       </li>
       <li>
         <input type="number" name="count" min="1" placeholder="Number of Jars Made" required>
       </li>
       <li>
-        <?php display_substrate(); ?>
+        <input type="number" name="plates_used" min='1' placeholder="Number of plates used" required>
       </li>
       <li>
-        <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d"></input>
+        <input type="date" name="creation_date" value="<?php current_date(); ?>" placeholder="yyyy-mm-d">
       </li>
       <li>
         <textarea name="notes" rows="5" cols="20" placeholder="Notes"></textarea>
+      </li>
+      <li>
+        <input type="text" name="strain" required hidden>
+      </li>
+      <li>
+        <input type="number" name="plate_id" required hidden>
+      </li>
+      <li>
+        <input type="number" name="num_plates" required hidden>
       </li>
       <li>
         <button type='submit'value='submit' name='submit' form='jar_form' >Make Jars</button>

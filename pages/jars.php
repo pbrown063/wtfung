@@ -10,41 +10,32 @@ if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, 
 }
 
 else {
-
   $mysqli = sql_connect();
-
 
   //grabbing inputs from posted form and reference table and making variables
-  $strainselect = "SELECT strain_code, plate_count FROM  plates WHERE plate_id = ".$_POST['plate_id'];
-  $result2 = mysqli_query($mysqli, $strainselect);
-  while($row = mysqli_fetch_array($result2)) {
-    $code = $row['strain_code'];
-    $update_plate_count = $row['plate_count'];
-  }
 
   $substrate = addslashes(filter_input(INPUT_POST, "substrate"));
-  $plate = filter_input(INPUT_POST, "plate_id");
-  $count = filter_input(INPUT_POST, "count"); // Jars created
-  $plate_count = filter_input(INPUT_POST, "number_of_plates");
+  $plate_id = filter_input(INPUT_POST, "plate_id");
+  $jar_count = filter_input(INPUT_POST, "count"); // Jars created
+  $plates_used = filter_input(INPUT_POST, "plates_used");
   $date = filter_input(INPUT_POST, "creation_date");
   $notes = filter_input(INPUT_POST, "notes");
-  $update_plate_count = $update_plate_count - $plate_count;
+  $plate_count = filter_input(INPUT_POST, "num_plates");
+  $strain_code = filter_input(INPUT_POST, "strain");
+  $plate_count -= $plates_used;
 
-  // Insert to live jars table and update live plates
+  // Insert jar and jar creation and update plates table
   $insert = "INSERT INTO jars (strain_code, jar_count, substrate, creation_date, plate_id) 
-            VALUES (lower('$code'), '$count', lower('$substrate'), '$date', '$plate');";
+            VALUES (lower('$strain_code'), '$jar_count', lower('$substrate'), '$date', '$plate_id');";
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-  $mysqli = sql_connect();
-  $updateplates = "UPDATE plates SET plate_count = " .$update_plate_count. "  WHERE plate_id = ".$plate.";";
+
+  $updateplates = "UPDATE plates SET plate_count = " .$plate_count. "  WHERE plate_id = ".$plate_id.";";
   $sqlupdate = mysqli_query($mysqli, $updateplates) or die(mysqli_error($mysqli));
 
-
-  // Insert into jars_creation table and references plates_creation table.
   $mysqli = sql_connect();
   $insert_creation = "INSERT INTO jars_creation (strain_code, jar_count, substrate, creation_date, plate_id, notes) 
-                      VALUES (lower('$code'), '$count', lower('$substrate'), '$date', '$plate', '$notes');";
+                      VALUES (lower('$strain_code'), '$jar_count', lower('$substrate'), '$date', '$plate_id', '$notes');";
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
-
 
   header("Location: jar_form.php");
   die();

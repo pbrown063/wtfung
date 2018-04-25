@@ -286,7 +286,7 @@ function display_schedule_phases($all = FALSE) {
  */
 function plate_table(){
   $mysqli = sql_connect();
-  $plate = "SELECT plate_id, strains.common_name strain_name, plate_count, creation_date
+  $plate = "SELECT plate_id, strains.common_name strain_name, plate_count, creation_date, plates.strain_code strain
             FROM plates, 
             (SELECT common_name, strain_code
              FROM strains_library) as strains
@@ -299,10 +299,11 @@ function plate_table(){
     <table id="plate_table">
       <thead>
         <tr>
-            <th>plate id</th>
+            <th hidden>plate</th>
             <th>strain</th>
             <th>number of plates</th>           
             <th>creation date</th>
+            <th hidden>strain_code</th>
         </tr>
       </thead>
       <tbody>';
@@ -316,10 +317,11 @@ function plate_table(){
 
     echo '
        <tr class="plate-row">
-          <td>' . $row["plate_id"] . '</td>
+          <td hidden>' . $row["plate_id"] . '</td>
           <td>' . $row["strain_name"] . '</td>
           <td>' . $row["plate_count"] . '</td>         
           <td>' . $row["creation_date"] . '</td>
+          <td hidden>' . $row["strain"] . '</td>
        </tr>';
   }
   echo '</tbody>
