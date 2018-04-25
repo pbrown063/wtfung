@@ -128,10 +128,11 @@ function add_sort_field(phase) {
     option.hidden = true;
     select_field.add(option);
 
-    option = document.createElement("option");
-    option.text = "Totals By Day";
-    option.value = "harvest_day";
-    select_field.add(option);
+    // This query is broken right now ... get_total_harvest_by_date()
+    // option = document.createElement("option");
+    // option.text = "Totals By Day";
+    // option.value = "harvest_day";
+    // select_field.add(option);
 
     option = document.createElement("option");
     option.text = "Results By Greenhouse";

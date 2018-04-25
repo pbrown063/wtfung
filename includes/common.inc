@@ -642,9 +642,13 @@ function get_table_choice($table, $start_date, $end_date) {
 function get_all_harvest_data_in_range($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
-  $harvests = "SELECT * FROM harvest 
+  $harvests = "SELECT date, weight, time, notes, strain, greenhouse, strain.common_name strain_name
+               FROM harvest,
+               ( SELECT strain_code, common_name
+                 FROM strains_library) as strain 
                 WHERE date>='$start_date' 
                 AND date<='$end_date' 
+                AND strain = strain.strain_code
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
 
@@ -675,7 +679,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
 
     $table_string .= '
        <tr>
-          <td>' . $row["strain"] . '</td>
+          <td>' . $row["strain_name"] . '</td>
           <td>' . $row["greenhouse"] . '</td>
           <td>' . $row["weight"] . '</td>
           <td>' . $row["date"] . '</td>
@@ -695,6 +699,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
 /**
  *  returns a html block to be printed
  * containing the total harvest between (inclusive) two dates
+ * CURRENTLY NOT WORKING...
  */
 function get_total_harvest_by_date($start_date, $end_date) {
   $table_string = '';
@@ -704,15 +709,11 @@ function get_total_harvest_by_date($start_date, $end_date) {
                 FROM harvest,
                 (  SELECT date, sum(weight) as am_column
                        FROM harvest
-                       WHERE date>='$start_date'
-                       AND date<='$end_date'
-                       AND time='am'
+                       WHERE time='am'
                        GROUP BY date ) as am_weight,
                 (  SELECT date, sum(weight) as pm_column
-                       FROM harvest
-                       WHERE date>='$start_date'
-                       AND date<='$end_date'
-                       AND time='pm'
+                       FROM harvest  
+                       WHERE time='pm'
                        GROUP BY date ) as pm_weight
                 WHERE harvest.date>='$start_date' 
                 AND harvest.date<='$end_date'
@@ -741,7 +742,7 @@ function get_total_harvest_by_date($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -795,7 +796,7 @@ function get_total_harvest_by_greenhouse($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -826,9 +827,13 @@ function get_total_harvest_by_species($start_date, $end_date) {
   $table_string = '';
   $mysqli = sql_connect();
 
-  $harvests = "SELECT strain, sum(weight) as total_weight FROM harvest 
+  $harvests = "SELECT strain, sum(weight) as total_weight, strain.common_name strain_name, strain.scientific_name as sc_name
+                FROM harvest,
+                ( SELECT strain_code, common_name, scientific_name
+                 FROM strains_library) as strain  
                 WHERE date>='$start_date' 
                 AND date<='$end_date'
+                AND harvest.strain = strain.strain_code
                 GROUP BY strain
                 ORDER BY total_weight DESC;";
 
@@ -842,6 +847,7 @@ function get_total_harvest_by_species($start_date, $end_date) {
       <thead>
         <tr>
             <th>strain</th>
+            <th>scientific name</th>
             <th>total harvest</th>           
         </tr>
       </thead>
@@ -850,14 +856,15 @@ function get_total_harvest_by_species($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
 
     $table_string .= '
        <tr>
-          <td>' . $row["strain"] . '</td>         
+          <td>' . $row["strain_name"] . '</td>
+          <td>' . $row["sc_name"] . '</td>         
           <td>' . $row["total_weight"] . '</td>
        </tr>';
   }
@@ -904,7 +911,7 @@ function get_all_schedule_data_in_range($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -956,7 +963,7 @@ function get_schedule_data_for_plates($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1007,7 +1014,7 @@ function get_schedule_data_for_jars($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($ow == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1059,7 +1066,7 @@ function get_schedule_data_for_bags($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1110,7 +1117,7 @@ function get_schedule_data_for_blocks($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1235,7 +1242,7 @@ function get_jars_data($start_date, $end_date, $sort_by) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1306,7 +1313,7 @@ function get_bags_data($start_date, $end_date, $sort_by) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1334,13 +1341,13 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
   $table_string = '';
   $mysqli = sql_connect();
 
-  $blocks = "SELECT creation_date, block_count, substrate, strains.common_name as strain, notes, batch_id
-                FROM blocks,
+  $blocks = "SELECT creation_date, num_blocks, substrate, strains.common_name as strain, notes, batch_id
+                FROM blocks_creation,
                  (SELECT common_name, strain_code
                     FROM strains_library) as strains
                 WHERE creation_date>='$start_date'
                 AND creation_date<='$end_date'
-                AND blocks.strain_code = strains.strain_code
+                AND blocks_creation.strain_code = strains.strain_code
                 ";
 
   if ($sort_by == 'strain') {
@@ -1351,7 +1358,7 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
     $blocks .= "ORDER BY substrate;";
   }
   else {
-    $blocks .= "SORDER BY creation_date DESC;";
+    $blocks .= "ORDER BY creation_date DESC;";
   }
   $sql = mysqli_query($mysqli, $blocks) or die(mysqli_error($mysqli));
 
@@ -1375,7 +1382,7 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
@@ -1385,7 +1392,7 @@ function get_blocks_data($start_date, $end_date, $sort_by) {
           <td>' . $row["batch_id"] . '</td>
           <td>' . $row["creation_date"] . '</td>
           <td>' . $row["strain"] . '</td>                    
-          <td>' . $row["block_count"] . '</td>
+          <td>' . $row["num_blocks"] . '</td>
           <td>' . $row["substrate"] . '</td>
           <td>' . $row["notes"] . '</td>
        </tr>';
