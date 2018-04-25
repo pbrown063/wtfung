@@ -30,6 +30,8 @@ if (!filter_input(INPUT_POST, "submit") ) {
             VALUES(lower('$code'), '$count', '$date', '$notes');";
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
 
+  $_SESSION['message'] = '2' ;
+
   header("Location: home.php");
   die();
 

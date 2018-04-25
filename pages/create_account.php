@@ -12,6 +12,6 @@ if ($account_added) {
   header('Location: account_form.php');
 } 
 else {
-  $_Session['message']='Account already exists';
+  $_SESSION['message']='Account already exists';
   header('Location: account_form.php');
 }

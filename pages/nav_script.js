@@ -42,13 +42,12 @@ for (i = 0; i < dropdown.length; i++) {
     });
 }
 
-function snack(){
-    var snack = sessionStorage.getItem('message');
-    if (snack !== ' '){
-       toast();
-    }else{
+window.onload = function() { message_check(); };
 
-    }
+function message_check(){
+    var x = document.getElementById("snackbar").innerHTML;
+
+    if (x !== ''){ toast(); };
 }
 
 function toast() {
@@ -56,10 +55,11 @@ function toast() {
     var x = document.getElementById("snackbar");
 
     // Add the "show" class to DIV
-    x.className = "show";
+    x.classList.add("show");
 
     // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){  x.classList.remove("show"); x.innerHTML = ''; }, 3000);
 
-    sessionStorage.setItem('message', ' ');
+
+
 }

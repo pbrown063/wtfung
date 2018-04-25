@@ -44,7 +44,6 @@ else {
   }
 
 
-
   $insert = "INSERT INTO bags (num_bags, substrate, creation_date, strain_code, batch_id) 
             VALUES ('$num_bags', lower('$substrate'), '$date', '$code', '$batch_id');";
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
@@ -52,13 +51,12 @@ else {
   $updatejars = "UPDATE jars SET jar_count = ".$update_jar_count." WHERE jar_id = ".$jar_id.";";
   $sqlupdate = mysqli_query($mysqli, $updatejars) or die(mysqli_error($mysqli));
 
-
   // Insert into bags_creation table and references jars_creation table.
   $insert_creation = "INSERT INTO bags_creation (num_bags, substrate, creation_date, notes, strain_code, batch_id, jar_id)
                         VALUES ('$num_bags', '$substrate', '$date', '$notes', '$code', '$batch_id', '$jar_id')";
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
 
-
+  $_SESSION['message'] = '2' ;
 
   header("Location: bag_form.php");
   die();

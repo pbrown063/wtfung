@@ -18,6 +18,8 @@ die();
 //insert into database or error message
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
+  $_SESSION['message'] = '2' ;
+
 header("Location: substrate_form.php");
 die();
 }

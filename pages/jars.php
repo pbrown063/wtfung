@@ -45,6 +45,7 @@ else {
                       VALUES (lower('$code'), '$count', lower('$substrate'), '$date', '$plate', '$notes');";
   $sql = mysqli_query($mysqli, $insert_creation) or die(mysqli_error($mysqli));
 
+  $_SESSION['message'] = '2' ;
 
   header("Location: jar_form.php");
   die();

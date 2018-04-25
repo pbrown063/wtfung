@@ -10,7 +10,7 @@ require_once __DIR__ . '/bootstrap.php';
   <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
   <link rel="stylesheet" type="text/css" href="CSS/main_style.css">
 </head>
-<body onload = "snack()">
+<body>
 <?php require_once 'header.php'; ?>
 
 <ul class="flex-outer">
@@ -32,12 +32,10 @@ require_once __DIR__ . '/bootstrap.php';
 
 
   <!-- Use a button to open the snackbar -->
-  <button onclick="snack()">Show Snackbar</button>
+  <button onclick="toast()">Show Snackbar</button>
 
 
 
 </ul>
-
-
 </body>
 </html>
