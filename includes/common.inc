@@ -9,6 +9,36 @@ function initialize_error_reporting() {
   error_reporting(E_ALL);
 }
 
+function redirect_if_protected($page) {
+
+  $protected_pages = [
+    'account_form.php',
+    'authenticate.php',
+    'building.php',
+    'building_form.php',
+    'developer_manual.php',
+    'farm_schedule_entry.php',
+    'farm_schedule_entry_form.php',
+    'farm_scedule_view.php',
+    'farm_scedule_view_form.php',
+    'strain_form.php',
+    'strains.php',
+    'substrate.php',
+    'substrate_form.php',
+    'data_analytics_tables.php',
+    'strain_form.php',
+    'substrate_form.php',
+    'building_form.php',
+    'account_form.php',
+  ];
+
+  foreach($protected_pages as $value) {
+    if ($value == $page) {
+      header('Location: home.php');
+    }
+  }
+}
+
 /**
  * Fairly rigid, currently connects with only one set of creds.
  * Main point with this function is to include connection error block.
@@ -396,6 +426,9 @@ function get_header_menu($user_name, $is_admin = FALSE) {
   
     <div id="mySidenav" class="sidenav">
    
+   <div class="logout">    
+        <a href="logout.php">Logout</a>
+      </div>
       <button class="dropdown-btn">Lab 
       <i class="fa fa-caret-down"></i>
       </button>
@@ -411,11 +444,7 @@ function get_header_menu($user_name, $is_admin = FALSE) {
                 
   	'.$admin_menu.'
    
-      <a href="user_manual.php">Manual</a>
-      <div class="logout">
-      
-        <a href="logout.php">Logout</a>
-      </div>
+      <a href="user_manual.php">Manual</a>   
       
     </div>
     <script src="nav_script.js" type="text/javascript"></script>
