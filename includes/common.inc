@@ -1014,7 +1014,7 @@ function get_schedule_data_for_jars($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($ow == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
