@@ -1,11 +1,12 @@
 <?php
+session_start();
 //file containing functions -- needed for every page
 require_once $_SERVER['DOCUMENT_ROOT'] . '/wtfung/includes/bootstrap.inc';
 
 if (!filter_input(INPUT_POST, "submit")  || ctype_space(filter_input(INPUT_POST, "substrate"))) {
 
 header("substrate_form.php");
-die();
+ exit();
 
 } else {
 //grabbing inputs from posted form and making variables
@@ -21,5 +22,5 @@ die();
   $_SESSION['message'] = 2 ;
 
 header("Location: home.php");
-die();
+ exit();
 }

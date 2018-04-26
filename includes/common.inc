@@ -490,7 +490,7 @@ function get_header_menu($user_name, $is_admin = FALSE) {
   $admin_menu = $is_admin ? get_admin_header_menu() : '';
 
   $user_menu =
-    ''.$_SESSION["message"].'
+    '
 <nav>
     <div id="snackbar">'. snack_message($_SESSION["message"]) .'</div>
     <a href="home.php"><img class="logo" src="../resources/WTF_white.png" alt="WTF"></a>

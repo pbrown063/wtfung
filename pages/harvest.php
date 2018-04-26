@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/bootstrap.php';
 
 $greenhouse_list = json_decode($_POST['harvest'], true);
@@ -22,6 +22,5 @@ foreach ($greenhouse_list as $harvest) {
 
   header("Location: harvest_form.php");
 
-die();
-
+  exit();
 

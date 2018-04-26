@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -23,4 +24,4 @@ $_SESSION['message'] = 2 ;
 
 header("Location: home.php");
 
-die();
+ exit();

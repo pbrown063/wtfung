@@ -1,7 +1,8 @@
 <?php
 //file containing functions -- needed for every page
-
+session_start();
 require_once __DIR__ . '/bootstrap.php';
+
 
 if (!is_admin()) {
   header('Location: home.php');
@@ -9,7 +10,7 @@ if (!is_admin()) {
 
 if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, "id"))) {
 header("Location:building_form.php");
-die();
+ exit();
 }
 else {
 //grabbing inputs from posted form and making variables
@@ -22,7 +23,6 @@ else {
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
   $_SESSION['message'] = 2 ;
-
   header("Location:building_form.php");
-  die();
+  exit;
 }

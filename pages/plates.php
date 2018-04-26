@@ -1,13 +1,14 @@
 <?php
+session_start();
 //file containing functions -- needed for every page
 require_once __DIR__ . '/bootstrap.php';
 
 if (!filter_input(INPUT_POST, "submit") ) {
 
   header("Location: plate_form.php");
-  die();
-
-} else {
+    exit();
+}
+else {
 
   //connect to database
   $mysqli = sql_connect();
@@ -33,7 +34,7 @@ if (!filter_input(INPUT_POST, "submit") ) {
   $_SESSION['message'] = 2 ;
 
   header("Location: plate_form.php");
-  die();
+    exit();
 
 }
 

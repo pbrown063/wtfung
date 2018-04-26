@@ -1,11 +1,12 @@
 <?php
+session_start();
 //file containing functions -- needed for every page
 require_once __DIR__ . '/bootstrap.php';
 
 if (!filter_input(INPUT_POST, "submit") || ctype_space(filter_input(INPUT_POST, "batch"))) {
 
   header("Location: bag_form.php");
-  die();
+   exit();
 
 }
 
@@ -39,6 +40,6 @@ else {
   header("Location: block_form.php");
 
   $_SESSION['message'] = 2 ;
-  die();
+   exit();
 
 }
