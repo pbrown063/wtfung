@@ -672,7 +672,7 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
