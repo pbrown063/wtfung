@@ -440,7 +440,7 @@ function bags_table(){
 function get_authorization_level($useremail) {
   session_start();
 
-  if ($useremail == 'bcallow@gmail.com') {
+  if ($useremail == 'bcallow@wtfmushrooms.com') {
     return 5409;
   }
   else {
