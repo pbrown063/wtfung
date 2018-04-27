@@ -47,7 +47,7 @@ function redirect_if_protected($page) {
  * Fairly rigid, currently connects with only one set of creds.
  * Main point with this function is to include connection error block.
  **/
-function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NULL, $main_db = 'emp') {
+function sql_connect($sql_host = 'localhost', $sql_user = 'root', $sql_pass = NULL, $main_db = 'wtfung') {
   $SQL_DEFAULT_PASS = '3f27fc9c7267b6bce64feb42a636e748ee6ef0639b102550'; // Poor security!
   if ($sql_pass == NULL) {
     $sql_pass = $SQL_DEFAULT_PASS;
@@ -431,6 +431,59 @@ function bags_table(){
 }
 
 
+/**
+ * Creates a table that displays the production blocks (not blocks_creation)
+ */
+function blocks_table(){
+  $mysqli = sql_connect();
+  $plate = "SELECT id, strains.common_name strain_name, batch.name as batch_name, batch_id, blocks.strain_code, strains.scientific_name as scientific_name
+            FROM blocks, 
+            (SELECT common_name, strain_code, scientific_name
+             FROM strains_library) as strains,
+            (SELECT id as b_id, name 
+             FROM batches) as batch       
+            WHERE blocks.strain_code = strains.strain_code
+            AND blocks.batch_id = b_id
+            AND num_blocks >= 1";
+  $sql = mysqli_query($mysqli, $plate) or die(mysqli_error($mysqli));
+
+
+  echo '
+    <table id="block_table">
+      <thead>
+        <tr>
+            <th hidden>block id</th>
+            <th>batch name</th>
+            <th>strain</th>
+            <th>scientific name</th>                                 
+            <th hidden>batch_id</th>        
+            <th hidden>strain_id</th>               
+        </tr>
+      </thead>
+      <tbody>';
+  while ($row = $sql->fetch_assoc()) {
+
+    if ($row == NULL) {
+      mysqli_close($mysqli);
+      echo '<h3 class="table-title">No Results Found</h3>';
+      return;
+    }
+
+    echo '
+       <tr class="block-row">
+          <td hidden>' . $row["id"] . '</td>
+          <td>' . $row["batch_name"] . '</td>
+          <td>' . $row["strain_name"] . '</td>
+          <td>' . $row["scientific_name"] . '</td>                     
+          <td hidden>' . $row["batch_id"] . '</td>      
+          <td hidden>' . $row["strain_code"] . '</td>           
+       </tr>';
+  }
+  echo '</tbody>
+      </table>';
+  mysqli_close($mysqli);
+}
+
 
 /**
  * looks at the email fromauthenticate.php and
@@ -645,9 +698,9 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   $harvests = "SELECT date, weight, time, notes, strain, greenhouse, strain.common_name strain_name
                FROM harvest,
                ( SELECT strain_code, common_name
-                 FROM strains_library) as strain 
-                WHERE date>='$start_date' 
-                AND date<='$end_date' 
+                 FROM strains_library) as strain
+                WHERE date>='$start_date'
+                AND date<='$end_date'
                 AND strain = strain.strain_code
                 ORDER BY date DESC;";
   $sql = mysqli_query($mysqli, $harvests) or die(mysqli_error($mysqli));
@@ -672,14 +725,14 @@ function get_all_harvest_data_in_range($start_date, $end_date) {
   while ($row = $sql->fetch_assoc()) {
 
     // If no results, return
-    if ($sql->fetch_assoc() == NULL) {
+    if ($row == NULL) {
       mysqli_close($mysqli);
       return '<h3 class="table-title">No Results Found</h3>';
     }
 
     $table_string .= '
        <tr>
-          <td>' . $row["strain_name"] . '</td>
+          <td>' . $row["strain"] . '</td>
           <td>' . $row["greenhouse"] . '</td>
           <td>' . $row["weight"] . '</td>
           <td>' . $row["date"] . '</td>

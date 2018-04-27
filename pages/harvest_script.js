@@ -1,5 +1,39 @@
 var harvest_list = [];
 var lock = false;
+var block_id;
+var batch_id;
+
+document.getElementById('block_table').onclick = function(event) {
+
+  event = event || window.event;
+  var target = event.target || event.srcElement;
+  while (target && target.nodeName !== 'TR') {
+    target = target.parentElement;
+  }
+  var cells = target.cells;
+
+  // Removes selected-row style from all rows and adds it to the target row
+  var rows = document.querySelectorAll('.block-row');
+  for ( var i = 0; i < rows.length; i++ ) {
+    if (rows[i].classList.contains("selected-row")) {
+      rows[i].classList.remove("selected-row");
+    }
+  }
+  if (cells[0].parentNode.parentNode.tagName !== "THEAD") {
+    cells[0].parentNode.classList.add('selected-row');
+  }
+
+
+  if (!cells.length || target.parentNode.nodeName == 'THEAD') {
+    return;
+  }
+
+  document.getElementsByName('block_id')[0].value = cells[0].innerHTML;
+  document.getElementsByName('batch_id')[0].value = cells[4].innerHTML;
+  document.getElementsByName('strain-code')[0].value = cells[5].innerHTML;
+  document.getElementsByName('strain-name')[0].value = cells[2].innerHTML;
+}
+
 
 /**
  * Builds json string and sends it to the server side.
@@ -22,39 +56,6 @@ function submit_harvests() {
   window.location.replace('home.php');
 }
 
-/**
- * Locks the Strain field so that only one strain is being harvested
- * Pulls the harvest form data
- * Validates it
- * Pushes it onto the harvest list
- * Populates a table that shows harvests in queue
- */
-function add_species_entry_to_list() {
-
-  var entry_by = 'species';
-  document.getElementById("harvest_species_form").addEventListener("click", function(event){
-    event.preventDefault()
-  });
-
-  var harvest = get_harvest_object();
-  var validated = is_harvest_valid(harvest);
-
-  if (validated) {
-
-    harvest_list.push(harvest);
-    add_harvest_to_queue_table(harvest, entry_by);
-
-    if (!lock) {
-      lock = true;
-      document.getElementsByName("strain")[0].disabled = true;
-      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.strain.toUpperCase());
-      document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
-      document.getElementsByClassName('table-title')[0].style.display = "block";
-    }
-
-    document.getElementById('harvest_species_form').reset();
-  }
-}
 
 /**
  * Locks the time of day field so that only one strain is being harvested
@@ -92,40 +93,6 @@ function add_time_entry_to_list() {
   }
 }
 
-/**
- * Locks the Greenhouse field so that only one greenhouse is harvest.
- * Pulls the harvest form data
- * Validates it
- * Pushes it onto the harvest list
- * Populates a table that shows harvests in queue
- */
-function add_greenhouse_entry_to_list() {
-
-  var entry_by = 'greenhouse';
-
-  document.getElementById("harvest_greenhouse_form").addEventListener("click", function(event){
-    event.preventDefault()
-  });
-
-  var harvest = get_harvest_object();
-  var validated = is_harvest_valid(harvest);
-
-  if (validated) {
-
-    harvest_list.push(harvest);
-    add_harvest_to_queue_table(harvest, entry_by);
-
-    if (!lock) {
-      lock = true;
-      document.getElementsByName("greenhouse")[0].disabled = true;
-      var tableTitle = document.createTextNode("HARVEST FOR \u00A0" + harvest.greenhouse.toUpperCase());
-      document.getElementsByClassName('table-title')[0].appendChild(tableTitle);
-      document.getElementsByClassName('table-title')[0].style.display = "block";
-    }
-
-    document.getElementById('harvest_greenhouse_form').reset();
-  }
-}
 /**
  * Validates the harvest data.
  * Only processes one error at a time.
@@ -197,7 +164,7 @@ function add_harvest_to_queue_table(harvest, entry_by) {
     harvest_row.appendChild(greenhouse_row);
 
     var strain_row = document.createElement("TD");
-    text = document.createTextNode(harvest.strain);
+    text = document.createTextNode(harvest.strain_name);
     strain_row.appendChild(text);
     harvest_row.appendChild(strain_row);
   }
@@ -222,12 +189,14 @@ function add_harvest_to_queue_table(harvest, entry_by) {
 function  get_harvest_object() {
 
   var greenhouse = document.getElementsByName('greenhouse')[0].value;
-  var strain = document.getElementsByName('code')[0].value;
+  var strain = document.getElementsByName('strain-code')[0].value;
   var weight = document.getElementsByName('weight')[0].value;
   var date = document.getElementsByName('date')[0].value;
   var time = document.getElementsByName('time')[0].value;
   var notes = document.getElementsByName('notes')[0].value;
-
+  var batch_id = document.getElementsByName('batch_id')[0].value;
+  var block_id = document.getElementsByName('block_id')[0].value;
+  var strain_name = document.getElementsByName('strain-name')[0].value;
 
   var harvest = {};
   harvest.strain = strain;
@@ -236,6 +205,9 @@ function  get_harvest_object() {
   harvest.time = time;
   harvest.notes = notes;
   harvest.greenhouse = greenhouse;
+  harvest.batch_id = batch_id;
+  harvest.block_id = block_id;
+  harvest.strain_name = strain_name;
 
   return harvest;
 }

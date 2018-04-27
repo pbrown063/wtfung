@@ -13,14 +13,17 @@ foreach ($greenhouse_list as $harvest) {
   $time = addslashes($harvest['time']);
   $notes = addslashes($harvest['notes']);
   $greenhouse = addslashes($harvest['greenhouse']);
+  $batch_id = addslashes($harvest['batch_id']);
+  $block_id = addslashes($harvest['block_id']);
 
-  $insert = "INSERT INTO harvest (date, weight, time, notes, strain, greenhouse) VALUES ('$date', '$weight', '$time', '$notes', '$strain', '$greenhouse');";
+  $insert = "INSERT INTO harvest (date, weight, time, notes, strain, greenhouse, batch_id, block_id) 
+            VALUES ('$date', '$weight', '$time', '$notes', '$strain', '$greenhouse', $batch_id, $block_id);";
   $sql = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 }
 
-  $_SESSION['message'] = 2 ;
 
-  header("Location: harvest_form.php");
 
-  exit();
+header("Location: harvest_form.php");
+$_SESSION['message'] = 2 ;
+exit();
 
