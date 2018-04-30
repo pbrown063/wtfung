@@ -35,6 +35,8 @@ function redirect_if_protected($page) {
     'substrate_form.php',
     'building_form.php',
     'account_form.php',
+    'discard_form.php',
+    'discard.php'
   ];
 
   foreach($protected_pages as $value) {
@@ -455,6 +457,7 @@ function get_authorization_level($useremail) {
 function get_admin_header_menu() {
   $admin_menu =
     '
+<a href="discard_form.php">Discard</a>
       <button class="dropdown-btn">Library 
         <i class="fa fa-caret-down"></i>
       </button>
